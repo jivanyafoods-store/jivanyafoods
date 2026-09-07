@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jivanya Foods - 100% Natural & Chemical Free</title>
+  <title>Jivanya Foods - Pure & Wholesome Foods</title>
 
   <!-- High-Speed Server Preconnects & DNS Prefetch -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -49,7 +49,7 @@
       onerror="this.src='https://jivanyafoods-store.github.io/jivanyafoods/logo.png'" />
         <div>
           <h1 id="storeName" class="text-sm sm:text-lg font-bold text-gray-900 leading-tight">Jivanya Foods</h1>
-          <p id="storeTagline" class="text-[10px] text-gray-500 hidden sm:block">100% Natural & Chemical Free</p>
+          <p id="storeTagline" class="text-[10px] text-gray-500 hidden sm:block">Pure & Wholesome Foods</p>
         </div>
       </div>
       
@@ -992,7 +992,7 @@ function applySettings() {
       const img = resolveProductImage(prod);
       document.getElementById('detailImg').src = img;
       document.getElementById('detailTitle').textContent = prod.ProductName;
-      document.getElementById('detailCategory').textContent = prod.Category || '100% Natural & Chemical Free';
+      document.getElementById('detailCategory').textContent = prod.Category || 'Pure & Wholesome Foods';
       
       const badgeEl = document.getElementById('detailBadge');
       if (prod.Badge) {
