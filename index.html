@@ -764,10 +764,11 @@
       } catch(e) {}
     }
 
-    function applySettings() {
+function applySettings() {
       const s = state.settings;
       if (s.StoreName) document.getElementById('storeName').textContent = s.StoreName;
       if (s.StoreTagline) document.getElementById('storeTagline').textContent = s.StoreTagline;
+      if (s.StoreLogo) document.getElementById('storeLogo').src = s.StoreLogo;
 
       const addr = s.StoreAddress || "1306 Agra Road, Hathras, Uttar Pradesh - 204101";
       const phone = s.WhatsAppNumber || "919690002403";
