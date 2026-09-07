@@ -650,18 +650,8 @@
       selectedRating: 5
     };
 
-    function resolveProductImage(prod) {
-      if (!prod) return "https://Jivanyafoods.github.io/Jivanya-Foods/logo.png";
-      let raw = "";
-      for (const key of Object.keys(prod)) {
-        const k = key.trim().toLowerCase();
-        if (k === "mainimageurl" || k === "image" || k === "photo" || k === "imageurl") {
-          raw = prod[key];
-          break;
-        }
-      }
-      if (!raw || typeof raw !== "string") return "https://Jivanyafoods.github.io/Jivanya-Foods/logo.png";
-      
+    function cleanImageUrl(raw) {
+      if (!raw || typeof raw !== "string") return "";
       let clean = raw.trim();
       const match = clean.match(/https?:\/\/[^\s)\]]+/);
       if (match) clean = match[0];
@@ -670,9 +660,39 @@
         const idMatch = clean.match(/\/d\/([a-zA-Z0-9_-]+)/) || clean.match(/id=([a-zA-Z0-9_-]+)/);
         if (idMatch && idMatch[1]) return `https://drive.google.com/thumbnail?id=${idMatch[1]}&sz=w600`;
       }
-      return clean.startsWith('http') ? clean : "https://Jivanyafoods.github.io/Jivanya-Foods/logo.png";
+      return clean.startsWith('http') ? clean : "";
     }
 
+    function resolveProductImage(prod) {
+      if (!prod) return "https://jivanyafoods-store.github.io/jivanyafoods/logo.png";
+      let raw = "";
+      for (const key of Object.keys(prod)) {
+        const k = key.trim().toLowerCase();
+        if (k === "mainimageurl" || k === "image" || k === "photo" || k === "imageurl") {
+          raw = prod[key];
+          break;
+        }
+      }
+      const resolved = cleanImageUrl(raw);
+      return resolved || "https://jivanyafoods-store.github.io/jivanyafoods/logo.png";
+    }
+
+    function getProductImages(prod) {
+      if (!prod) return [];
+      const images = [];
+      const main = resolveProductImage(prod);
+      if (main && !main.includes("logo.png")) images.push(main);
+
+      let img2 = "", img3 = "";
+      for (const key of Object.keys(prod)) {
+        const k = key.trim().toLowerCase();
+        if (k === "image2url" || k === "image2" || k === "img2") img2 = cleanImageUrl(prod[key]);
+        if (k === "image3url" || k === "image3" || k === "img3") img3 = cleanImageUrl(prod[key]);
+      }
+      if (img2 && !images.includes(img2)) images.push(img2);
+      if (img3 && !images.includes(img3)) images.push(img3);
+      return images.length ? images : [resolveProductImage(prod)];
+    }
     function init() {
       try {
         const savedCart = localStorage.getItem('Jivanya_saved_cart');
