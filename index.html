@@ -55,6 +55,20 @@
       
       <!-- Action Buttons Area -->
       <div class="flex items-center flex-wrap gap-1 sm:gap-1.5 ml-auto">
+        <!-- Action Buttons Area -->
+      <div class="flex items-center flex-wrap gap-1 sm:gap-1.5 ml-auto">
+
+        <!-- Our Story (About Us) Button -->
+        <button onclick="document.getElementById('aboutModal').classList.remove('hidden')" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-sm whitespace-nowrap cursor-pointer">
+          <i class="fa-solid fa-book-open text-emerald-700"></i>
+          <span>Our Story</span>
+        </button>
+
+        <!-- Self-Service Order Tracking -->
+        <button onclick="toggleTrackingModal()" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-sm whitespace-nowrap">
+          <i class="fa-solid fa-truck-fast text-emerald-700"></i>
+          <span>Track</span>
+        </button>
         <!-- Self-Service Order Tracking -->
         <button onclick="toggleTrackingModal()" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-sm whitespace-nowrap">
           <i class="fa-solid fa-truck-fast text-emerald-700"></i>
@@ -1670,5 +1684,84 @@ function applySettings() {
 
     window.onload = init;
   </script>
+  <!-- About Us Modal -->
+<div id="aboutModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+  <div class="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-emerald-100 overflow-hidden transform transition-all">
+    
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 text-white p-5 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🌿</span>
+        <div>
+          <h3 class="font-bold text-base sm:text-lg leading-tight">About Jivanya Foods</h3>
+          <p class="text-emerald-200 text-xs font-medium mt-0.5">Life Giving • Pure & Wholesome</p>
+        </div>
+      </div>
+      <button onclick="document.getElementById('aboutModal').classList.add('hidden')" 
+              class="text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center text-lg transition cursor-pointer">
+        ✕
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div class="p-5 sm:p-6 space-y-4 text-gray-700 text-xs sm:text-sm leading-relaxed max-h-[75vh] overflow-y-auto">
+      
+      <p>
+        <strong class="text-gray-900 font-bold">Jivanya Foods</strong> is started by two ladies, on a <strong class="text-emerald-800">mission to bring back purity and authenticity into home kitchens</strong>.
+      </p>
+
+      <p class="italic text-emerald-900 bg-emerald-50/70 p-3 rounded-xl border-l-4 border-emerald-600">
+        "Jivanya" means <strong>'life giving'</strong> and we want the goodness of food to come alive with our products.
+      </p>
+
+      <p>
+        We supply the best & pure quality kitchen ingredients: spices, condiments, homemade masalas, and desi cow ghee. The kind of traditional quality that Indian grandmothers would give a <strong>BIG THUMBS UP</strong> to!
+      </p>
+
+      <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-3 flex items-center gap-2.5">
+        <span class="text-xl">👨‍👩‍👧‍👦</span>
+        <p class="text-xs text-amber-950">
+          Already over <strong class="font-bold text-amber-900">600+ families</strong> have tried us; they vouch for the pure, fresh taste evident in their repeat orders.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-gray-900 uppercase tracking-wide text-xs mb-2.5 flex items-center gap-1.5">
+          <span>⭐</span> Our Best Sellers:
+        </h4>
+        <ul class="space-y-1.5 text-xs text-gray-700 font-medium">
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-600 font-bold mt-0.5">✔</span>
+            <span><strong>Desi Cow Ghee</strong> by traditional Vedic Bilona method</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-600 font-bold mt-0.5">✔</span>
+            <span><strong>Pure Hing Powder</strong> far superior to regular store shelves</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-600 font-bold mt-0.5">✔</span>
+            <span><strong>Homemade Masalas</strong> (Garam, Biryani, Tandoori, Chai & Achaar)</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-600 font-bold mt-0.5">✔</span>
+            <span><strong>Roasted Trail Mixes</strong> (both salted & unsalted)</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-600 font-bold mt-0.5">✔</span>
+            <span><strong>Protein Mixtures</strong> rich in natural nutrition</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-3">
+        <button onclick="document.getElementById('aboutModal').classList.add('hidden')" 
+                class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl text-xs sm:text-sm transition cursor-pointer shadow-sm">
+          Explore Our Pure Kitchen Essentials
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
 </body>
 </html>
