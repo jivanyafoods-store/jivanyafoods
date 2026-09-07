@@ -866,17 +866,35 @@ function applySettings() {
       const variants = parseVariants(prod.Variants);
       const first = variants[0] || { size: 'Pack', price: 0, mrp: 0 };
       const safeId = (prod.ProductID || 'P').replace(/[^a-zA-Z0-9]/g, '');
-      const finalImg = resolveProductImage(prod);
+      const images = (typeof getProductImages === 'function') ? getProductImages(prod) : [resolveProductImage(prod)];
+      const mainImg = images[0] || "https://jivanyafoods-store.github.io/jivanyafoods/logo.png";
 
       return `
-        <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition">
-          <div class="relative bg-white flex items-center justify-center p-2 border-b cursor-pointer" onclick="openProductDetail('${prod.ProductID}')">
-            <img src="${finalImg}" alt="${prod.ProductName}" loading="lazy" decoding="async" onerror="this.src='https://Jivanyafoods.github.io/Jivanya-Foods/logo.png'" class="w-full h-36 object-contain" />
+        <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition group">
+          <div class="relative bg-white flex flex-col items-center justify-center p-2 border-b cursor-pointer" onclick="openProductDetail('${prod.ProductID}')">
+            <img id="cardImg-${safeId}" 
+                 src="${mainImg}" 
+                 alt="${prod.ProductName}" 
+                 loading="lazy" 
+                 decoding="async" 
+                 onerror="this.src='https://jivanyafoods-store.github.io/jivanyafoods/logo.png'" 
+                 class="w-full h-36 object-contain transition-all duration-300" />
+            
             ${prod.Badge ? `<span class="absolute top-2 left-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-sm">${prod.Badge}</span>` : ''}
             
             <button onclick="event.stopPropagation(); shareProduct('${prod.ProductName}', '${first.price}')" title="Share with Friends" class="absolute top-2 right-2 bg-white/95 text-gray-700 hover:text-[#25D366] rounded-full h-7 w-7 flex items-center justify-center text-xs shadow-sm transition">
               <i class="fa-solid fa-share-nodes"></i>
             </button>
+
+            ${images.length > 1 ? `
+              <div class="absolute bottom-1.5 flex items-center justify-center gap-1.5 bg-white/90 px-2 py-0.5 rounded-full shadow-xs" onclick="event.stopPropagation()">
+                ${images.map((img, idx) => `
+                  <button type="button" 
+                          onclick="event.stopPropagation(); document.getElementById('cardImg-${safeId}').src='${img}'; document.querySelectorAll('.dot-${safeId}').forEach((d, i) => d.className = 'dot-${safeId} h-1.5 rounded-full transition-all ' + (i === ${idx} ? 'w-3 bg-[#2D5A27]' : 'w-1.5 bg-gray-300'));" 
+                          class="dot-${safeId} h-1.5 ${idx === 0 ? 'w-3 bg-[#2D5A27]' : 'w-1.5 bg-gray-300'} rounded-full transition-all cursor-pointer"></button>
+                `).join('')}
+              </div>
+            ` : ''}
           </div>
           
           <div class="p-3 flex-1 flex flex-col justify-between">
@@ -900,10 +918,10 @@ function applySettings() {
               </div>
 
               <div class="grid grid-cols-2 gap-1.5 mt-2">
-                <button onclick="openProductDetail('${prod.ProductID}')" class="border border-gray-300 hover:bg-gray-50 text-gray-700 py-1.5 rounded-lg text-xs font-semibold">
+                <button onclick="openProductDetail('${prod.ProductID}')" class="border border-gray-300 hover:bg-gray-50 text-gray-700 py-1.5 rounded-lg text-xs font-semibold cursor-pointer">
                   Details
                 </button>
-                <button onclick="addToCart('${prod.ProductID}', '${safeId}')" class="bg-gray-900 hover:bg-[#2D5A27] text-white py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition">
+                <button onclick="addToCart('${prod.ProductID}', '${safeId}')" class="bg-gray-900 hover:bg-[#2D5A27] text-white py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition cursor-pointer">
                   <i class="fa-solid fa-plus text-[10px]"></i> Add
                 </button>
               </div>
