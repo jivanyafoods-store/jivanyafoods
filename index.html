@@ -1037,8 +1037,41 @@ function applySettings() {
       const variants = parseVariants(prod.Variants);
       currentDetailVariant = variants[0] || { size: 'Pack', price: 0, mrp: 0 };
 
-      const img = resolveProductImage(prod);
-      document.getElementById('detailImg').src = img;
+      // Multi-Image Gallery Setup
+      const images = (typeof getProductImages === 'function') ? getProductImages(prod) : [resolveProductImage(prod)];
+      const mainImg = images[0] || "https://jivanyafoods-store.github.io/jivanyafoods/logo.png";
+      
+      const imgEl = document.getElementById('detailImg');
+      if (imgEl) {
+        imgEl.src = mainImg;
+        imgEl.onerror = () => { imgEl.src = "https://jivanyafoods-store.github.io/jivanyafoods/logo.png"; };
+      }
+
+      // Render Thumbnails under modal image
+      let thumbBox = document.getElementById('detailImgThumbs');
+      if (!thumbBox && imgEl && imgEl.parentElement) {
+        thumbBox = document.createElement('div');
+        thumbBox.id = 'detailImgThumbs';
+        thumbBox.className = 'flex items-center justify-center gap-2 mt-2.5 overflow-x-auto py-1';
+        imgEl.parentElement.appendChild(thumbBox);
+      }
+
+      if (thumbBox) {
+        if (images.length > 1) {
+          thumbBox.innerHTML = images.map((img, idx) => `
+            <button type="button" 
+                    onclick="document.getElementById('detailImg').src='${img}'; document.querySelectorAll('.detail-thumb-btn').forEach((b, i) => b.className = 'detail-thumb-btn w-11 h-11 rounded-lg border-2 p-0.5 bg-white transition cursor-pointer ' + (i === ${idx} ? 'border-[#2D5A27]' : 'border-gray-200 opacity-60'));" 
+                    class="detail-thumb-btn w-11 h-11 rounded-lg border-2 p-0.5 bg-white transition cursor-pointer ${idx === 0 ? 'border-[#2D5A27]' : 'border-gray-200 opacity-60'}">
+              <img src="${img}" class="w-full h-full object-contain" />
+            </button>
+          `).join('');
+          thumbBox.classList.remove('hidden');
+        } else {
+          thumbBox.innerHTML = '';
+          thumbBox.classList.add('hidden');
+        }
+      }
+
       document.getElementById('detailTitle').textContent = prod.ProductName;
       document.getElementById('detailCategory').textContent = prod.Category || 'Pure & Wholesome Foods';
       
@@ -1114,7 +1147,6 @@ function applySettings() {
 
       document.getElementById('productDetailModal').classList.remove('hidden');
     }
-
     function setDetailVariant(index, price, mrp, size) {
       currentDetailVariant = { size, price, mrp };
       document.getElementById('detailPrice').textContent = `₹${price}`;
