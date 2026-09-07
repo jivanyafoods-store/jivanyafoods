@@ -1177,7 +1177,7 @@ function applySettings() {
     }
 
     function calculateCheckout(subtotal, totalGrams) {
-      const freeLimit = parseFloat(state.settings.FreeDeliveryAbove || 499);
+      const freeLimit = parseFloat(state.settings.FreeDeliveryAbove || 1299);
       const deliveryPer500 = parseFloat(state.settings.DeliveryPer500g || 40);
 
       let shipping = 0;
