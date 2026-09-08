@@ -1067,18 +1067,17 @@ function applySettings() {
       let html = '';
       const featured = state.products.filter(p => p.Badge && p.Badge.trim() !== "").slice(0, 4);
       const topPicks = featured.length ? featured : state.products.slice(0, 4);
-
-      html += `
+html += `
         <section>
-          <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center justify-between mb-1.5">
             <div>
-              <h2 class="text-base font-bold text-gray-900 flex items-center gap-1.5">
+              <h2 class="text-xs sm:text-sm font-bold text-gray-900 flex items-center gap-1">
                 <span>⭐</span> Bestsellers & Recommended
               </h2>
-              <p class="text-[11px] text-gray-500">Most loved by families for daily purity</p>
+              <p class="text-[10px] text-gray-400">Most loved by families for daily purity</p>
             </div>
           </div>
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-2.5">
             ${topPicks.map(p => buildProductCardHTML(p)).join('')}
           </div>
         </section>
@@ -1090,7 +1089,7 @@ function applySettings() {
           if (catProds.length) {
             const teasers = catProds.slice(0, 4);
             html += `
-              <section class="border-t border-gray-100 pt-3 mt-3">
+              <section class="border-t border-gray-100 pt-2.5 mt-2">
                 <div class="flex items-center justify-between mb-1.5">
                   <div>
                     <h3 class="text-xs sm:text-sm font-bold text-gray-900 tracking-tight">${cat.CategoryName}</h3>
@@ -1100,7 +1099,7 @@ function applySettings() {
                     View All (${catProds.length}) →
                   </button>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-2.5">
                   ${teasers.map(p => buildProductCardHTML(p)).join('')}
                 </div>
               </section>
@@ -1108,7 +1107,6 @@ function applySettings() {
           }
         });
       }
-
       container.innerHTML = html;
     }
 
