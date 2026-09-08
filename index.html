@@ -956,16 +956,16 @@ function applySettings() {
         <div onclick="openProductDetail('${prod.ProductID}')" 
              class="group relative bg-white rounded-2xl border border-gray-100/90 shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(30,58,43,0.12)] hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden">
           
-          <!-- Studio Photo Canvas -->
-          <div class="relative w-full aspect-square bg-white flex items-center justify-center p-3 border-b border-gray-50 overflow-hidden">
-           <img id="cardImg-${safeId}" 
-     src="${mainImg}" 
-     alt="${prod.ProductName}" 
-     loading="lazy" 
-     decoding="async" 
-     onerror="this.src='https://jivanyafoods-store.github.io/jivanyafoods/logo.png'" 
-     style="image-rendering: -webkit-optimize-contrast;"
-     class="w-36 h-36 sm:w-40 sm:h-40 object-contain mx-auto transition-transform duration-300 group-hover:scale-105" />
+         <!-- Studio Photo Canvas -->
+          <div class="relative w-full aspect-square bg-white flex items-center justify-center p-1 border-b border-gray-100 overflow-hidden">
+            <img id="cardImg-${safeId}" 
+                 src="${mainImg}" 
+                 alt="${prod.ProductName}" 
+                 loading="lazy" 
+                 decoding="async" 
+                 onerror="this.src='https://jivanyafoods-store.github.io/jivanyafoods/logo.png'" 
+                 style="image-rendering: -webkit-optimize-contrast;"
+                 class="w-full h-full object-contain mx-auto transition-transform duration-300 group-hover:scale-105" />
             ${prod.Badge ? `
               <span class="absolute top-2.5 left-2.5 bg-amber-500/95 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs">
                 ${prod.Badge}
