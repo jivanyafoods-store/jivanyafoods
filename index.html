@@ -962,18 +962,30 @@ function applySettings() {
         const catProds = state.products.filter(p => p.Category === state.selectedCategory);
         container.innerHTML = `
           <div>
-            <div class="flex items-center justify-between mb-4">
-              <h2 class="text-base md:text-lg font-bold text-gray-900">${state.selectedCategory}</h2>
-              <span class="text-xs text-gray-500">${catProds.length} Products</span>
+            <div class="flex items-center justify-between mb-4 bg-emerald-50/70 p-3 rounded-xl border border-emerald-100">
+              <div class="flex items-center gap-3">
+                <button onclick="selectCategory('ALL')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-emerald-100 text-[#2D5A27] border border-emerald-300 rounded-lg text-xs font-bold shadow-xs transition cursor-pointer">
+                  <i class="fa-solid fa-arrow-left"></i> All Products
+                </button>
+                <h2 class="text-sm md:text-base font-bold text-gray-900">${state.selectedCategory}</h2>
+              </div>
+              <span class="text-xs font-medium text-emerald-800 bg-white px-2.5 py-1 rounded-md border border-emerald-200">${catProds.length} Items</span>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              ${catProds.map(p => buildProductCardHTML(p)).join('')}
-            </div>
+            
+            ${catProds.length ? `
+              <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                ${catProds.map(p => buildProductCardHTML(p)).join('')}
+              </div>
+            ` : `
+              <div class="text-center py-12 bg-white rounded-xl border border-dashed border-gray-300">
+                <p class="text-sm text-gray-500 mb-2">Is category me abhi items add ho rahe hain.</p>
+                <button onclick="selectCategory('ALL')" class="text-xs font-bold text-[#2D5A27] underline cursor-pointer">Wapas All Products dekhein</button>
+              </div>
+            `}
           </div>
         `;
         return;
       }
-
       let html = '';
       const featured = state.products.filter(p => p.Badge && p.Badge.trim() !== "").slice(0, 4);
       const topPicks = featured.length ? featured : state.products.slice(0, 4);
