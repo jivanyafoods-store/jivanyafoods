@@ -856,15 +856,17 @@ function applySettings() {
     }
     function selectCategory(catName) {
       state.selectedCategory = catName;
-      document.querySelectorAll('.cat-btn').forEach(btn => {
-        const isActive = (btn.textContent === catName) || (catName === 'ALL' && btn.textContent === 'All Items');
-        btn.className = isActive 
-          ? "cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A27] text-white whitespace-nowrap shadow-sm"
-          : "cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-700 border border-gray-200 whitespace-nowrap shadow-sm";
-      });
-      renderCatalog();
-    }
+      const activeClass = "cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A27] text-white shadow-xs cursor-pointer transition";
+      const inactiveClass = "cat-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-amber-50/90 text-amber-950 border border-amber-200/80 hover:bg-amber-100/80 cursor-pointer transition";
 
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        const isTarget = btn.textContent.trim() === catName || (catName === 'ALL' && btn.textContent.trim() === 'All Items');
+        btn.className = isTarget ? activeClass : inactiveClass;
+      });
+
+      renderCatalog();
+      window.scrollTo({ top: 140, behavior: 'smooth' });
+    }
     function parseVariants(raw) {
       if(!raw) return [];
       return raw.split(',').map(item => {
