@@ -829,16 +829,29 @@ function applySettings() {
 
     function renderCategories() {
       const container = document.getElementById('categoriesContainer');
-      container.innerHTML = `<button onclick="selectCategory('ALL')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A27] text-white whitespace-nowrap shadow-sm">All Items</button>`;
-      state.categories.forEach(cat => {
-        const btn = document.createElement('button');
-        btn.className = "cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-700 border border-gray-200 whitespace-nowrap shadow-sm";
-        btn.textContent = cat.CategoryName;
-        btn.onclick = () => selectCategory(cat.CategoryName);
-        container.appendChild(btn);
-      });
-    }
+      if (!container) return;
 
+      // Force container to wrap into multiple lines
+      container.className = "flex flex-wrap gap-2 py-2 items-center w-full";
+      container.style.overflowX = "visible";
+
+      let html = `
+        <button onclick="selectCategory('ALL')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold ${state.selectedCategory === 'ALL' ? 'bg-[#2D5A27] text-white shadow-xs' : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'} cursor-pointer transition">
+          All Items
+        </button>
+      `;
+
+      state.categories.forEach(cat => {
+        const isSelected = state.selectedCategory === cat.CategoryName;
+        html += `
+          <button onclick="selectCategory('${cat.CategoryName.replace(/'/g, "\\'")}')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs ${isSelected ? 'font-semibold bg-[#2D5A27] text-white shadow-xs' : 'font-medium bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'} cursor-pointer transition">
+            ${cat.CategoryName}
+          </button>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
     function selectCategory(catName) {
       state.selectedCategory = catName;
       document.querySelectorAll('.cat-btn').forEach(btn => {
