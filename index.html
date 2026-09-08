@@ -325,64 +325,84 @@
     </div>
   </div>
 
-  <!-- Product Detail Modal -->
-  <div id="productDetailModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-3">
-    <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-      <div class="p-3 border-b flex items-center justify-between bg-gray-50">
-        <h3 class="font-bold text-gray-800 text-xs uppercase tracking-wider">Product Details</h3>
-        <button onclick="closeProductDetailModal()" class="text-gray-400 hover:text-gray-800 text-2xl leading-none">&times;</button>
+  <!-- Product Detail Modal (Clean Quick-View with Data-Saving Expandable Description) -->
+  <div id="productDetailModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3">
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] border border-gray-100">
+      
+      <!-- Modal Header -->
+      <div class="p-3 border-b flex items-center justify-between bg-gray-50 shrink-0">
+        <h3 class="font-bold text-gray-800 text-xs uppercase tracking-wider">Product Information</h3>
+        <button onclick="closeProductDetailModal()" class="text-gray-400 hover:text-gray-800 text-2xl leading-none cursor-pointer">&times;</button>
       </div>
-      <div class="flex-1 overflow-y-auto p-4 space-y-4 text-xs">
-        <div class="bg-gray-50 rounded-xl p-2 flex items-center justify-center">
-          <img id="detailImg" src="" alt="Product" class="max-h-56 object-contain rounded-lg" />
+
+      <!-- Modal Body -->
+      <div class="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs">
+        
+        <!-- Image Canvas -->
+        <div class="bg-neutral-50 rounded-xl p-3 flex flex-col items-center justify-center border border-gray-100">
+          <img id="detailImg" src="" alt="Product" class="max-h-52 object-contain rounded-lg" />
+          <div id="detailImgThumbs" class="flex items-center justify-center gap-2 mt-2.5 overflow-x-auto py-1"></div>
         </div>
+
+        <!-- Title & Category -->
         <div>
           <div class="flex items-center gap-2">
-            <span id="detailBadge" class="bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md hidden"></span>
-            <span id="detailCategory" class="text-gray-400 text-[11px]"></span>
+            <span id="detailBadge" class="bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full hidden"></span>
+            <span id="detailCategory" class="text-gray-400 text-[11px] font-medium"></span>
           </div>
-          <h2 id="detailTitle" class="text-base md:text-lg font-bold text-gray-900 mt-1"></h2>
-        </div>
-        
-        <div class="border rounded-xl p-3 bg-emerald-50/50 border-emerald-100">
-          <p class="font-bold text-[#2D5A27] text-xs mb-1">🌿 Pure & Authentic Quality</p>
-          <p id="detailDesc" class="text-gray-700 leading-relaxed text-[11px]"></p>
+          <h2 id="detailTitle" class="text-base sm:text-lg font-bold text-gray-900 mt-1"></h2>
         </div>
 
-        <div id="detailIngredientsBox" class="border rounded-xl p-3 bg-amber-50/40 border-amber-100">
-          <p class="font-bold text-amber-900 text-xs mb-1">📋 Ingredients / Formulation</p>
-          <p id="detailIngredients" class="text-gray-700 leading-relaxed text-[11px]"></p>
-        </div>
-
-        <div>
-          <label class="block text-gray-700 font-bold mb-1.5">Select Pack Size:</label>
-          <div id="detailVariantsList" class="flex flex-wrap gap-2"></div>
-        </div>
-
-        <div class="flex items-baseline gap-2 pt-2 border-t">
-          <span id="detailPrice" class="text-xl font-extrabold text-[#2D5A27]">₹0</span>
+        <!-- Pricing Row -->
+        <div class="flex items-baseline gap-2 py-1">
+          <span id="detailPrice" class="text-2xl font-black text-[#1E3A2B]">₹0</span>
           <span id="detailMrp" class="text-xs text-gray-400 line-through">₹0</span>
         </div>
 
-        <div class="border-t pt-3 space-y-2">
-          <h4 class="font-bold text-gray-800 text-xs flex items-center justify-between">
-            <span>Customer Feedback on this item</span>
-            <span id="detailReviewCount" class="text-[10px] text-gray-500 font-normal"></span>
-          </h4>
-          <div id="detailProductReviewsList" class="space-y-2 max-h-40 overflow-y-auto"></div>
+        <!-- Select Weight / Packing Variant -->
+        <div class="bg-neutral-50 p-3 rounded-xl border border-gray-100">
+          <label class="block text-gray-800 font-bold text-[11px] uppercase tracking-wider mb-2">Select Pack Size / Wazan:</label>
+          <div id="detailVariantsList" class="flex flex-wrap gap-2"></div>
         </div>
+
+        <!-- Data-Saving Accordion: Read Details Only If Customer Clicks -->
+        <details class="bg-emerald-50/60 rounded-xl p-3 border border-emerald-100 text-xs">
+          <summary class="font-bold text-emerald-950 cursor-pointer select-none flex items-center justify-between">
+            <span>🌿 Read Purity, Benefits & Vedic Process</span>
+            <span class="text-emerald-700 text-xs font-semibold">Tap to view ▾</span>
+          </summary>
+          <div class="mt-2.5 pt-2 border-t border-emerald-200/60 text-gray-700 leading-relaxed text-[11px] space-y-2">
+            <p id="detailDesc"></p>
+            <div id="detailIngredientsBox" class="hidden pt-1">
+              <span class="font-bold text-amber-900 block mb-0.5">Ingredients:</span>
+              <p id="detailIngredients" class="text-gray-600"></p>
+            </div>
+          </div>
+        </details>
+
+        <!-- Customer Feedback Accordion -->
+        <details class="bg-gray-50 rounded-xl p-3 border border-gray-100 text-xs">
+          <summary class="font-bold text-gray-800 cursor-pointer select-none flex items-center justify-between">
+            <span>⭐ Customer Reviews <span id="detailReviewCount" class="font-normal text-gray-500 text-[10px]"></span></span>
+            <span class="text-gray-500 text-xs">Tap to view ▾</span>
+          </summary>
+          <div id="detailProductReviewsList" class="space-y-2 max-h-36 overflow-y-auto mt-2.5 pt-2 border-t border-gray-200"></div>
+        </details>
+
       </div>
-      <div class="p-3 border-t bg-gray-50 flex gap-2">
-        <button id="detailShareBtn" class="border border-gray-300 text-gray-700 px-3 py-2.5 rounded-xl text-xs font-bold hover:bg-gray-100 flex items-center justify-center gap-1.5 transition">
-          <i class="fa-solid fa-share-nodes"></i> Share
+
+      <!-- Bottom Sticky Action Bar -->
+      <div class="p-3 border-t bg-gray-50 flex gap-2 shrink-0">
+        <button id="detailShareBtn" class="border border-gray-300 text-gray-700 px-3 py-2.5 rounded-xl text-xs font-bold hover:bg-gray-100 flex items-center justify-center gap-1.5 transition cursor-pointer">
+          <i class="fa-solid fa-share-nodes"></i>
         </button>
-        <button id="detailAddCartBtn" class="flex-1 bg-gray-900 hover:bg-[#2D5A27] text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow transition">
+        <button id="detailAddCartBtn" class="flex-1 bg-[#1E3A2B] hover:bg-[#2D5A27] text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition cursor-pointer">
           <i class="fa-solid fa-bag-shopping"></i> Add to Basket
         </button>
       </div>
+
     </div>
   </div>
-
   <!-- Contact Us Modal -->
   <div id="contactModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden">
