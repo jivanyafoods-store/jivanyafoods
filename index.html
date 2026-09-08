@@ -35,48 +35,48 @@
   </div>
 
   <!-- Header -->
-  <header class="bg-white border-b sticky top-0 z-40 shadow-sm">
-    <div class="max-w-6xl mx-auto px-2.5 sm:px-4 py-2 flex flex-wrap items-center justify-between gap-1.5 sm:gap-3">
-      <!-- Store Brand & Logo -->
-      <div class="flex items-center gap-2 cursor-pointer" onclick="selectCategory('ALL')">
-       <img id="storeLogo" 
-      src="https://jivanyafoods-store.github.io/jivanyafoods/logo.png" 
-      alt="Jivanya Foods" 
-      width="40" height="40"
-      loading="eager"
-      fetchpriority="high"
-      class="h-9 sm:h-10 w-auto object-contain rounded-lg" 
-      onerror="this.src='https://jivanyafoods-store.github.io/jivanyafoods/logo.png'" />
-        <div>
-          <h1 id="storeName" class="text-sm sm:text-lg font-bold text-gray-900 leading-tight">Jivanya Foods</h1>
-          <p id="storeTagline" class="text-[10px] text-gray-500 hidden sm:block">Pure & Wholesome Foods</p>
-        </div>
-      </div>
+  <header class="bg-white border-b sticky top-0 z-40 shadow-xs">
+    <div class="max-w-6xl mx-auto px-2.5 sm:px-4 py-2 flex items-center justify-between gap-2 sm:gap-3">
       
-      <!-- Action Buttons Area -->
-      <div class="flex items-center flex-wrap gap-1 sm:gap-1.5 ml-auto">
-        <!-- Action Buttons Area -->
-      <div class="flex items-center flex-wrap gap-1 sm:gap-1.5 ml-auto">
+      <!-- Store Logo Only (Text Hataya Gaya) -->
+      <div class="flex items-center cursor-pointer shrink-0" onclick="selectCategory('ALL')" title="Jivanya Foods Home">
+        <img id="storeLogo" 
+             src="https://jivanyafoods-store.github.io/jivanyafoods/logo.png" 
+             alt="Jivanya Foods" 
+             width="44" height="44"
+             loading="eager" 
+             fetchpriority="high" 
+             class="h-10 sm:h-11 w-auto object-contain hover:opacity-95 transition" 
+             onerror="this.src='https://jivanyafoods-store.github.io/jivanyafoods/logo.png'" />
+      </div>
 
-        <!-- Our Story (About Us) Button -->
-        <button onclick="document.getElementById('aboutModal').classList.remove('hidden')" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-sm whitespace-nowrap cursor-pointer">
+      <!-- Action Buttons + Search Bar + Basket -->
+      <div class="flex items-center flex-wrap gap-1.5 sm:gap-2 ml-auto">
+        
+        <!-- Search Bar -->
+        <div class="relative w-36 sm:w-52 md:w-60">
+          <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2.5 text-gray-400 text-xs"></i>
+          <input type="text" 
+                 id="searchInput" 
+                 oninput="handleSearch()" 
+                 placeholder="Search products..." 
+                 class="w-full pl-7 pr-3 py-1.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#2D5A27] bg-gray-50 focus:bg-white text-xs transition" />
+        </div>
+
+        <!-- Our Story -->
+        <button onclick="document.getElementById('aboutModal').classList.remove('hidden')" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-xs whitespace-nowrap cursor-pointer">
           <i class="fa-solid fa-book-open text-emerald-700"></i>
           <span>Our Story</span>
         </button>
 
-        <!-- Self-Service Order Tracking -->
-        <button onclick="toggleTrackingModal()" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-sm whitespace-nowrap">
-          <i class="fa-solid fa-truck-fast text-emerald-700"></i>
-          <span>Track</span>
-        </button>
-        <!-- Self-Service Order Tracking -->
-        <button onclick="toggleTrackingModal()" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-sm whitespace-nowrap">
+        <!-- Track Order -->
+        <button onclick="toggleTrackingModal()" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-xs whitespace-nowrap cursor-pointer">
           <i class="fa-solid fa-truck-fast text-emerald-700"></i>
           <span>Track</span>
         </button>
 
-        <!-- Recommend Button -->
-        <button onclick="shareStore()" class="border border-green-700 text-green-800 hover:bg-green-50 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-semibold transition shadow-sm whitespace-nowrap">
+        <!-- Recommend -->
+        <button onclick="shareStore()" class="border border-green-700 text-green-800 hover:bg-green-50 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-semibold transition shadow-xs whitespace-nowrap cursor-pointer">
           <i class="fa-solid fa-share-nodes text-green-700"></i>
           <span>Recommend</span>
         </button>
@@ -84,36 +84,29 @@
         <!-- Google Language Selector -->
         <div id="google_translate_element" class="inline-flex items-center"></div>
 
-        <!-- Account / Profile Button -->
-        <button id="userAccountBtn" onclick="openAccountModal()" class="flex items-center gap-1 bg-emerald-800/90 hover:bg-emerald-800 text-white px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-[11px] font-semibold shadow transition whitespace-nowrap">
+        <!-- Account / Profile -->
+        <button id="userAccountBtn" onclick="openAccountModal()" class="flex items-center gap-1 bg-emerald-800/90 hover:bg-emerald-800 text-white px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-[11px] font-semibold shadow-xs transition whitespace-nowrap cursor-pointer">
           <span id="userAccountLabel">Account 👤</span>
         </button>
         
-        <!-- Cart Button -->
-        <button onclick="toggleCart()" class="relative bg-[#2D5A27] text-white px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg flex items-center gap-1.5 text-[11px] font-medium hover:bg-[#1E3A2B] transition shadow-sm whitespace-nowrap">
+        <!-- Basket -->
+        <button onclick="toggleCart()" class="relative bg-[#2D5A27] text-white px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 text-xs font-semibold hover:bg-[#1E3A2B] transition shadow-xs whitespace-nowrap cursor-pointer">
           <i class="fa-solid fa-bag-shopping"></i>
           <span>Basket</span>
-          <span id="cartCount" class="bg-amber-400 text-gray-900 text-[9px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+          <span id="cartCount" class="bg-amber-400 text-gray-900 text-[10px] font-bold rounded-full h-4 min-w-[16px] px-1 flex items-center justify-center">0</span>
         </button>
-      </div>
-    </div>
-
-    <!-- Search Bar -->
-    <div class="max-w-6xl mx-auto px-2.5 sm:px-4 pb-2">
-      <div class="relative">
-        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-xs"></i>
-        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search spices, ghee, dry fruits..." class="w-full pl-8 pr-3 py-1.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#2D5A27] bg-gray-50 text-xs" />
       </div>
     </div>
   </header>
 
-  <!-- Category Filter Bar -->
-  <div class="max-w-6xl mx-auto px-4 mt-4">
-    <div id="categoriesContainer" class="flex gap-2 overflow-x-auto hide-scrollbar py-1">
-      <button onclick="selectCategory('ALL')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A27] text-white whitespace-nowrap shadow-sm">All Items</button>
+  <!-- Category Filter Bar (Multi-line Wrap) -->
+  <div class="max-w-6xl mx-auto px-4 mt-3">
+    <div id="categoriesContainer" class="flex flex-wrap gap-2 py-1 items-center">
+      <button onclick="selectCategory('ALL')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A27] text-white shadow-xs cursor-pointer">
+        All Items
+      </button>
     </div>
-  </div>
-  
+  </div>  
   <!-- Trust Badges -->
   <div class="max-w-6xl mx-auto px-4 mt-4">
     <div class="bg-white border border-gray-200 rounded-2xl p-3 flex flex-wrap items-center justify-between gap-3 text-xs text-gray-600 shadow-sm">
