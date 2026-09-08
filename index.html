@@ -927,69 +927,68 @@ function applySettings() {
       const safeId = (prod.ProductID || 'P').replace(/[^a-zA-Z0-9]/g, '');
       const images = (typeof getProductImages === 'function') ? getProductImages(prod) : [resolveProductImage(prod)];
       const mainImg = images[0] || "https://jivanyafoods-store.github.io/jivanyafoods/logo.png";
+      
+      const discountPercent = (first.mrp > first.price && first.mrp > 0)
+        ? Math.round(((first.mrp - first.price) / first.mrp) * 100)
+        : 0;
 
       return `
-        <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition group">
-          <div class="relative bg-white flex flex-col items-center justify-center p-2 border-b cursor-pointer" onclick="openProductDetail('${prod.ProductID}')">
+        <div onclick="openProductDetail('${prod.ProductID}')" 
+             class="group relative bg-white rounded-2xl border border-gray-100/90 shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(30,58,43,0.12)] hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden">
+          
+          <!-- Studio Photo Canvas -->
+          <div class="relative w-full aspect-square bg-white flex items-center justify-center p-3 border-b border-gray-50 overflow-hidden">
             <img id="cardImg-${safeId}" 
                  src="${mainImg}" 
                  alt="${prod.ProductName}" 
                  loading="lazy" 
                  decoding="async" 
                  onerror="this.src='https://jivanyafoods-store.github.io/jivanyafoods/logo.png'" 
-                 class="w-full h-36 object-contain transition-all duration-300" />
-            
-            ${prod.Badge ? `<span class="absolute top-2 left-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-sm">${prod.Badge}</span>` : ''}
-            
-            <button onclick="event.stopPropagation(); shareProduct('${prod.ProductName}', '${first.price}')" title="Share with Friends" class="absolute top-2 right-2 bg-white/95 text-gray-700 hover:text-[#25D366] rounded-full h-7 w-7 flex items-center justify-center text-xs shadow-sm transition">
+                 class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+
+            ${prod.Badge ? `
+              <span class="absolute top-2.5 left-2.5 bg-amber-500/95 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs">
+                ${prod.Badge}
+              </span>
+            ` : ''}
+
+            <button onclick="event.stopPropagation(); shareProduct('${prod.ProductName.replace(/'/g, "\\'")}', '${first.price}')" 
+                    title="Share" 
+                    class="absolute top-2.5 right-2.5 bg-white/90 hover:bg-[#25D366] text-gray-600 hover:text-white rounded-full h-7 w-7 flex items-center justify-center text-xs shadow-xs transition select-none">
               <i class="fa-solid fa-share-nodes"></i>
             </button>
-
-            ${images.length > 1 ? `
-              <div class="absolute bottom-1.5 flex items-center justify-center gap-1.5 bg-white/90 px-2 py-0.5 rounded-full shadow-xs" onclick="event.stopPropagation()">
-                ${images.map((img, idx) => `
-                  <button type="button" 
-                          onclick="event.stopPropagation(); document.getElementById('cardImg-${safeId}').src='${img}'; document.querySelectorAll('.dot-${safeId}').forEach((d, i) => d.className = 'dot-${safeId} h-1.5 rounded-full transition-all ' + (i === ${idx} ? 'w-3 bg-[#2D5A27]' : 'w-1.5 bg-gray-300'));" 
-                          class="dot-${safeId} h-1.5 ${idx === 0 ? 'w-3 bg-[#2D5A27]' : 'w-1.5 bg-gray-300'} rounded-full transition-all cursor-pointer"></button>
-                `).join('')}
-              </div>
-            ` : ''}
           </div>
-          
-          <div class="p-3 flex-1 flex flex-col justify-between">
-            <div class="cursor-pointer" onclick="openProductDetail('${prod.ProductID}')">
-              <h4 class="font-bold text-gray-900 text-xs md:text-sm line-clamp-2 leading-snug hover:text-[#2D5A27] transition">${prod.ProductName}</h4>
-              <p class="text-[11px] text-gray-500 mt-1 line-clamp-1">${prod.ShortDescription || ''}</p>
+
+          <!-- Minimalist Content: Clean, Glowing & Clutter-Free -->
+          <div class="p-3 flex flex-col justify-between flex-1">
+            <div>
+              <div class="flex items-center gap-1 mb-1 text-[11px] font-semibold text-emerald-800">
+                <span class="text-amber-500 text-xs">★</span>
+                <span>4.9</span>
+                <span class="text-gray-400 text-[10px] font-normal">(Verified)</span>
+              </div>
+              <h4 class="font-bold text-gray-900 text-xs sm:text-sm line-clamp-1 group-hover:text-[#1E3A2B] transition-colors">
+                ${prod.ProductName}
+              </h4>
             </div>
 
-            <div class="mt-3">
-              <div class="flex items-center gap-1 overflow-x-auto hide-scrollbar mb-2">
-                ${variants.map((v, i) => `
-                  <button id="vbtn-${safeId}-${i}" onclick="setVariant('${safeId}', ${i}, ${v.price}, ${v.mrp}, '${v.size}')" class="vbtn-${safeId} text-[10px] px-2 py-0.5 rounded-md border ${i === 0 ? 'bg-[#2D5A27] text-white border-[#2D5A27]' : 'bg-gray-50 text-gray-600 border-gray-200'}">
-                    ${v.size}
-                  </button>
-                `).join('')}
+            <div class="mt-2.5 pt-2 border-t border-gray-50 flex items-center justify-between">
+              <div class="flex items-baseline gap-1.5 flex-wrap">
+                <span class="font-black text-sm sm:text-base text-gray-950">₹${first.price}</span>
+                ${first.mrp > first.price ? `<span class="text-[10px] sm:text-xs text-gray-400 line-through">₹${first.mrp}</span>` : ''}
+                ${discountPercent > 0 ? `<span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">${discountPercent}% OFF</span>` : ''}
               </div>
-
-              <div class="flex items-baseline gap-1.5">
-                <span id="price-${safeId}" class="font-bold text-sm text-[#2D5A27]">₹${first.price}</span>
-                <span id="mrp-${safeId}" class="text-[10px] text-gray-400 line-through">₹${first.mrp}</span>
-              </div>
-
-              <div class="grid grid-cols-2 gap-1.5 mt-2">
-                <button onclick="openProductDetail('${prod.ProductID}')" class="border border-gray-300 hover:bg-gray-50 text-gray-700 py-1.5 rounded-lg text-xs font-semibold cursor-pointer">
-                  Details
-                </button>
-                <button onclick="addToCart('${prod.ProductID}', '${safeId}')" class="bg-gray-900 hover:bg-[#2D5A27] text-white py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition cursor-pointer">
-                  <i class="fa-solid fa-plus text-[10px]"></i> Add
-                </button>
-              </div>
+              
+              <!-- Clean Quick View Action Icon -->
+              <span class="w-6 h-6 rounded-full bg-neutral-100 group-hover:bg-[#1E3A2B] text-gray-600 group-hover:text-white flex items-center justify-center transition shadow-xs">
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </span>
             </div>
           </div>
+
         </div>
       `;
     }
-
     function renderCatalog() {
       const container = document.getElementById('productsGrid');
       if (!state.products.length) return;
