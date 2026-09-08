@@ -831,12 +831,14 @@ function applySettings() {
       const container = document.getElementById('categoriesContainer');
       if (!container) return;
 
-      // Force container to wrap into multiple lines
       container.className = "flex flex-wrap gap-2 py-2 items-center w-full";
       container.style.overflowX = "visible";
 
+      const activeClass = "cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A27] text-white shadow-xs cursor-pointer transition";
+      const inactiveClass = "cat-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-amber-50/90 text-amber-950 border border-amber-200/80 hover:bg-amber-100/80 cursor-pointer transition";
+
       let html = `
-        <button onclick="selectCategory('ALL')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold ${state.selectedCategory === 'ALL' ? 'bg-[#2D5A27] text-white shadow-xs' : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'} cursor-pointer transition">
+        <button onclick="selectCategory('ALL')" class="${state.selectedCategory === 'ALL' ? activeClass : inactiveClass}">
           All Items
         </button>
       `;
@@ -844,7 +846,7 @@ function applySettings() {
       state.categories.forEach(cat => {
         const isSelected = state.selectedCategory === cat.CategoryName;
         html += `
-          <button onclick="selectCategory('${cat.CategoryName.replace(/'/g, "\\'")}')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs ${isSelected ? 'font-semibold bg-[#2D5A27] text-white shadow-xs' : 'font-medium bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'} cursor-pointer transition">
+          <button onclick="selectCategory('${cat.CategoryName.replace(/'/g, "\\'")}')" class="${isSelected ? activeClass : inactiveClass}">
             ${cat.CategoryName}
           </button>
         `;
