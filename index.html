@@ -959,13 +959,13 @@ function applySettings() {
           <!-- Studio Photo Canvas -->
           <div class="relative w-full aspect-square bg-white flex items-center justify-center p-3 border-b border-gray-50 overflow-hidden">
            <img id="cardImg-${safeId}" 
-        src="${mainImg}" 
-        alt="${prod.ProductName}" 
-        loading="lazy" 
-        decoding="async" 
-        onerror="this.src='https://jivanyafoods-store.github.io/jivanyafoods/logo.png'" 
-        style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;"
-        class="max-h-[85%] max-w-[85%] object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-300" />
+     src="${mainImg}" 
+     alt="${prod.ProductName}" 
+     loading="lazy" 
+     decoding="async" 
+     onerror="this.src='https://jivanyafoods-store.github.io/jivanyafoods/logo.png'" 
+     style="image-rendering: -webkit-optimize-contrast;"
+     class="w-36 h-36 sm:w-40 sm:h-40 object-contain mx-auto transition-transform duration-300 group-hover:scale-105" />
             ${prod.Badge ? `
               <span class="absolute top-2.5 left-2.5 bg-amber-500/95 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs">
                 ${prod.Badge}
