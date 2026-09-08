@@ -1088,19 +1088,19 @@ function applySettings() {
         state.categories.forEach(cat => {
           const catProds = state.products.filter(p => p.Category === cat.CategoryName);
           if (catProds.length) {
-            const teasers = catProds.slice(0, 3);
+            const teasers = catProds.slice(0, 4);
             html += `
-              <section class="border-t pt-6">
-                <div class="flex items-center justify-between mb-3">
+              <section class="border-t border-gray-100 pt-3 mt-3">
+                <div class="flex items-center justify-between mb-1.5">
                   <div>
-                    <h3 class="text-sm md:text-base font-bold text-gray-900">${cat.CategoryName}</h3>
-                    <p class="text-[11px] text-gray-500">${cat.Tagline || 'Authentic & Unadulterated'}</p>
+                    <h3 class="text-xs sm:text-sm font-bold text-gray-900 tracking-tight">${cat.CategoryName}</h3>
+                    <p class="text-[10px] text-gray-400 leading-none">${cat.Tagline || 'Authentic & Unadulterated'}</p>
                   </div>
-                  <button onclick="selectCategory('${cat.CategoryName}')" class="text-xs font-bold text-[#2D5A27] hover:underline flex items-center gap-1">
+                  <button onclick="selectCategory('${cat.CategoryName}')" class="text-[11px] font-semibold text-[#1E3A2B] hover:underline flex items-center gap-0.5 cursor-pointer">
                     View All (${catProds.length}) →
                   </button>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                   ${teasers.map(p => buildProductCardHTML(p)).join('')}
                 </div>
               </section>
