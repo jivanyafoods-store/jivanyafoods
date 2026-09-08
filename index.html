@@ -129,17 +129,25 @@
       </a>
     </div>
 
-    <!-- Section 2: Pure Desi Categories (Scrollable) -->
+   <!-- Section 2: Pure Desi Categories (Scrollable) -->
     <div class="p-2 max-h-60 overflow-y-auto text-xs text-gray-700">
       <span class="text-[10px] font-bold text-emerald-900 uppercase tracking-wider block px-2 mb-1">Categories</span>
-      <a href="#desi-items" class="block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium">DESI ITEMS</a>
-      <a href="#dry-fruits" class="block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium">Premium Dry Fruits & Nuts</a>
-      <a href="#rose-water" class="block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium">Rose Water & Natural Care</a>
-      <a href="#spices" class="block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium">Whole & Grounded Spices</a>
-      <a href="#sweets" class="block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium">Desi Cow Ghee Laddoos & Sweets</a>
-      <a href="#snacks" class="block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium">Healthy Snacks & Seeds</a>
+      <button type="button" onclick="selectCategory('ALL')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">All Items</button>
+      <button type="button" onclick="selectCategory('DESI ITEMS')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">DESI ITEMS</button>
+      <button type="button" onclick="selectCategory('Rose Water & Natural Care')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Rose Water & Natural Care</button>
+      <button type="button" onclick="selectCategory('Premium Dry Fruits & Nuts')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Premium Dry Fruits & Nuts</button>
+      <button type="button" onclick="selectCategory('HEALTH SEEDS')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">HEALTH SEEDS</button>
+      <button type="button" onclick="selectCategory('Homemade Desi Cow Ghee Laddoos & Sweets')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Homemade Desi Cow Ghee Laddoos & Sweets</button>
+      <button type="button" onclick="selectCategory('Homemade Achaar')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Homemade Achaar</button>
+      <button type="button" onclick="selectCategory('Whole Spices')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Whole Spices</button>
+      <button type="button" onclick="selectCategory('Home-Grounded Spices')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Home-Grounded Spices</button>
+      <button type="button" onclick="selectCategory('Homemade Masalas & Powders')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Homemade Masalas & Powders</button>
+      <button type="button" onclick="selectCategory('Healthy Snacks')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Healthy Snacks</button>
+      <button type="button" onclick="selectCategory('Natural Sweeteners')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Natural Sweeteners</button>
+      <button type="button" onclick="selectCategory('Dal & Pulses')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Dal & Pulses</button>
+      <button type="button" onclick="selectCategory('Herbal & Wellness')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Herbal & Wellness</button>
+      <button type="button" onclick="selectCategory('Combos & Gift Packs')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Combos & Gift Packs</button>
     </div>
-
   </div>
 </div>
         <!-- Our Story -->
@@ -179,7 +187,7 @@
   </header>
 
   <!-- Category Filter Bar (Multi-line Wrap) -->
-  <div class="max-w-6xl mx-auto px-4 mt-3">
+  <div class="hidden max-w-6xl mx-auto px-4 mt-3">
     <div id="categoriesContainer" class="flex flex-wrap gap-2 py-1 items-center">
       <button onclick="selectCategory('ALL')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A27] text-white shadow-xs cursor-pointer">
         All Items
