@@ -401,9 +401,9 @@
 
             <!-- Pack Size Selector -->
             <div class="bg-gray-50/80 p-2.5 rounded-xl border border-gray-200/70">
-              <label class="block text-gray-800 font-bold text-[11px] uppercase tracking-wide mb-1.5">
-                Select Pack Size:
-              </label>
+             <label class="block text-gray-800 font-bold text-[11px] uppercase tracking-wide mb-1.5">
+  Select Pack Size: <span id="detailSelectedWeightText" class="text-emerald-800 font-semibold lowercase"></span>
+</label>
               <div id="detailVariantsList" class="flex flex-wrap gap-2"></div>
             </div>
 
@@ -1307,6 +1307,12 @@ function updateDetailDiscountAndWeight(price, mrp, size) {
         }
       }
 
+      // Selected weight ko SELECT PACK SIZE ke theek aage print karega
+      const weightEl = document.getElementById('detailSelectedWeightText');
+      if (weightEl) {
+        weightEl.textContent = size ? `(${size})` : '';
+      }
+    }
       const weightEl = document.getElementById('detailSelectedWeightText');
       if (weightEl) {
         weightEl.textContent = size ? `(${size})` : '';
