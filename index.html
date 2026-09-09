@@ -354,85 +354,89 @@
     </div>
   </div>
 
-  <!-- Product Detail Modal (Spacious, Tight-Spaced & Catalog Linked) -->
-  <div id="productDetailModal" class="fixed inset-0 bg-black/65 backdrop-blur-xs z-50 hidden flex items-center justify-center p-2 sm:p-4">
-    <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] border border-gray-100">
+  <!-- Product Detail Modal (Modern 2-Column Desktop Layout) -->
+  <div id="productDetailModal" class="fixed inset-0 bg-black/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-2 sm:p-4">
+    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] border border-gray-100">
       
-      <!-- Modal Header (With Back Button & Compact Title) -->
-      <div class="px-3.5 py-2.5 border-b flex items-center justify-between bg-gray-50/90 shrink-0">
+      <!-- Modal Header (Ultra-Compact, No Extra Space) -->
+      <div class="px-3 py-2 border-b flex items-center justify-between bg-gray-50/90 shrink-0">
         <button onclick="closeProductDetailModal()" class="flex items-center gap-1.5 text-gray-600 hover:text-emerald-900 text-xs font-semibold px-2 py-1 rounded-lg hover:bg-gray-200/70 transition cursor-pointer">
           <i class="fa-solid fa-arrow-left text-[11px]"></i>
           <span>Back</span>
         </button>
-        <span class="font-bold text-gray-500 text-[10px] uppercase tracking-wider">Product Information</span>
+        <span class="font-bold text-gray-500 text-[10px] uppercase tracking-wider">Product Details</span>
         <button onclick="closeProductDetailModal()" class="text-gray-400 hover:text-gray-800 text-2xl leading-none px-1.5 cursor-pointer">&times;</button>
       </div>
 
-      <!-- Modal Body (Compact Gaps) -->
-      <div class="flex-1 overflow-y-auto p-3.5 sm:p-5 space-y-2.5 text-xs">
-        
-        <!-- Image Canvas (Large & Crisp) -->
-        <div class="bg-white rounded-xl p-1 flex flex-col items-center justify-center border border-gray-100 shadow-2xs">
-          <img id="detailImg" src="" alt="Product" class="w-full h-64 sm:h-80 md:h-96 object-contain rounded-lg transition-all" />
-          <div id="detailImgThumbs" class="flex items-center justify-center gap-2 mt-1.5 overflow-x-auto py-0.5"></div>
-        </div>
-
-        <!-- Category & Title (Clickable Category Badge) -->
-        <div class="pt-0.5">
-          <div class="flex items-center gap-1.5">
-            <span id="detailBadge" class="bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full hidden"></span>
-            <button id="detailCategory" onclick="goToCatalogCategory()" title="Click to view full catalog" class="text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/70 text-[11px] font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1 transition cursor-pointer">
-              <span></span>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-            </button>
+      <!-- Modal Body (Grid on Desktop, Stacked on Mobile) -->
+      <div class="flex-1 overflow-y-auto p-3 sm:p-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-start">
+          
+          <!-- Left Column: Big Image Canvas -->
+          <div class="bg-white rounded-xl p-1 flex flex-col items-center justify-center border border-gray-100">
+            <img id="detailImg" src="" alt="Product" class="w-full h-64 sm:h-80 md:h-[340px] object-contain rounded-lg" />
+            <div id="detailImgThumbs" class="flex items-center justify-center gap-2 mt-2 overflow-x-auto py-0.5"></div>
           </div>
-          <h2 id="detailTitle" class="text-base sm:text-lg font-bold text-gray-950 mt-1 leading-snug"></h2>
-        </div>
 
-        <!-- Pricing Row With % OFF Badge -->
-        <div class="flex items-center gap-2 py-0.5">
-          <span id="detailPrice" class="text-2xl sm:text-3xl font-black text-[#1E3A2B]">₹0</span>
-          <span id="detailMrp" class="text-xs sm:text-sm text-gray-400 line-through">₹0</span>
-          <span id="detailDiscount" class="bg-emerald-100 text-emerald-800 border border-emerald-200 text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-md hidden"></span>
-        </div>
-
-        <!-- Select Weight Variant (Clean Label Without Wazan) -->
-        <div class="bg-gray-50/80 p-2.5 rounded-xl border border-gray-200/70">
-          <div class="flex items-center justify-between mb-1.5">
-            <label class="block text-gray-800 font-bold text-[11px] uppercase tracking-wide">
-              Select Pack Size: <span id="detailSelectedWeightText" class="text-emerald-800 font-semibold lowercase"></span>
-            </label>
-          </div>
-          <div id="detailVariantsList" class="flex flex-wrap gap-2"></div>
-        </div>
-
-        <!-- Data-Saving Accordion -->
-        <details class="bg-emerald-50/50 rounded-xl p-2.5 border border-emerald-100 text-xs">
-          <summary class="font-bold text-emerald-950 cursor-pointer select-none flex items-center justify-between">
-            <span>🌿 Read Purity, Benefits & Vedic Process</span>
-            <span class="text-emerald-700 text-xs font-semibold">Tap to view ▾</span>
-          </summary>
-          <div class="mt-2 pt-2 border-t border-emerald-200/60 text-gray-700 leading-relaxed text-[11px] space-y-1.5">
-            <p id="detailDesc"></p>
-            <div id="detailIngredientsBox" class="hidden pt-1">
-              <span class="font-bold text-amber-900 block mb-0.5">Ingredients:</span>
-              <p id="detailIngredients" class="text-gray-600"></p>
+          <!-- Right Column: Product Content -->
+          <div class="space-y-3 text-xs">
+            
+            <!-- Category & Badge -->
+            <div>
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span id="detailBadge" class="bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full hidden"></span>
+                <button id="detailCategory" onclick="goToCatalogCategory()" title="Click to view category catalog" class="text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/70 text-[11px] font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1 transition cursor-pointer">
+                  <span></span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                </button>
+              </div>
+              <h2 id="detailTitle" class="text-base sm:text-lg font-bold text-gray-950 mt-1 leading-snug"></h2>
             </div>
+
+            <!-- Pricing & Discount Badge -->
+            <div class="flex items-center gap-2 py-0.5">
+              <span id="detailPrice" class="text-2xl sm:text-3xl font-black text-[#1E3A2B]">₹0</span>
+              <span id="detailMrp" class="text-xs sm:text-sm text-gray-400 line-through">₹0</span>
+              <span id="detailDiscount" class="bg-emerald-100 text-emerald-800 border border-emerald-200 text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-md hidden"></span>
+            </div>
+
+            <!-- Pack Size Selector -->
+            <div class="bg-gray-50/80 p-2.5 rounded-xl border border-gray-200/70">
+              <label class="block text-gray-800 font-bold text-[11px] uppercase tracking-wide mb-1.5">
+                Select Pack Size:
+              </label>
+              <div id="detailVariantsList" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <!-- Purity Details Accordion -->
+            <details class="bg-emerald-50/50 rounded-xl p-2.5 border border-emerald-100 text-xs">
+              <summary class="font-bold text-emerald-950 cursor-pointer select-none flex items-center justify-between">
+                <span>🌿 Read Purity, Benefits & Process</span>
+                <span class="text-emerald-700 text-xs font-semibold">Tap ▾</span>
+              </summary>
+              <div class="mt-2 pt-2 border-t border-emerald-200/60 text-gray-700 leading-relaxed text-[11px] space-y-1.5">
+                <p id="detailDesc"></p>
+                <div id="detailIngredientsBox" class="hidden pt-1">
+                  <span class="font-bold text-amber-900 block mb-0.5">Ingredients:</span>
+                  <p id="detailIngredients" class="text-gray-600"></p>
+                </div>
+              </div>
+            </details>
+
+            <!-- Customer Reviews Accordion -->
+            <details class="bg-gray-50 rounded-xl p-2.5 border border-gray-100 text-xs">
+              <summary class="font-bold text-gray-800 cursor-pointer select-none flex items-center justify-between">
+                <span>⭐ Customer Reviews <span id="detailReviewCount" class="font-normal text-gray-500 text-[10px]"></span></span>
+                <span class="text-gray-500 text-xs">Tap ▾</span>
+              </summary>
+              <div id="detailProductReviewsList" class="space-y-2 max-h-32 overflow-y-auto mt-2 pt-2 border-t border-gray-200"></div>
+            </details>
+
           </div>
-        </details>
-
-        <!-- Customer Feedback Accordion -->
-        <details class="bg-gray-50 rounded-xl p-2.5 border border-gray-100 text-xs">
-          <summary class="font-bold text-gray-800 cursor-pointer select-none flex items-center justify-between">
-            <span>⭐ Customer Reviews <span id="detailReviewCount" class="font-normal text-gray-500 text-[10px]"></span></span>
-            <span class="text-gray-500 text-xs">Tap to view ▾</span>
-          </summary>
-          <div id="detailProductReviewsList" class="space-y-2 max-h-36 overflow-y-auto mt-2 pt-2 border-t border-gray-200"></div>
-        </details>
-
+        </div>
       </div>
 
-      <!-- Bottom Sticky Action Bar -->
+      <!-- Bottom Sticky Bar -->
       <div class="p-3 border-t bg-gray-50/90 flex gap-2 shrink-0">
         <button id="detailShareBtn" class="border border-gray-300 text-gray-700 px-3.5 py-2.5 rounded-xl text-xs font-bold hover:bg-gray-100 flex items-center justify-center gap-1.5 transition cursor-pointer">
           <i class="fa-solid fa-share-nodes"></i>
