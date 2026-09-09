@@ -376,61 +376,62 @@
             <div id="detailImgThumbs" class="flex items-center justify-center gap-2 mt-2 overflow-x-auto py-0.5"></div>
           </div>
 
-          <!-- Right Column: Product Content -->
-          <div class="space-y-3 text-xs">
+          <!-- Right Column: Product Content (Enhanced Typography & Spacing) -->
+          <div class="space-y-4 text-sm flex flex-col justify-between">
+            
+            <!-- Category & Title -->
             <div>
-              <div class="flex items-center gap-1.5 flex-wrap">
-                <span id="detailBadge" class="bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full hidden"></span>
-                <button id="detailCategory" onclick="goToCatalogCategory()" title="Click to view category catalog" class="text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/70 text-[11px] font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1 transition cursor-pointer">
+              <div class="flex items-center gap-2 flex-wrap mb-1.5">
+                <span id="detailBadge" class="bg-amber-500 text-white text-xs font-bold px-2.5 py-0.5 rounded-full hidden"></span>
+                <button id="detailCategory" onclick="goToCatalogCategory()" title="Click to view category catalog" class="text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5 transition cursor-pointer">
                   <span></span>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </button>
               </div>
-              <h2 id="detailTitle" class="text-base sm:text-lg font-bold text-gray-950 mt-1 leading-snug"></h2>
+              <h2 id="detailTitle" class="text-lg sm:text-xl font-extrabold text-gray-950 leading-snug"></h2>
             </div>
 
             <!-- Pricing & Discount Badge -->
-            <div class="flex items-center gap-2 py-0.5">
-              <span id="detailPrice" class="text-2xl sm:text-3xl font-black text-[#1E3A2B]">₹0</span>
-              <span id="detailMrp" class="text-xs sm:text-sm text-gray-400 line-through">₹0</span>
-              <span id="detailDiscount" class="bg-emerald-100 text-emerald-800 border border-emerald-200 text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-md hidden"></span>
+            <div class="flex items-center gap-2.5 py-1">
+              <span id="detailPrice" class="text-3xl sm:text-4xl font-black text-[#1E3A2B]">₹0</span>
+              <span id="detailMrp" class="text-sm sm:text-base text-gray-400 line-through">₹0</span>
+              <span id="detailDiscount" class="bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold px-2.5 py-1 rounded-md hidden"></span>
             </div>
 
-       <!-- Pack Size Selector (In 1 Single Horizontal Line) -->
-            <div class="bg-gray-50/80 px-3 py-2 rounded-xl border border-gray-200/70 flex items-center gap-3 flex-wrap">
-              <label class="text-gray-800 font-bold text-[11px] uppercase tracking-wide whitespace-nowrap shrink-0">
+            <!-- Pack Size Selector (In 1 Single Horizontal Line) -->
+            <div class="bg-gray-50 px-3.5 py-2.5 rounded-xl border border-gray-200/80 flex items-center gap-3 flex-wrap">
+              <label class="text-gray-800 font-bold text-xs uppercase tracking-wide whitespace-nowrap shrink-0">
                 Select Pack Size:
               </label>
-              <div id="detailVariantsList" class="flex flex-wrap items-center gap-1.5"></div>
+              <div id="detailVariantsList" class="flex flex-wrap items-center gap-2"></div>
             </div>
 
-            <!-- Purity Details Accordion -->
-            <details class="bg-emerald-50/50 rounded-xl p-2.5 border border-emerald-100 text-xs">
-              <summary class="font-bold text-emerald-950 cursor-pointer select-none flex items-center justify-between">
-                <span>🌿 Read Purity, Benefits & Process</span>
-                <span class="text-emerald-700 text-xs font-semibold">Tap ▾</span>
+            <!-- Purity Details Accordion (Bigger & Clear Reading Font) -->
+            <details class="bg-emerald-50/60 rounded-xl p-3.5 border border-emerald-200/80 text-sm" open>
+              <summary class="font-bold text-emerald-950 text-sm cursor-pointer select-none flex items-center justify-between">
+                <span class="flex items-center gap-1.5 font-bold">🌿 Read Purity, Benefits & Process</span>
+                <span class="text-emerald-700 text-xs font-bold">Tap ▾</span>
               </summary>
-              <div class="mt-2 pt-2 border-t border-emerald-200/60 text-gray-700 leading-relaxed text-[11px] space-y-1.5">
-                <p id="detailDesc"></p>
+              <div class="mt-2.5 pt-2.5 border-t border-emerald-200/70 text-gray-700 leading-relaxed text-xs sm:text-[13px] space-y-2">
+                <p id="detailDesc" class="leading-relaxed"></p>
                 <div id="detailIngredientsBox" class="hidden pt-1">
-                  <span class="font-bold text-amber-900 block mb-0.5">Ingredients:</span>
+                  <span class="font-bold text-amber-950 block mb-0.5">Ingredients:</span>
                   <p id="detailIngredients" class="text-gray-600"></p>
                 </div>
               </div>
             </details>
 
             <!-- Customer Reviews Accordion -->
-            <details class="bg-gray-50 rounded-xl p-2.5 border border-gray-100 text-xs">
-              <summary class="font-bold text-gray-800 cursor-pointer select-none flex items-center justify-between">
-                <span>⭐ Customer Reviews <span id="detailReviewCount" class="font-normal text-gray-500 text-[10px]"></span></span>
+            <details class="bg-gray-50 rounded-xl p-3 border border-gray-200 text-sm">
+              <summary class="font-bold text-gray-800 text-xs cursor-pointer select-none flex items-center justify-between">
+                <span>⭐ Customer Reviews <span id="detailReviewCount" class="font-normal text-gray-500 text-xs"></span></span>
                 <span class="text-gray-500 text-xs">Tap ▾</span>
               </summary>
-              <div id="detailProductReviewsList" class="space-y-2 max-h-32 overflow-y-auto mt-2 pt-2 border-t border-gray-200"></div>
+              <div id="detailProductReviewsList" class="space-y-2 max-h-36 overflow-y-auto mt-2 pt-2 border-t border-gray-200 text-xs"></div>
             </details>
           </div>
         </div>
       </div>
-
       <!-- Bottom Sticky Bar -->
       <div class="p-3 border-t bg-gray-50/90 flex gap-2 shrink-0">
         <button id="detailShareBtn" class="border border-gray-300 text-gray-700 px-3.5 py-2.5 rounded-xl text-xs font-bold hover:bg-gray-100 flex items-center justify-center gap-1.5 transition cursor-pointer">
