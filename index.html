@@ -1290,7 +1290,33 @@ html += `
     function closeProductDetailModal() {
       document.getElementById('productDetailModal').classList.add('hidden');
     }
+function closeProductDetailModal() {
+      document.getElementById('productDetailModal').classList.add('hidden');
+    }
 
+    function goToCatalogCategory() {
+      const catBtn = document.getElementById('detailCategory');
+      const catName = catBtn ? catBtn.querySelector('span').innerText.trim() : "";
+      
+      closeProductDetailModal();
+
+      if (!catName) return;
+
+      if (typeof filterCategory === 'function') {
+        filterCategory(catName);
+      }
+
+      setTimeout(() => {
+        const headings = Array.from(document.querySelectorAll('h2, h3, div'));
+        const target = headings.find(el => el.innerText && el.innerText.trim().toLowerCase() === catName.toLowerCase());
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+
+    const selectedVariantState = {};
+    function setVariant(safeId, index, price, mrp, size) {
     const selectedVariantState = {};
     function setVariant(safeId, index, price, mrp, size) {
       selectedVariantState[safeId] = { index, price, mrp, size };
