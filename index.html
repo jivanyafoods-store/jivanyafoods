@@ -1037,7 +1037,7 @@ body {
               <div class="flex items-center gap-1 mb-1 text-[11px] font-semibold text-emerald-800">
                 <span class="text-amber-500 text-xs">★</span>
                 <span>4.9</span>
-                <span class="text-gray-400 text-[10px] font-normal">(Verified)</span>
+                <span class="text-emerald-700 text-[11px] font-medium">(Verified)</span>
               </div>
               <h4 class="font-bold text-gray-900 text-xs sm:text-sm line-clamp-1 group-hover:text-[#1E3A2B] transition-colors">
                 ${prod.ProductName}
@@ -1146,7 +1146,7 @@ body {
                 <div class="flex items-center justify-between mb-1.5">
                   <div>
                     <h3 class="text-xs sm:text-sm font-bold text-gray-900 tracking-tight">${cat.CategoryName}</h3>
-                    <p class="text-[10px] text-gray-400 leading-none">${cat.Description || cat.Tagline || 'Authentic & Unadulterated'}</p>
+                    <p class="text-xs font-medium text-emerald-800/80 leading-snug mt-0.5">${cat.Description || cat.Tagline || 'Authentic & Unadulterated'}</p>
                   </div>
                   <button onclick="selectCategory('${cat.CategoryName}')" class="text-[11px] font-semibold text-[#1E3A2B] hover:underline flex items-center gap-0.5 cursor-pointer">
                     View All (${catProds.length}) →
