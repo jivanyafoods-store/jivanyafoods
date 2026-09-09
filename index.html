@@ -1290,7 +1290,37 @@ html += `
     function closeProductDetailModal() {
       document.getElementById('productDetailModal').classList.add('hidden');
     }
+function updateDetailDiscountAndWeight(price, mrp, size) {
+      const discountEl = document.getElementById('detailDiscount');
+      if (discountEl) {
+        if (mrp && price && Number(mrp) > Number(price)) {
+          const discountPercent = Math.round(((Number(mrp) - Number(price)) / Number(mrp)) * 100);
+          discountEl.textContent = `${discountPercent}% OFF`;
+          discountEl.classList.remove('hidden');
+        } else {
+          discountEl.classList.add('hidden');
+        }
+      }
 
+      const weightEl = document.getElementById('detailSelectedWeightText');
+      if (weightEl) {
+        weightEl.textContent = size ? `(${size})` : '';
+      }
+    }
+
+    function goToCatalogCategory() {
+      const catBtn = document.getElementById('detailCategory');
+      const catSpan = catBtn ? catBtn.querySelector('span') : null;
+      const catName = catSpan ? catSpan.innerText.trim() : (catBtn ? catBtn.innerText.trim() : "");
+      
+      closeProductDetailModal();
+
+      if (!catName) return;
+
+      if (typeof selectCategory === 'function') {
+        selectCategory(catName);
+      }
+    }
     const selectedVariantState = {};
     function setVariant(safeId, index, price, mrp, size) {
       selectedVariantState[safeId] = { index, price, mrp, size };
