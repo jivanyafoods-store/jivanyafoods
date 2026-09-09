@@ -1158,29 +1158,6 @@ html += `
     let currentDetailProduct = null;
     let currentDetailVariant = null;
 
-    let currentDetailProduct = null;
-    let currentDetailVariant = null;
-
-    function updateDetailDiscountAndWeight(price, mrp, size) {
-      // 1. Calculate & Display % OFF Badge
-      const discountEl = document.getElementById('detailDiscount');
-      if (discountEl) {
-        if (mrp && price && Number(mrp) > Number(price)) {
-          const discountPercent = Math.round(((Number(mrp) - Number(price)) / Number(mrp)) * 100);
-          discountEl.textContent = `${discountPercent}% OFF`;
-          discountEl.classList.remove('hidden');
-        } else {
-          discountEl.classList.add('hidden');
-        }
-      }
-
-      // 2. Display Selected Weight next to "Select Pack Size:"
-      const weightEl = document.getElementById('detailSelectedWeightText');
-      if (weightEl) {
-        weightEl.textContent = size ? `(${size})` : '';
-      }
-    }
-
     function openProductDetail(productId) {
       const prod = state.products.find(p => p.ProductID === productId);
       if(!prod) return;
@@ -1225,14 +1202,7 @@ html += `
       }
 
       document.getElementById('detailTitle').textContent = prod.ProductName;
-      
-      // Clickable Category Badge
-      const catBtn = document.getElementById('detailCategory');
-      if (catBtn) {
-        const catSpan = catBtn.querySelector('span');
-        if (catSpan) catSpan.textContent = prod.Category || 'Pure & Wholesome Foods';
-        else catBtn.textContent = prod.Category || 'Pure & Wholesome Foods';
-      }
+      document.getElementById('detailCategory').textContent = prod.Category || 'Pure & Wholesome Foods';
       
       const badgeEl = document.getElementById('detailBadge');
       if (prod.Badge) {
@@ -1261,9 +1231,6 @@ html += `
 
       document.getElementById('detailPrice').textContent = `₹${currentDetailVariant.price}`;
       document.getElementById('detailMrp').textContent = `₹${currentDetailVariant.mrp}`;
-
-      // Update % OFF badge and weight text
-      updateDetailDiscountAndWeight(currentDetailVariant.price, currentDetailVariant.mrp, currentDetailVariant.size);
 
       const specificReviews = state.reviews.filter(r => 
         (r.Product && prod.ProductName.toLowerCase().includes(r.Product.toLowerCase().trim())) ||
@@ -1309,15 +1276,10 @@ html += `
 
       document.getElementById('productDetailModal').classList.remove('hidden');
     }
-
     function setDetailVariant(index, price, mrp, size) {
       currentDetailVariant = { size, price, mrp };
       document.getElementById('detailPrice').textContent = `₹${price}`;
       document.getElementById('detailMrp').textContent = `₹${mrp}`;
-      
-      // Update discount badge and pack size text on variant click
-      updateDetailDiscountAndWeight(price, mrp, size);
-
       document.querySelectorAll('.detail-vbtn').forEach((btn, i) => {
         btn.className = i === index 
           ? "detail-vbtn px-3 py-1.5 rounded-lg border text-xs font-semibold bg-[#2D5A27] text-white border-[#2D5A27]"
@@ -1327,20 +1289,6 @@ html += `
 
     function closeProductDetailModal() {
       document.getElementById('productDetailModal').classList.add('hidden');
-    }
-
-    function goToCatalogCategory() {
-      const catBtn = document.getElementById('detailCategory');
-      const catSpan = catBtn ? catBtn.querySelector('span') : null;
-      const catName = catSpan ? catSpan.innerText.trim() : (catBtn ? catBtn.innerText.trim() : "");
-      
-      closeProductDetailModal();
-
-      if (!catName) return;
-
-      if (typeof selectCategory === 'function') {
-        selectCategory(catName);
-      }
     }
 
     const selectedVariantState = {};
@@ -1354,6 +1302,7 @@ html += `
       document.getElementById(`price-${safeId}`).textContent = `₹${price}`;
       document.getElementById(`mrp-${safeId}`).textContent = `₹${mrp}`;
     }
+
     function addToCart(productId, safeId) {
       const prod = state.products.find(p => p.ProductID === productId);
       const variants = parseVariants(prod.Variants);
