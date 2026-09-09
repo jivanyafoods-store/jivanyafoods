@@ -1146,7 +1146,7 @@ body {
                 <div class="flex items-center justify-between mb-1.5">
                   <div>
                     <h3 class="text-xs sm:text-sm font-bold text-gray-900 tracking-tight">${cat.CategoryName}</h3>
-                    <p class="text-[10px] text-gray-400 leading-none">${cat.Tagline || 'Authentic & Unadulterated'}</p>
+                    <p class="text-[10px] text-gray-400 leading-none">${cat.Description || cat.Tagline || 'Authentic & Unadulterated'}</p>
                   </div>
                   <button onclick="selectCategory('${cat.CategoryName}')" class="text-[11px] font-semibold text-[#1E3A2B] hover:underline flex items-center gap-0.5 cursor-pointer">
                     View All (${catProds.length}) →
