@@ -1117,8 +1117,8 @@ body {
       }
 
       let html = '';
-      const featured = state.products.filter(p => p.Badge && p.Badge.trim() !== "").slice(0, 4);
-      const topPicks = featured.length ? featured : state.products.slice(0, 4);
+      const featured = state.products.filter(p => p.Badge && p.Badge.trim() !== "").slice(0, 8);
+      const topPicks = featured.length >= 8 ? featured : state.products.slice(0, 8);
 
       html += `
         <section>
