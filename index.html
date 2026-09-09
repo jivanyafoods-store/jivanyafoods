@@ -1231,6 +1231,7 @@ html += `
 
       document.getElementById('detailPrice').textContent = `₹${currentDetailVariant.price}`;
       document.getElementById('detailMrp').textContent = `₹${currentDetailVariant.mrp}`;
+      updateDetailDiscountAndWeight(currentDetailVariant.price, currentDetailVariant.mrp, currentDetailVariant.size);
 
       const specificReviews = state.reviews.filter(r => 
         (r.Product && prod.ProductName.toLowerCase().includes(r.Product.toLowerCase().trim())) ||
@@ -1280,6 +1281,7 @@ html += `
       currentDetailVariant = { size, price, mrp };
       document.getElementById('detailPrice').textContent = `₹${price}`;
       document.getElementById('detailMrp').textContent = `₹${mrp}`;
+      updateDetailDiscountAndWeight(price, mrp, size);
       document.querySelectorAll('.detail-vbtn').forEach((btn, i) => {
         btn.className = i === index 
           ? "detail-vbtn px-3 py-1.5 rounded-lg border text-xs font-semibold bg-[#2D5A27] text-white border-[#2D5A27]"
