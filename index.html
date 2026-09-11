@@ -114,7 +114,7 @@ body {
     </span>
   </div>  
 <!-- Navratri Makhana Gurgaon Special Bar -->
-  <div onclick="const el = Array.from(document.querySelectorAll('h3, h4, div')).find(e => e.innerText && e.innerText.includes('Bihar Handpicked Jumbo Makhana')); if(el){ el.closest('.cursor-pointer, [onclick], div')?.click(); el.scrollIntoView({behavior:'smooth', block:'center'}); }" 
+  <div onclick="const s=document.getElementById('searchInput'); if(s){ s.value='Makhana'; typeof handleSearch==='function'&&handleSearch(); window.scrollTo({top: 180, behavior: 'smooth'}); }" 
        class="bg-[#B45309] hover:bg-[#92400E] text-white text-center py-2 px-3 text-xs sm:text-sm font-semibold tracking-wide shadow-inner cursor-pointer select-none transition">
     <span class="inline-flex items-center justify-center gap-2 flex-wrap">
       <span>🪔 Navratri Special: Fresh Bihar Jumbo Makhana Pre-Booking Open for Gurgaon!</span>
@@ -123,7 +123,7 @@ body {
       <span class="opacity-40 hidden sm:inline">|</span>
       <span class="text-amber-200 underline">Tap to Book Now &rarr;</span>
     </span>
-  </div>
+  </div> 
   <!-- Header -->
   <header class="bg-white border-b sticky top-0 z-40 shadow-xs">
     <div class="max-w-6xl mx-auto px-2.5 sm:px-4 py-2 flex items-center justify-between gap-2 sm:gap-3">
