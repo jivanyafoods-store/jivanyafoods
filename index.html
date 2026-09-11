@@ -113,16 +113,17 @@ body {
       <span class="text-amber-300 font-semibold">Free Shipping above ₹1299!</span>
     </span>
   </div>  
-<!-- Navratri Makhana Gurgaon Special Bar (Clickable) -->
-<a href="javascript:void(0)" onclick="openProductModal('SF077')" class="block bg-[#B45309] hover:bg-[#92400E] text-white text-center py-2 px-3 text-xs sm:text-sm font-semibold tracking-wide shadow-inner transition cursor-pointer">
-  <span class="inline-flex items-center justify-center gap-2 flex-wrap">
-    <span>🪔 Navratri Special: Fresh Bihar Jumbo Makhana Pre-Booking Open for Gurgaon!</span>
-    <span class="opacity-40 hidden sm:inline">|</span>
-    <span class="bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-bold">Delivery: 2nd–4th Oct</span>
-    <span class="opacity-40 hidden sm:inline">|</span>
-    <span class="text-amber-200 underline">Tap to Book Now &rarr;</span>
-  </span>
-</a>
+<!-- Navratri Makhana Gurgaon Special Bar -->
+  <div onclick="const el = Array.from(document.querySelectorAll('h3, h4, div')).find(e => e.innerText && e.innerText.includes('Bihar Handpicked Jumbo Makhana')); if(el){ el.closest('.cursor-pointer, [onclick], div')?.click(); el.scrollIntoView({behavior:'smooth', block:'center'}); }" 
+       class="bg-[#B45309] hover:bg-[#92400E] text-white text-center py-2 px-3 text-xs sm:text-sm font-semibold tracking-wide shadow-inner cursor-pointer select-none transition">
+    <span class="inline-flex items-center justify-center gap-2 flex-wrap">
+      <span>🪔 Navratri Special: Fresh Bihar Jumbo Makhana Pre-Booking Open for Gurgaon!</span>
+      <span class="opacity-40 hidden sm:inline">|</span>
+      <span class="bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-bold">Delivery: 2nd–4th Oct</span>
+      <span class="opacity-40 hidden sm:inline">|</span>
+      <span class="text-amber-200 underline">Tap to Book Now &rarr;</span>
+    </span>
+  </div>
   <!-- Header -->
   <header class="bg-white border-b sticky top-0 z-40 shadow-xs">
     <div class="max-w-6xl mx-auto px-2.5 sm:px-4 py-2 flex items-center justify-between gap-2 sm:gap-3">
