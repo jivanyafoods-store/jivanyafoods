@@ -818,11 +818,12 @@ body {
       return images.length ? images : [resolveProductImage(prod)];
     }
 
-    function init() {
-      try {
-        const savedCart = localStorage.getItem('Jivanya_saved_cart');
-        if (savedCart) state.cart = JSON.parse(savedCart);
-      } catch(e) {}
+   function init() {
+      state.cart = {}; // Always start fresh
+
+      loadCustomerProfile();
+      loadPastOrderInfo();
+      updateCartDisplay();
 
       loadCustomerProfile();
       loadPastOrderInfo();
@@ -1796,6 +1797,18 @@ body {
         `Payment: Store UPI (${upi}) / Available upon order confirmation`;
 
       const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(fullMessage)}`;
+      window.open(waURL, '_blank');
+    }
+    const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(fullMessage)}`;
+      
+      // Order WhatsApp par bhejne ke baad basket khali karein
+      state.cart = {};
+      try {
+        localStorage.removeItem('Jivanya_saved_cart');
+      } catch(e) {}
+      updateCartDisplay();
+      toggleCart();
+
       window.open(waURL, '_blank');
     }
     let isNewUserRegisterMode = false;
