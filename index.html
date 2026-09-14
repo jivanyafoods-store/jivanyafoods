@@ -1682,7 +1682,7 @@ body {
       }
     }
 
-    function processWhatsAppOrder() {
+    async function processWhatsAppOrder() {
       const name = document.getElementById('custName').value.trim();
       let phone = document.getElementById('custPhone').value.trim();
       const address = document.getElementById('custAddress').value.trim();
@@ -1711,7 +1711,7 @@ body {
       saveCustomerProfile();
       
       const pastOrderItems = [];
-      phone = phone.replace(/^0+/, '');
+      phone = phone.replace(/^0+/, '').replace(/^\+91/, '').trim();
       let orderSummary = "";
       let itemsArray = [];
       keys.forEach((k, idx) => {
@@ -1734,29 +1734,52 @@ body {
       const weight = document.getElementById('summaryWeight').textContent;
       const shipping = document.getElementById('summaryShipping').textContent;
       const grandTotal = document.getElementById('summaryGrandTotal').textContent;
+      const cleanTotal = grandTotal.replace(/[^0-9]/g, '');
+      const cleanWeight = weight.replace(/[^0-9]/g, '');
       const upi = state.settings.UPI_ID || '9690002403@upi';
       const waNumber = state.settings.WhatsAppNumber || '919690002403';
 
       const payload = new URLSearchParams();
+      payload.append("action", "order");
       payload.append("name", name);
       payload.append("phone", phone);
       payload.append("address", address);
       payload.append("city", city);
       payload.append("pincode", pincode);
       payload.append("items", itemsArray.join(", "));
-      payload.append("weight", weight);
-      payload.append("grandTotal", grandTotal);
+      payload.append("weight", cleanWeight);
+      payload.append("grandTotal", cleanTotal);
+      payload.append("notes", isGift ? `Gift to: ${giftReceiver} | Note: ${giftMsg}` : "");
 
-      fetch(SHEET_URLS.orderScript, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: payload.toString()
-      });
+      // Button par spinner taaki order Sheet me lock ho sake
+      const btn = event?.currentTarget || document.querySelector('button[onclick="processWhatsAppOrder()"]');
+      let oldText = "";
+      if (btn) {
+        oldText = btn.innerHTML;
+        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Saving Order...`;
+        btn.disabled = true;
+      }
+
+      // Sheet me save hone tak rukega
+      try {
+        await fetch(SHEET_URLS.orderScript, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: payload.toString()
+        });
+      } catch (err) {
+        console.error("Sheet sync error:", err);
+      }
+
+      if (btn) {
+        btn.innerHTML = oldText;
+        btn.disabled = false;
+      }
 
       const fullMessage = 
         giftHeader +
-        `*NEW ORDER - Jivanya FOODS*\n\n` +
+        `*NEW ORDER - JIVANYA FOODS*\n\n` +
         `*CUSTOMER DETAILS:*\n` +
         `Name: ${name}\n` +
         `Phone: ${phone}\n` +
@@ -1775,7 +1798,6 @@ body {
       const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(fullMessage)}`;
       window.open(waURL, '_blank');
     }
-
     let isNewUserRegisterMode = false;
 
     function openAccountModal() {
