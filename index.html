@@ -1458,10 +1458,16 @@ body {
       document.getElementById('summaryShipping').textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
       document.getElementById('summaryGrandTotal').textContent = `₹${state.grandTotal}`;
 
-      if (state.grandTotal > 0) {
+     if (state.grandTotal > 0) {
         const upiId = state.settings.UPI_ID || '9690002403@upi';
         const upiUrl = `upi://pay?pa=${upiId}&pn=JivanyaFoods&am=${state.grandTotal}&cu=INR`;
-        document.getElementById('upiQrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(upiUrl)}`;
+        const qrEl = document.getElementById('upiQrImg');
+        if (qrEl) {
+          qrEl.src = `https://chart.googleapis.com/chart?chs=180x180&cht=qr&chl=${encodeURIComponent(upiUrl)}&choe=UTF-8`;
+          qrEl.onerror = function() {
+            this.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(upiUrl)}`;
+          };
+        }
       }
     }
 
