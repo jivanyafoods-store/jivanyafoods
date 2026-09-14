@@ -2062,5 +2062,23 @@ body {
       <span class="text-[9px] font-semibold text-emerald-900">Lic. No: 12724999000123</span>
     </div>
   </div>
+  <!-- Order Success Confirmation Modal -->
+  <div id="orderSuccessModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-sm rounded-2xl shadow-2xl p-6 text-center space-y-4 border border-emerald-100">
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner">
+        ✓
+      </div>
+      <div>
+        <h3 class="text-lg font-extrabold text-gray-900">Order Received!</h3>
+        <p class="text-xs text-emerald-800 font-semibold mt-1">Thank you for choosing Jivanya Foods 🌿</p>
+      </div>
+      <div class="bg-emerald-50/80 border border-emerald-200 rounded-xl p-3 text-xs text-gray-700 leading-relaxed">
+        Our team will verify your order and payment, and we will send you the confirmation soon.
+      </div>
+      <button onclick="document.getElementById('orderSuccessModal').classList.add('hidden')" class="w-full bg-[#1E3A2B] hover:bg-[#2D5A27] text-white py-2.5 rounded-xl font-bold text-xs shadow transition">
+        Continue Shopping
+      </button>
+    </div>
+  </div>
 </body>
 </html>
