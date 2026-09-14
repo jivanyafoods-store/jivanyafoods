@@ -1831,17 +1831,6 @@ body {
       updateCartDisplay();
       toggleCart();
 
-      window.open(waURL, '_blank');
-      const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(fullMessage)}`;
-      
-      // Order WhatsApp par bhejne ke baad basket khali karein
-      state.cart = {};
-      try {
-        localStorage.removeItem('Jivanya_saved_cart');
-      } catch(e) {}
-      updateCartDisplay();
-      toggleCart();
-
       // WhatsApp open karein
       window.open(waURL, '_blank');
 
@@ -1849,9 +1838,8 @@ body {
       const modal = document.getElementById('orderSuccessModal');
       if (modal) modal.classList.remove('hidden');
     }
-    }
-    let isNewUserRegisterMode = false;
 
+    let isNewUserRegisterMode = false;
     function openAccountModal() {
       const saved = localStorage.getItem('Jivanya_user');
       if (saved) {
