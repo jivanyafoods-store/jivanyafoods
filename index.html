@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- Primary High-Authority Search Engine Tags -->
+  <!-- Primary High-Authority SEO Meta -->
   <title>Jivanya Foods | 100% Shuddh Vedic Bilona A2 Cow Ghee, Unpolished Pulses & Bihar Makhana</title>
   <meta name="title" content="Jivanya Foods | 100% Shuddh Vedic Bilona A2 Cow Ghee, Unpolished Pulses & Bihar Makhana" />
   <meta name="description" content="Shop 100% natural, chemical-free foods from Jivanya Foods, Hathras. Pure Desi Cow A2 Bilona Ghee, unpolished pulses, Bihar jumbo makhana, natural spices & dry fruits delivered Pan-India." />
@@ -142,7 +142,6 @@
              alt="Jivanya Foods" 
              width="44" height="44"
              loading="eager" 
-             fetchpriority="high" 
              class="h-10 sm:h-11 w-auto object-contain hover:opacity-95 transition" 
              onerror="this.src='https://jivanyafoods-store.github.io/jivanyafoods/logo.png'" />
       </div>
@@ -152,12 +151,12 @@
         
         <!-- Search Bar with AI Semantic Icon -->
         <div class="relative w-36 sm:w-52 md:w-60">
-          <i class="fa-solid fa-wand-magic-sparkles absolute left-2.5 top-2.5 text-emerald-600 text-xs"></i>
+          <i class="fa-solid fa-wand-magic-sparkles absolute left-2.5 top-2.5 text-emerald-700 text-xs"></i>
           <input type="text" 
                  id="searchInput" 
                  oninput="handleSearch()" 
-                 placeholder="Search or ask diet (e.g. ghee, sugar)..." 
-                 class="w-full pl-7 pr-3 py-1.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#2D5A27] bg-gray-50 focus:bg-white text-xs transition" />
+                 placeholder="Search or diet goal..." 
+                 class="w-full pl-7 pr-3 py-1.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#2D5A27] bg-gray-50 focus:bg-white text-xs transition font-medium" />
         </div>
 
         <!-- Categories / Quick Explore Dropdown -->
@@ -242,7 +241,7 @@
     <button onclick="filterByGoal('protein')" class="px-2.5 py-1 rounded-full bg-white hover:bg-emerald-50 border border-emerald-200 text-emerald-800 shrink-0 font-medium transition">High Protein Unpolished Dal</button>
   </div>
 
-  <!-- Category Filter Bar (Multi-line Wrap) -->
+  <!-- Category Filter Bar (Multi-line Wrap Visible) -->
   <div class="max-w-6xl mx-auto px-4 mt-3">
     <div id="categoriesContainer" class="flex flex-wrap gap-2 py-1 items-center">
       <button onclick="selectCategory('ALL')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A27] text-white shadow-xs cursor-pointer">
@@ -473,78 +472,6 @@
         </button>
         <button id="detailAddCartBtn" class="flex-1 bg-[#1E3A2B] hover:bg-[#2D5A27] text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition cursor-pointer">
           <i class="fa-solid fa-bag-shopping"></i> Add to Basket
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact Us Modal -->
-  <div id="contactModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden">
-      <div class="p-4 border-b bg-gray-50 flex items-center justify-between">
-        <div>
-          <h3 class="font-bold text-gray-900 text-sm">Contact Jivanya Foods</h3>
-          <p class="text-[11px] text-gray-500">We are happy to assist you!</p>
-        </div>
-        <button onclick="toggleContactModal()" class="text-gray-400 hover:text-gray-800 text-2xl leading-none">&times;</button>
-      </div>
-      <div class="p-4 space-y-3 text-xs text-gray-700">
-        <div class="border rounded-xl p-3 bg-gray-50">
-          <p class="font-bold text-gray-900 mb-0.5">🏢 Work / Dispatch Address:</p>
-          <p id="modalAddress" class="text-[11px] text-gray-600">1306 Agra Road, Hathras, Uttar Pradesh - 204101</p>
-        </div>
-        <div class="border rounded-xl p-3 bg-gray-50">
-          <p class="font-bold text-gray-900 mb-0.5">📞 WhatsApp & Call Support:</p>
-          <a id="modalPhoneLink" href="https://wa.me/919690002403" target="_blank" class="text-emerald-700 font-bold hover:underline block text-[12px]">+91 9690002403</a>
-        </div>
-        <div class="border rounded-xl p-3 bg-gray-50">
-          <p class="font-bold text-gray-900 mb-0.5">✉️ Email Support:</p>
-          <a id="modalEmailLink" href="mailto:care.Jivanyafoods@gmail.com" class="text-green-700 font-semibold hover:underline block text-[11px]">care.Jivanyafoods@gmail.com</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Review Modal -->
-  <div id="reviewModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden">
-      <div class="p-4 border-b bg-gray-50 flex items-center justify-between">
-        <div>
-          <h3 class="font-bold text-gray-900 text-sm">Rate & Share Feedback</h3>
-          <p class="text-[11px] text-gray-500">Share your pure experience</p>
-        </div>
-        <button onclick="toggleReviewModal()" class="text-gray-400 hover:text-gray-800 text-2xl leading-none">&times;</button>
-      </div>
-      <div class="p-4 space-y-3 text-xs">
-        <div>
-          <label class="block text-gray-700 font-bold mb-1">Your Rating *</label>
-          <div class="flex items-center gap-2 text-2xl text-amber-400 cursor-pointer" id="starContainer">
-            <span onclick="setRating(1)" id="star-1">★</span>
-            <span onclick="setRating(2)" id="star-2">★</span>
-            <span onclick="setRating(3)" id="star-3">★</span>
-            <span onclick="setRating(4)" id="star-4">★</span>
-            <span onclick="setRating(5)" id="star-5">★</span>
-          </div>
-          <p id="ratingLabel" class="text-[10px] text-gray-500 mt-0.5">5 Star - Lajawaab & Shuddh!</p>
-        </div>
-        <div>
-          <label class="block text-gray-700 font-medium mb-1">Your Name *</label>
-          <input type="text" id="revName" placeholder="Jaise: Alka Sharma" class="w-full p-2.5 rounded-lg border border-gray-300 text-xs outline-none focus:border-green-600" />
-        </div>
-        <div>
-          <label class="block text-gray-700 font-medium mb-1">City *</label>
-          <input type="text" id="revCity" placeholder="Jaise: Hathras ya Delhi" class="w-full p-2.5 rounded-lg border border-gray-300 text-xs outline-none focus:border-green-600" />
-        </div>
-        <div>
-          <label class="block text-gray-700 font-medium mb-1">Product Purchased *</label>
-          <input type="text" id="revProduct" placeholder="Jaise: Pure Haldi Powder / Bilona Ghee" class="w-full p-2.5 rounded-lg border border-gray-300 text-xs outline-none focus:border-green-600" />
-        </div>
-        <div>
-          <label class="block text-gray-700 font-medium mb-1">Review & Experience *</label>
-          <textarea id="revComment" rows="2" placeholder="Quality, taste aur packaging kaisi lagi?" class="w-full p-2.5 rounded-lg border border-gray-300 text-xs outline-none focus:border-green-600"></textarea>
-        </div>
-        <button onclick="submitCustomerReview()" class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow transition">
-          <i class="fa-brands fa-whatsapp text-base"></i> Submit Review on WhatsApp
         </button>
       </div>
     </div>
@@ -798,93 +725,6 @@
     }
   </script>
   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-  <!-- About Us Modal -->
-  <div id="aboutModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-emerald-100 overflow-hidden transform transition-all">
-      <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 text-white p-5 flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <span class="text-xl">🌿</span>
-          <div>
-            <h3 class="font-bold text-base sm:text-lg leading-tight">About Jivanya Foods</h3>
-            <p class="text-emerald-200 text-xs font-medium mt-0.5">Life Giving • Pure & Wholesome</p>
-          </div>
-        </div>
-        <button onclick="document.getElementById('aboutModal').classList.add('hidden')" 
-                class="text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center text-lg transition cursor-pointer">
-          ✕
-        </button>
-      </div>
-
-      <div class="p-5 sm:p-6 space-y-4 text-gray-700 text-xs sm:text-sm leading-relaxed max-h-[75vh] overflow-y-auto">
-        <p>
-          <strong class="text-gray-900 font-bold">Jivanya Foods</strong> is started by two ladies, on a <strong class="text-emerald-800">mission to bring back purity and authenticity into home kitchens</strong>.
-        </p>
-        <p class="italic text-emerald-900 bg-emerald-50/70 p-3 rounded-xl border-l-4 border-emerald-600">
-          "Jivanya" means <strong>'life giving'</strong> and we want the goodness of food to come alive with our products.
-        </p>
-        <p>
-          We supply the best & pure quality kitchen ingredients: spices, condiments, homemade masalas, and desi cow ghee. The kind of traditional quality that Indian grandmothers would give a <strong>BIG THUMBS UP</strong> to!
-        </p>
-        <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-3 flex items-center gap-2.5">
-          <span class="text-xl">👨‍👩‍👧‍👦</span>
-          <p class="text-xs text-amber-950">
-            Already over <strong class="font-bold text-amber-900">700+ families</strong> have tried us; they vouch for the pure, fresh taste evident in their repeat orders. Already 10000+ orders served.
-          </p>
-        </div>
-        <div>
-          <h4 class="font-bold text-gray-900 uppercase tracking-wide text-xs mb-2.5 flex items-center gap-1.5">
-            <span>⭐</span> Our Best Sellers:
-          </h4>
-          <ul class="space-y-1.5 text-xs text-gray-700 font-medium">
-            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">✔</span><span><strong>Desi Cow Ghee</strong> by traditional Vedic Bilona method</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">✔</span><span><strong>Pure Hing Powder</strong> far superior to regular store shelves</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">✔</span><span><strong>Homemade Masalas</strong> (Garam, Biryani, Tandoori, Chai & Achaar)</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">✔</span><span><strong>Roasted Trail Mixes</strong> (both salted & unsalted)</span></li>
-            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">✔</span><span><strong>Protein Mixtures</strong> rich in natural nutrition</span></li>
-          </ul>
-        </div>
-        <div class="pt-3">
-          <button onclick="document.getElementById('aboutModal').classList.add('hidden')" 
-                  class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl text-xs sm:text-sm transition cursor-pointer shadow-sm">
-            Explore Our Pure Kitchen Essentials
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Floating Official FSSAI Badge -->
-  <div style="background-color: rgba(255, 255, 255, 0.55) !important; backdrop-filter: blur(12px) saturate(180%); -webkit-backdrop-filter: blur(12px) saturate(180%);" 
-       class="fixed bottom-4 left-4 z-30 flex items-center gap-2.5 border border-white/60 px-3.5 py-1.5 rounded-full shadow-lg hover:bg-white/80 transition select-none">
-    <img src="https://jivanyafoods-store.github.io/jivanyafoods/fssai.png" 
-         alt="FSSAI" 
-         class="h-6 w-auto object-contain shrink-0" 
-         onerror="this.style.display='none'" />
-    <div class="flex flex-col text-left leading-tight whitespace-nowrap">
-      <span class="text-[10px] font-bold text-gray-900 tracking-tight">FSSAI Certified</span>
-      <span class="text-[9px] font-semibold text-emerald-900" id="badgeFssaiNo">Lic. No: 12724999000123</span>
-    </div>
-  </div>
-
-  <!-- Order Success Confirmation Modal -->
-  <div id="orderSuccessModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white w-full max-w-sm rounded-2xl shadow-2xl p-6 text-center space-y-4 border border-emerald-100">
-      <div class="w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner">
-        ✓
-      </div>
-      <div>
-        <h3 class="text-lg font-extrabold text-gray-900">Order Received!</h3>
-        <p class="text-xs text-emerald-800 font-semibold mt-1">Thank you for choosing Jivanya Foods 🌿</p>
-      </div>
-      <div class="bg-emerald-50/80 border border-emerald-200 rounded-xl p-3 text-xs text-gray-700 leading-relaxed">
-        Our team will verify your order and payment, and we will send you the confirmation soon.
-      </div>
-      <button onclick="document.getElementById('orderSuccessModal').classList.add('hidden')" class="w-full bg-[#1E3A2B] hover:bg-[#2D5A27] text-white py-2.5 rounded-xl font-bold text-xs shadow transition">
-        Continue Shopping
-      </button>
-    </div>
-  </div>
 
   <!-- Core Store Logic Script with 10 Embedded AI Engines -->
   <script>
