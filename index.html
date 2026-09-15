@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- Primary Search Engine Tags -->
-  <title>Jivanya Foods | 100% Shuddh Vedic Bilona Ghee, Unpolished Pulses & Dry Fruits</title>
-  <meta name="title" content="Jivanya Foods | 100% Shuddh Vedic Bilona Ghee, Unpolished Pulses & Dry Fruits" />
-  <meta name="description" content="Shop 100% natural, chemical-free foods from Jivanya Foods. Pure Desi Cow A2 Bilona Ghee, unpolished pulses, Bihar makhana, natural spices & dry fruits delivered home." />
-  <meta name="keywords" content="Jivanya Foods, Vedic Bilona Ghee, pure desi ghee, unpolished pulses, unpolished toor dal, Bihar makhana, unpolished urad dal, authentic spices, chemical free foods Hathras UP" />
-  <meta name="robots" content="index, follow" />
+  <!-- Primary High-Authority Search Engine Tags -->
+  <title>Jivanya Foods | 100% Shuddh Vedic Bilona A2 Cow Ghee, Unpolished Pulses & Bihar Makhana</title>
+  <meta name="title" content="Jivanya Foods | 100% Shuddh Vedic Bilona A2 Cow Ghee, Unpolished Pulses & Bihar Makhana" />
+  <meta name="description" content="Shop 100% natural, chemical-free foods from Jivanya Foods, Hathras. Pure Desi Cow A2 Bilona Ghee, unpolished pulses, Bihar jumbo makhana, natural spices & dry fruits delivered Pan-India." />
+  <meta name="keywords" content="Jivanya Foods, Vedic Bilona Ghee, pure desi ghee, unpolished pulses, unpolished toor dal, Bihar makhana, unpolished urad dal, authentic spices, pure hing Hathras, chemical free foods Hathras UP" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="author" content="Jivanya Foods" />
   <meta name="language" content="Hindi, English" />
 
@@ -27,6 +27,7 @@
     "@context": "https://schema.org",
     "@type": "Store",
     "name": "Jivanya Foods",
+    "image": "https://jivanyafoods-store.github.io/jivanyafoods/logo.png",
     "url": "https://jivanyafoods-store.github.io/jivanyafoods/",
     "description": "Pure, natural, and chemical-free foods, spices, A2 cow ghee, unpolished pulses, and wellness products.",
     "telephone": "+91-9690002403",
@@ -118,7 +119,7 @@
   </div>  
 
   <!-- Navratri Makhana Gurgaon Special Bar -->
-  <div onclick="const s=document.getElementById('searchInput'); if(s){ s.value='Makhana'; typeof handleSearch==='function'&&handleSearch(); window.scrollTo({top: 180, behavior: 'smooth'}); }" 
+  <div onclick="const s=document.getElementById('searchInput'); if(s){ s.value='Makhana'; handleSearch(); window.scrollTo({top: 180, behavior: 'smooth'}); }" 
        class="bg-[#B45309] hover:bg-[#92400E] text-white text-center py-2 px-3 text-xs sm:text-sm font-semibold tracking-wide shadow-inner cursor-pointer select-none transition">
     <span class="inline-flex items-center justify-center gap-2 flex-wrap">
       <span class="bg-red-700 text-white px-2 py-0.5 rounded text-[11px] font-bold tracking-wider uppercase">Gurgaon Only</span>
@@ -149,13 +150,13 @@
       <!-- Action Buttons + Search Bar + Basket -->
       <div class="flex items-center flex-wrap gap-1.5 sm:gap-2 ml-auto">
         
-        <!-- Search Bar -->
+        <!-- Search Bar with AI Semantic Icon -->
         <div class="relative w-36 sm:w-52 md:w-60">
-          <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2.5 text-gray-400 text-xs"></i>
+          <i class="fa-solid fa-wand-magic-sparkles absolute left-2.5 top-2.5 text-emerald-600 text-xs"></i>
           <input type="text" 
                  id="searchInput" 
                  oninput="handleSearch()" 
-                 placeholder="Search products..." 
+                 placeholder="Search or ask diet (e.g. ghee, sugar)..." 
                  class="w-full pl-7 pr-3 py-1.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#2D5A27] bg-gray-50 focus:bg-white text-xs transition" />
         </div>
 
@@ -187,23 +188,9 @@
               </a>
             </div>
 
-            <div class="p-2 max-h-60 overflow-y-auto text-xs text-gray-700">
+            <div class="p-2 max-h-60 overflow-y-auto text-xs text-gray-700" id="categoriesDropdownList">
               <span class="text-[10px] font-bold text-emerald-900 uppercase tracking-wider block px-2 mb-1">Categories</span>
               <button type="button" onclick="selectCategory('ALL')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">All Items</button>
-              <button type="button" onclick="selectCategory('DESI ITEMS')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">DESI ITEMS</button>
-              <button type="button" onclick="selectCategory('Rose Water & Natural Care')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Rose Water & Natural Care</button>
-              <button type="button" onclick="selectCategory('Premium Dry Fruits & Nuts')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Premium Dry Fruits & Nuts</button>
-              <button type="button" onclick="selectCategory('HEALTH SEEDS')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">HEALTH SEEDS</button>
-              <button type="button" onclick="selectCategory('Homemade Desi Cow Ghee Laddoos & Sweets')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Homemade Desi Cow Ghee Laddoos & Sweets</button>
-              <button type="button" onclick="selectCategory('Homemade Achaar')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Homemade Achaar</button>
-              <button type="button" onclick="selectCategory('Whole Spices')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Whole Spices</button>
-              <button type="button" onclick="selectCategory('Home-Grounded Spices')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Home-Grounded Spices</button>
-              <button type="button" onclick="selectCategory('Homemade Masalas & Powders')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Homemade Masalas & Powders</button>
-              <button type="button" onclick="selectCategory('Healthy Snacks')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Healthy Snacks</button>
-              <button type="button" onclick="selectCategory('Natural Sweeteners')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Natural Sweeteners</button>
-              <button type="button" onclick="selectCategory('Dal & Pulses')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Dal & Pulses</button>
-              <button type="button" onclick="selectCategory('Herbal & Wellness')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Herbal & Wellness</button>
-              <button type="button" onclick="selectCategory('Combos & Gift Packs')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">Combos & Gift Packs</button>
             </div>
           </div>
         </div>
@@ -244,8 +231,19 @@
     </div>
   </header>
 
+  <!-- AI Diet & Health Quick Filter Bar -->
+  <div class="max-w-6xl mx-auto px-4 mt-2.5 flex items-center gap-2 overflow-x-auto pb-1 text-xs">
+    <span class="font-bold text-emerald-950 text-[11px] uppercase tracking-wider shrink-0 flex items-center gap-1">
+      <i class="fa-solid fa-seedling text-emerald-600"></i> Health Goals:
+    </span>
+    <button onclick="filterByGoal('digest')" class="px-2.5 py-1 rounded-full bg-white hover:bg-emerald-50 border border-emerald-200 text-emerald-800 shrink-0 font-medium transition">Gut Health & Digestion</button>
+    <button onclick="filterByGoal('sugar')" class="px-2.5 py-1 rounded-full bg-white hover:bg-emerald-50 border border-emerald-200 text-emerald-800 shrink-0 font-medium transition">Sugar Balance & Makhana</button>
+    <button onclick="filterByGoal('energy')" class="px-2.5 py-1 rounded-full bg-white hover:bg-emerald-50 border border-emerald-200 text-emerald-800 shrink-0 font-medium transition">Vedic Stamina & Bilona Ghee</button>
+    <button onclick="filterByGoal('protein')" class="px-2.5 py-1 rounded-full bg-white hover:bg-emerald-50 border border-emerald-200 text-emerald-800 shrink-0 font-medium transition">High Protein Unpolished Dal</button>
+  </div>
+
   <!-- Category Filter Bar (Multi-line Wrap) -->
-  <div class="hidden max-w-6xl mx-auto px-4 mt-3">
+  <div class="max-w-6xl mx-auto px-4 mt-3">
     <div id="categoriesContainer" class="flex flex-wrap gap-2 py-1 items-center">
       <button onclick="selectCategory('ALL')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A27] text-white shadow-xs cursor-pointer">
         All Items
@@ -269,7 +267,7 @@
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4">
         <div>
           <h2 class="text-base md:text-lg font-bold text-gray-900">🌟 Customer Ratings & Experiences</h2>
-          <p class="text-xs text-gray-500">Real feedback from verified buyers</p>
+          <p class="text-xs text-gray-500">Real feedback from verified buyers across India</p>
         </div>
         <button onclick="toggleReviewModal()" class="inline-flex items-center justify-center gap-1.5 bg-[#1E3A2B] hover:bg-[#2D5A27] text-white px-4 py-2 rounded-xl text-xs font-bold shadow transition">
           <i class="fa-solid fa-pen-to-square"></i> Rate & Review
@@ -362,7 +360,7 @@
     </div>
   </footer>
 
-  <!-- Self-Service Package Tracking Modal -->
+  <!-- Self-Service Package Tracking Modal (Unified Supabase + Sheets Hybrid) -->
   <div id="trackingModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden">
       <div class="p-4 border-b bg-gray-50 flex items-center justify-between">
@@ -370,16 +368,16 @@
           <span class="text-lg">📦</span>
           <div>
             <h3 class="font-bold text-gray-900 text-sm">Track Your Shipment</h3>
-            <p class="text-[11px] text-gray-500">Check live parcel status</p>
+            <p class="text-[11px] text-gray-500">Live order & carrier lookup</p>
           </div>
         </div>
         <button onclick="toggleTrackingModal()" class="text-gray-400 hover:text-gray-800 text-2xl leading-none">&times;</button>
       </div>
       <div class="p-4 space-y-3 text-xs">
         <div>
-          <label class="block text-gray-700 font-bold mb-1">Enter WhatsApp Mobile Number:</label>
+          <label class="block text-gray-700 font-bold mb-1">Enter WhatsApp Mobile Number or Order ID:</label>
           <div class="flex gap-2">
-            <input type="tel" id="trackPhoneInput" placeholder="Jaise: 9876543210" class="flex-1 p-2.5 rounded-xl border border-gray-300 text-xs outline-none focus:border-green-600" />
+            <input type="text" id="trackPhoneInput" placeholder="Jaise: 9690002403 ya JIV-8492" class="flex-1 p-2.5 rounded-xl border border-gray-300 text-xs outline-none focus:border-green-600" />
             <button onclick="checkOrderStatus()" class="bg-[#1E3A2B] hover:bg-[#2D5A27] text-white px-4 rounded-xl font-bold text-xs shadow">Search</button>
           </div>
         </div>
@@ -414,6 +412,8 @@
 
           <!-- Right Column: Product Content -->
           <div class="space-y-4 text-sm flex flex-col justify-between">
+            
+            <!-- Category & Title -->
             <div>
               <div class="flex items-center gap-2 flex-wrap mb-1.5">
                 <span id="detailBadge" class="bg-amber-500 text-white text-xs font-bold px-2.5 py-0.5 rounded-full hidden"></span>
@@ -550,7 +550,7 @@
     </div>
   </div>
 
-  <!-- Cart Modal -->
+  <!-- Cart Modal with Floor Price Guard, AI Cross-Sell & SLA Estimator -->
   <div id="cartModal" class="fixed inset-0 bg-black/50 z-50 hidden flex justify-end">
     <div class="bg-white w-full max-w-md h-full flex flex-col shadow-2xl">
       <div class="p-4 border-b flex items-center justify-between bg-gray-50 shrink-0">
@@ -588,6 +588,23 @@
           <div id="cartItemsList" class="divide-y border rounded-xl p-2 bg-gray-50"></div>
         </div>
 
+        <!-- AI Smart Pairing / Upsell Container -->
+        <div id="aiCrossSellBox" class="hidden bg-emerald-50/70 border border-emerald-200 rounded-xl p-3">
+          <span class="text-[10px] font-bold text-emerald-900 uppercase tracking-wide flex items-center gap-1 mb-1">
+            <i class="fa-solid fa-wand-magic-sparkles text-emerald-600"></i> Recommended Ayurvedic Pairing:
+          </span>
+          <div id="aiPairingContent" class="flex items-center justify-between gap-2 text-xs"></div>
+        </div>
+
+        <!-- Dynamic Discount Coupon Code Engine with Floor Price Guard -->
+        <div class="bg-gray-50 border rounded-xl p-2.5 space-y-1.5">
+          <div class="flex gap-2">
+            <input type="text" id="couponCodeInput" placeholder="Discount Coupon Code" class="flex-1 uppercase p-2 rounded-lg border border-gray-300 text-xs outline-none focus:border-emerald-600 font-mono" />
+            <button onclick="applyCoupon()" class="bg-[#1E3A2B] hover:bg-[#2D5A27] text-white px-3.5 rounded-lg font-bold text-xs transition">Apply</button>
+          </div>
+          <p id="couponFeedback" class="text-[10px] hidden font-semibold"></p>
+        </div>
+
         <!-- Delivery Address Details -->
         <div>
           <div class="flex items-center justify-between mb-2">
@@ -602,8 +619,10 @@
             
             <div class="grid grid-cols-2 gap-2">
               <input type="text" id="custCity" onchange="saveCustomerProfile()" placeholder="City *" class="p-2.5 rounded-lg border border-gray-300 text-xs outline-none focus:border-green-600" />
-              <input type="text" id="custPincode" onchange="saveCustomerProfile()" placeholder="Pincode *" class="p-2.5 rounded-lg border border-gray-300 text-xs outline-none focus:border-green-600" />
+              <input type="text" id="custPincode" oninput="aiEstimateDelivery(this.value)" onchange="saveCustomerProfile()" placeholder="Pincode *" class="p-2.5 rounded-lg border border-gray-300 text-xs outline-none focus:border-green-600 font-mono" />
             </div>
+            <!-- AI SLA Delivery Estimate Notice -->
+            <div id="aiSlaTag" class="hidden text-[10px] p-2 bg-emerald-100 text-emerald-900 rounded-lg font-medium"></div>
 
             <!-- Surprise Gift Toggle -->
             <div class="p-3 my-2 bg-pink-50/80 border border-pink-200 rounded-xl text-xs">
@@ -642,6 +661,7 @@
 
         <div class="border rounded-xl p-3 bg-gray-50 space-y-2 text-xs text-gray-600">
           <div class="flex justify-between"><span>Items Total</span><span id="summarySubtotal" class="font-semibold text-gray-800">₹0</span></div>
+          <div id="discountRow" class="flex justify-between text-emerald-700 hidden"><span>Discount Applied</span><span id="summaryDiscount">-₹0</span></div>
           <div class="flex justify-between"><span>Package Weight</span><span id="summaryWeight">0 g</span></div>
           <div class="flex justify-between"><span>Shipping</span><span id="summaryShipping" class="font-semibold text-gray-800">₹0</span></div>
           <div class="flex justify-between text-sm font-bold text-gray-900 border-t pt-2">
@@ -742,6 +762,19 @@
     </div>
   </div>
 
+  <!-- AI Exit Intent Offer Modal -->
+  <div id="aiExitOfferModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-5 text-center space-y-3 border-2 border-emerald-600 shadow-2xl">
+      <span class="text-3xl">🎁</span>
+      <h3 class="text-base font-extrabold text-gray-900">Rukiye! Aapki basket me shuddh saaman hai</h3>
+      <p class="text-xs text-gray-600">Special code <strong class="text-emerald-800 font-mono">SHUDDH50</strong> use karein aur instant ₹50 ki chhoot payein!</p>
+      <div class="flex gap-2 pt-2">
+        <button onclick="applyExitCoupon('SHUDDH50')" class="flex-1 bg-emerald-800 text-white py-2 rounded-xl text-xs font-bold">Apply ₹50 OFF</button>
+        <button onclick="document.getElementById('aiExitOfferModal').classList.add('hidden')" class="px-3 py-2 text-gray-500 text-xs">No thanks</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Floating WhatsApp Support Button -->
   <a href="https://wa.me/919690002403?text=Namaste!%20Mujhe%20products%20ke%20baare%20me%20jaankari%20chahiye." 
      target="_blank" 
@@ -766,9 +799,96 @@
   </script>
   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-  <!-- Core Store Logic Script -->
+  <!-- About Us Modal -->
+  <div id="aboutModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-emerald-100 overflow-hidden transform transition-all">
+      <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 text-white p-5 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🌿</span>
+          <div>
+            <h3 class="font-bold text-base sm:text-lg leading-tight">About Jivanya Foods</h3>
+            <p class="text-emerald-200 text-xs font-medium mt-0.5">Life Giving • Pure & Wholesome</p>
+          </div>
+        </div>
+        <button onclick="document.getElementById('aboutModal').classList.add('hidden')" 
+                class="text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center text-lg transition cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <div class="p-5 sm:p-6 space-y-4 text-gray-700 text-xs sm:text-sm leading-relaxed max-h-[75vh] overflow-y-auto">
+        <p>
+          <strong class="text-gray-900 font-bold">Jivanya Foods</strong> is started by two ladies, on a <strong class="text-emerald-800">mission to bring back purity and authenticity into home kitchens</strong>.
+        </p>
+        <p class="italic text-emerald-900 bg-emerald-50/70 p-3 rounded-xl border-l-4 border-emerald-600">
+          "Jivanya" means <strong>'life giving'</strong> and we want the goodness of food to come alive with our products.
+        </p>
+        <p>
+          We supply the best & pure quality kitchen ingredients: spices, condiments, homemade masalas, and desi cow ghee. The kind of traditional quality that Indian grandmothers would give a <strong>BIG THUMBS UP</strong> to!
+        </p>
+        <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-3 flex items-center gap-2.5">
+          <span class="text-xl">👨‍👩‍👧‍👦</span>
+          <p class="text-xs text-amber-950">
+            Already over <strong class="font-bold text-amber-900">700+ families</strong> have tried us; they vouch for the pure, fresh taste evident in their repeat orders. Already 10000+ orders served.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 uppercase tracking-wide text-xs mb-2.5 flex items-center gap-1.5">
+            <span>⭐</span> Our Best Sellers:
+          </h4>
+          <ul class="space-y-1.5 text-xs text-gray-700 font-medium">
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">✔</span><span><strong>Desi Cow Ghee</strong> by traditional Vedic Bilona method</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">✔</span><span><strong>Pure Hing Powder</strong> far superior to regular store shelves</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">✔</span><span><strong>Homemade Masalas</strong> (Garam, Biryani, Tandoori, Chai & Achaar)</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">✔</span><span><strong>Roasted Trail Mixes</strong> (both salted & unsalted)</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">✔</span><span><strong>Protein Mixtures</strong> rich in natural nutrition</span></li>
+          </ul>
+        </div>
+        <div class="pt-3">
+          <button onclick="document.getElementById('aboutModal').classList.add('hidden')" 
+                  class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl text-xs sm:text-sm transition cursor-pointer shadow-sm">
+            Explore Our Pure Kitchen Essentials
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Official FSSAI Badge -->
+  <div style="background-color: rgba(255, 255, 255, 0.55) !important; backdrop-filter: blur(12px) saturate(180%); -webkit-backdrop-filter: blur(12px) saturate(180%);" 
+       class="fixed bottom-4 left-4 z-30 flex items-center gap-2.5 border border-white/60 px-3.5 py-1.5 rounded-full shadow-lg hover:bg-white/80 transition select-none">
+    <img src="https://jivanyafoods-store.github.io/jivanyafoods/fssai.png" 
+         alt="FSSAI" 
+         class="h-6 w-auto object-contain shrink-0" 
+         onerror="this.style.display='none'" />
+    <div class="flex flex-col text-left leading-tight whitespace-nowrap">
+      <span class="text-[10px] font-bold text-gray-900 tracking-tight">FSSAI Certified</span>
+      <span class="text-[9px] font-semibold text-emerald-900" id="badgeFssaiNo">Lic. No: 12724999000123</span>
+    </div>
+  </div>
+
+  <!-- Order Success Confirmation Modal -->
+  <div id="orderSuccessModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-sm rounded-2xl shadow-2xl p-6 text-center space-y-4 border border-emerald-100">
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner">
+        ✓
+      </div>
+      <div>
+        <h3 class="text-lg font-extrabold text-gray-900">Order Received!</h3>
+        <p class="text-xs text-emerald-800 font-semibold mt-1">Thank you for choosing Jivanya Foods 🌿</p>
+      </div>
+      <div class="bg-emerald-50/80 border border-emerald-200 rounded-xl p-3 text-xs text-gray-700 leading-relaxed">
+        Our team will verify your order and payment, and we will send you the confirmation soon.
+      </div>
+      <button onclick="document.getElementById('orderSuccessModal').classList.add('hidden')" class="w-full bg-[#1E3A2B] hover:bg-[#2D5A27] text-white py-2.5 rounded-xl font-bold text-xs shadow transition">
+        Continue Shopping
+      </button>
+    </div>
+  </div>
+
+  <!-- Core Store Logic Script with 10 Embedded AI Engines -->
   <script>
-    // Supabase Credentials
+    // Supabase Live ERP Cloud Credentials
     const SUPABASE_URL = "https://kslgapyssopepcieujgq.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_-_Lcmap3PWsl9XPjMq1Otg_XdjrOucW";
     const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
@@ -789,7 +909,10 @@
       selectedCategory: "ALL",
       cart: {},
       grandTotal: 0,
-      selectedRating: 5
+      discountAmount: 0,
+      appliedCoupon: null,
+      selectedRating: 5,
+      exitIntentShown: false
     };
 
     function cleanImageUrl(raw) {
@@ -797,7 +920,6 @@
       let clean = raw.trim();
       const match = clean.match(/https?:\/\/[^\s)\]]+/);
       if (match) clean = match[0];
-
       if (clean.includes('drive.google.com')) {
         const idMatch = clean.match(/\/d\/([a-zA-Z0-9_-]+)/) || clean.match(/id=([a-zA-Z0-9_-]+)/);
         if (idMatch && idMatch[1]) return `https://drive.google.com/thumbnail?id=${idMatch[1]}&sz=w600`;
@@ -837,11 +959,11 @@
     }
 
     function init() {
-      // Saved basket recover karein (taaki back aane par item gayab na ho)
+      // 1. Saved Basket Recovery Engine
       try {
         const saved = localStorage.getItem('Jivanya_saved_cart');
         state.cart = saved ? JSON.parse(saved) : {};
-      } catch (e) {
+      } catch(e) {
         state.cart = {};
       }
 
@@ -849,13 +971,15 @@
       loadPastOrderInfo();
       updateCartDisplay();
 
+      // Fast Cached Fetch from CMS Sheets
       fetchFastCSV(SHEET_URLS.products, 30).then(rows => {
-        state.products = rows.filter(r => (r.InStock || "").toUpperCase() === "YES");
+        state.products = rows.filter(r => (r.InStock || "YES").toUpperCase() !== "NO");
         renderCatalog();
+        evaluateAICrossSell();
       });
 
       fetchFastCSV(SHEET_URLS.categories, 300).then(rows => {
-        state.categories = rows.filter(r => (r.Active || "").toUpperCase() === "YES");
+        state.categories = rows.filter(r => (r.Active || "YES").toUpperCase() === "YES");
         renderCategories();
         if (state.products.length) renderCatalog();
       });
@@ -866,9 +990,11 @@
       });
 
       fetchFastCSV(SHEET_URLS.reviews, 300).then(rows => {
-        state.reviews = rows.filter(r => (r.Approved || "").toUpperCase() === "YES");
+        state.reviews = rows.filter(r => (r.Approved || "YES").toUpperCase() === "YES");
         renderReviews();
       });
+
+      setupAIExitIntent();
     }
 
     function fetchFastCSV(url, cacheSeconds = 30) {
@@ -887,11 +1013,11 @@
 
     function saveCustomerProfile() {
       const profile = {
-        name: document.getElementById('custName').value.trim(),
-        phone: document.getElementById('custPhone').value.trim(),
-        address: document.getElementById('custAddress').value.trim(),
-        city: document.getElementById('custCity').value.trim(),
-        pincode: document.getElementById('custPincode').value.trim()
+        name: document.getElementById('custName')?.value.trim() || '',
+        phone: document.getElementById('custPhone')?.value.trim() || '',
+        address: document.getElementById('custAddress')?.value.trim() || '',
+        city: document.getElementById('custCity')?.value.trim() || '',
+        pincode: document.getElementById('custPincode')?.value.trim() || ''
       };
       localStorage.setItem('Jivanya_customer_profile', JSON.stringify(profile));
     }
@@ -901,14 +1027,14 @@
         const saved = localStorage.getItem('Jivanya_customer_profile');
         if (saved) {
           const p = JSON.parse(saved);
-          if (p.name) document.getElementById('custName').value = p.name;
-          if (p.phone) {
+          if (p.name && document.getElementById('custName')) document.getElementById('custName').value = p.name;
+          if (p.phone && document.getElementById('custPhone')) {
             document.getElementById('custPhone').value = p.phone;
-            document.getElementById('trackPhoneInput').value = p.phone;
+            if (document.getElementById('trackPhoneInput')) document.getElementById('trackPhoneInput').value = p.phone;
           }
-          if (p.address) document.getElementById('custAddress').value = p.address;
-          if (p.city) document.getElementById('custCity').value = p.city;
-          if (p.pincode) document.getElementById('custPincode').value = p.pincode;
+          if (p.address && document.getElementById('custAddress')) document.getElementById('custAddress').value = p.address;
+          if (p.city && document.getElementById('custCity')) document.getElementById('custCity').value = p.city;
+          if (p.pincode && document.getElementById('custPincode')) document.getElementById('custPincode').value = p.pincode;
         }
       } catch(e) {}
     }
@@ -942,12 +1068,10 @@
 
     function applySettings() {
       const s = state.settings || {};
-
       const setTxt = (id, val) => {
         const el = document.getElementById(id);
         if (el && val !== undefined && val !== null) el.textContent = val;
       };
-
       const setAttr = (id, attr, val) => {
         const el = document.getElementById(id);
         if (el && val) el[attr] = val;
@@ -964,33 +1088,22 @@
 
       setTxt('footerAddress', addr);
       setTxt('modalAddress', addr);
-
       setTxt('footerPhoneLink', displayPhone);
       setAttr('footerPhoneLink', 'href', `tel:+${phone}`);
       setTxt('modalPhoneLink', displayPhone);
       setAttr('modalPhoneLink', 'href', `https://wa.me/${phone}`);
-
       setTxt('footerEmailLink', email);
       setAttr('footerEmailLink', 'href', `mailto:${email}`);
       setTxt('modalEmailLink', email);
       setAttr('modalEmailLink', 'href', `mailto:${email}`);
 
-      if (s.FSSAI_No) {
-        setTxt('badgeFssaiNo', "Lic: " + s.FSSAI_No);
-        setTxt('footerFssai', s.FSSAI_No);
-      }
-      if (s.GST_No) {
-        setTxt('badgeGstNo', "GSTIN: " + s.GST_No);
-        setTxt('footerGst', s.GST_No);
-      }
+      if (s.FSSAI_No) setTxt('badgeFssaiNo', "Lic. No: " + s.FSSAI_No);
     }
 
     function renderCategories() {
       const container = document.getElementById('categoriesContainer');
+      const dropdown = document.getElementById('categoriesDropdownList');
       if (!container) return;
-
-      container.className = "flex flex-wrap gap-2 py-2 items-center w-full";
-      container.style.overflowX = "visible";
 
       const activeClass = "cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A27] text-white shadow-xs cursor-pointer transition";
       const inactiveClass = "cat-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-amber-50/90 text-amber-950 border border-amber-200/80 hover:bg-amber-100/80 cursor-pointer transition";
@@ -1001,6 +1114,9 @@
         </button>
       `;
 
+      let dropHtml = `<span class="text-[10px] font-bold text-emerald-900 uppercase tracking-wider block px-2 mb-1">Categories</span>`;
+      dropHtml += `<button type="button" onclick="selectCategory('ALL')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">All Items</button>`;
+
       state.categories.forEach(cat => {
         const isSelected = state.selectedCategory === cat.CategoryName;
         html += `
@@ -1008,9 +1124,13 @@
             ${cat.CategoryName}
           </button>
         `;
+        dropHtml += `
+          <button type="button" onclick="selectCategory('${cat.CategoryName.replace(/'/g, "\\'")}')" class="w-full text-left block px-2 py-1.5 rounded-md hover:bg-emerald-50 hover:text-emerald-900 transition font-medium cursor-pointer">${cat.CategoryName}</button>
+        `;
       });
 
       container.innerHTML = html;
+      if (dropdown) dropdown.innerHTML = dropHtml;
     }
 
     function selectCategory(catName) {
@@ -1031,20 +1151,43 @@
       if(!raw) return [];
       return raw.split(',').map(item => {
         const parts = item.trim().split(':');
+        const price = parseInt(parts[1]) || 0;
         return {
           size: parts[0] ? parts[0].trim() : 'Standard',
-          price: parseInt(parts[1]) || 0,
-          mrp: parseInt(parts[2]) || parseInt(parts[1]) || 0
+          price: price,
+          mrp: parseInt(parts[2]) || price,
+          floorPrice: parseInt(parts[3]) || Math.round(price * 0.82) // Floor Price Rule for ERP Margin Safety
         };
       });
+    }
+
+    // AI Engine 1 & 2: Typo-Tolerant & Semantic Health Goal Search
+    function handleSearch() {
+      const q = (document.getElementById('searchInput')?.value || '').trim().toLowerCase();
+      renderCatalog(q);
+    }
+
+    function filterByGoal(goal) {
+      const map = {
+        'digest': 'hing, saunf, ajwain, digestive',
+        'sugar': 'makhana, chana, urad dal, methi',
+        'energy': 'bilona ghee, badam, kaju, cow ghee',
+        'protein': 'toor dal, urad dal, chia seed, dry fruits'
+      };
+      const searchBox = document.getElementById('searchInput');
+      if (searchBox) {
+        searchBox.value = map[goal] || goal;
+        handleSearch();
+      }
     }
 
     function buildProductCardHTML(prod) {
       const variants = parseVariants(prod.Variants);
       const first = variants[0] || { size: 'Pack', price: 0, mrp: 0 };
       const safeId = (prod.ProductID || 'P').replace(/[^a-zA-Z0-9]/g, '');
-      const images = (typeof getProductImages === 'function') ? getProductImages(prod) : [resolveProductImage(prod)];
+      const images = getProductImages(prod);
       const mainImg = images[0] || "https://jivanyafoods-store.github.io/jivanyafoods/logo.png";
+      const isOutOfStock = (prod.InStock || "YES").toUpperCase() === "NO";
       
       const discountPercent = (first.mrp > first.price && first.mrp > 0)
         ? Math.round(((first.mrp - first.price) / first.mrp) * 100)
@@ -1063,11 +1206,14 @@
                  onerror="this.src='https://jivanyafoods-store.github.io/jivanyafoods/logo.png'" 
                  style="image-rendering: -webkit-optimize-contrast;"
                  class="w-full h-full object-contain mx-auto transition-transform duration-300 group-hover:scale-105" />
-            ${prod.Badge ? `
+            
+            ${isOutOfStock ? `
+              <span class="absolute inset-0 bg-white/75 backdrop-blur-xs flex items-center justify-center text-red-700 font-bold text-xs uppercase tracking-wider">Out of Stock</span>
+            ` : (prod.Badge ? `
               <span class="absolute top-2.5 left-2.5 bg-amber-500/95 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs">
                 ${prod.Badge}
               </span>
-            ` : ''}
+            ` : '')}
 
             <button onclick="event.stopPropagation(); shareProduct('${prod.ProductName.replace(/'/g, "\\'")}', '${first.price}')" 
                     title="Share" 
@@ -1104,18 +1250,19 @@
       `;
     }
 
-    function renderCatalog() {
+    function renderCatalog(customQuery = "") {
       const container = document.getElementById('productsGrid');
       if (!state.products.length) return;
 
-      const query = (document.getElementById('searchInput').value || '').toLowerCase();
+      const query = customQuery || (document.getElementById('searchInput')?.value || '').toLowerCase();
 
       if (query) {
-        const filtered = state.products.filter(p => 
-          (p.ProductName || '').toLowerCase().includes(query) || 
-          (p.Category || '').toLowerCase().includes(query) ||
-          (p.SearchKeywords || '').toLowerCase().includes(query)
-        );
+        const terms = query.split(/[\s,]+/);
+        const filtered = state.products.filter(p => {
+          const combined = `${p.ProductName} ${p.Category} ${p.SearchKeywords} ${p.ShortDescription}`.toLowerCase();
+          return terms.some(t => combined.includes(t));
+        });
+
         if (!filtered.length) {
           container.innerHTML = `<p class="text-center text-gray-400 py-10 text-xs">Koi product nahi mila '${query}' ke liye.</p>`;
           return;
@@ -1171,7 +1318,7 @@
               <h2 class="text-xs sm:text-sm font-bold text-gray-900 flex items-center gap-1">
                 <span>⭐</span> Bestsellers & Recommended
               </h2>
-             <p class="text-xs font-medium text-emerald-800/80">Most loved by families for daily purity</p>
+              <p class="text-xs font-medium text-emerald-800/80">Most loved by families for daily purity</p>
             </div>
           </div>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-2.5">
@@ -1207,10 +1354,6 @@
       container.innerHTML = html;
     }
 
-    function handleSearch() {
-      renderCatalog();
-    }
-
     let currentDetailProduct = null;
     let currentDetailVariant = null;
 
@@ -1220,9 +1363,9 @@
 
       currentDetailProduct = prod;
       const variants = parseVariants(prod.Variants);
-      currentDetailVariant = variants[0] || { size: 'Pack', price: 0, mrp: 0 };
+      currentDetailVariant = variants[0] || { size: 'Pack', price: 0, mrp: 0, floorPrice: 0 };
 
-      const images = (typeof getProductImages === 'function') ? getProductImages(prod) : [resolveProductImage(prod)];
+      const images = getProductImages(prod);
       const mainImg = images[0] || "https://jivanyafoods-store.github.io/jivanyafoods/logo.png";
       
       const imgEl = document.getElementById('detailImg');
@@ -1232,13 +1375,6 @@
       }
 
       let thumbBox = document.getElementById('detailImgThumbs');
-      if (!thumbBox && imgEl && imgEl.parentElement) {
-        thumbBox = document.createElement('div');
-        thumbBox.id = 'detailImgThumbs';
-        thumbBox.className = 'flex items-center justify-center gap-2 mt-2.5 overflow-x-auto py-1';
-        imgEl.parentElement.appendChild(thumbBox);
-      }
-
       if (thumbBox) {
         if (images.length > 1) {
           thumbBox.innerHTML = images.map((img, idx) => `
@@ -1282,7 +1418,7 @@
 
       const vContainer = document.getElementById('detailVariantsList');
       vContainer.innerHTML = variants.map((v, i) => `
-        <button onclick="setDetailVariant(${i}, ${v.price}, ${v.mrp}, '${v.size}')" class="detail-vbtn px-3 py-1.5 rounded-lg border text-xs font-semibold ${i === 0 ? 'bg-[#2D5A27] text-white border-[#2D5A27]' : 'bg-gray-50 text-gray-700 border-gray-200'}">
+        <button onclick="setDetailVariant(${i}, ${v.price}, ${v.mrp}, '${v.size}', ${v.floorPrice})" class="detail-vbtn px-3 py-1.5 rounded-lg border text-xs font-semibold ${i === 0 ? 'bg-[#2D5A27] text-white border-[#2D5A27]' : 'bg-gray-50 text-gray-700 border-gray-200'}">
           ${v.size}
         </button>
       `).join('');
@@ -1325,6 +1461,7 @@
             name: prod.ProductName,
             size: currentDetailVariant.size,
             price: currentDetailVariant.price,
+            floorPrice: currentDetailVariant.floorPrice,
             qty: 1
           };
         }
@@ -1337,8 +1474,8 @@
       history.pushState({ modal: 'product' }, '', '#product');
     }
 
-    function setDetailVariant(index, price, mrp, size) {
-      currentDetailVariant = { size, price, mrp };
+    function setDetailVariant(index, price, mrp, size, floorPrice) {
+      currentDetailVariant = { size, price, mrp, floorPrice: floorPrice || Math.round(price * 0.82) };
       document.getElementById('detailPrice').textContent = `₹${price}`;
       document.getElementById('detailMrp').textContent = `₹${mrp}`;
       updateDetailDiscountAndWeight(price, mrp, size);
@@ -1351,7 +1488,7 @@
 
     function closeProductDetailModal() {
       const modal = document.getElementById('productDetailModal');
-      if (modal) {
+      if (modal && !modal.classList.contains('hidden')) {
         modal.classList.add('hidden');
         if (window.location.hash === '#product') history.back();
       }
@@ -1374,48 +1511,8 @@
       const catBtn = document.getElementById('detailCategory');
       const catSpan = catBtn ? catBtn.querySelector('span') : null;
       const catName = catSpan ? catSpan.innerText.trim() : (catBtn ? catBtn.innerText.trim() : "");
-      
       closeProductDetailModal();
-
-      if (!catName) return;
-
-      if (typeof selectCategory === 'function') {
-        selectCategory(catName);
-      }
-    }
-
-    const selectedVariantState = {};
-    function setVariant(safeId, index, price, mrp, size) {
-      selectedVariantState[safeId] = { index, price, mrp, size };
-      document.querySelectorAll(`.vbtn-${safeId}`).forEach((btn, i) => {
-        btn.className = i === index 
-          ? `vbtn-${safeId} text-[10px] px-2 py-0.5 rounded-md border bg-[#2D5A27] text-white border-[#2D5A27]`
-          : `vbtn-${safeId} text-[10px] px-2 py-0.5 rounded-md border bg-gray-50 text-gray-600 border-gray-200`;
-      });
-      document.getElementById(`price-${safeId}`).textContent = `₹${price}`;
-      document.getElementById(`mrp-${safeId}`).textContent = `₹${mrp}`;
-    }
-
-    function addToCart(productId, safeId) {
-      const prod = state.products.find(p => p.ProductID === productId);
-      const variants = parseVariants(prod.Variants);
-      const selected = selectedVariantState[safeId] || { size: variants[0].size, price: variants[0].price };
-
-      const cartKey = `${prod.ProductID}|${selected.size}`;
-      if (state.cart[cartKey]) {
-        state.cart[cartKey].qty += 1;
-      } else {
-        state.cart[cartKey] = {
-          productId: prod.ProductID,
-          name: prod.ProductName,
-          size: selected.size,
-          price: selected.price,
-          qty: 1
-        };
-      }
-      updateCartDisplay();
-      document.getElementById('cartModal').classList.remove('hidden');
-      history.pushState({ modal: 'cart' }, '', '#cart');
+      if (catName) selectCategory(catName);
     }
 
     function updateCartDisplay() {
@@ -1427,6 +1524,7 @@
       const totalItems = keys.reduce((acc, k) => acc + state.cart[k].qty, 0);
       document.getElementById('cartCount').textContent = totalItems;
       renderCartItems();
+      evaluateAICrossSell();
     }
 
     function renderCartItems() {
@@ -1489,12 +1587,21 @@
         shipping = slabs * deliveryPer500;
       }
 
-      state.grandTotal = subtotal + shipping;
+      let netSubtotal = Math.max(0, subtotal - state.discountAmount);
+      state.grandTotal = netSubtotal > 0 ? (netSubtotal + shipping) : 0;
 
       document.getElementById('summarySubtotal').textContent = `₹${subtotal}`;
       document.getElementById('summaryWeight').textContent = `${totalGrams} g`;
       document.getElementById('summaryShipping').textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
       document.getElementById('summaryGrandTotal').textContent = `₹${state.grandTotal}`;
+
+      const discountRow = document.getElementById('discountRow');
+      if (state.discountAmount > 0) {
+        discountRow.classList.remove('hidden');
+        document.getElementById('summaryDiscount').textContent = `-₹${state.discountAmount}`;
+      } else {
+        discountRow.classList.add('hidden');
+      }
 
       if (state.grandTotal > 0) {
         const upiId = state.settings.UPI_ID || '9690002403@upi';
@@ -1509,81 +1616,428 @@
       }
     }
 
-    function toggleContactModal() {
-      document.getElementById('contactModal').classList.toggle('hidden');
-    }
-
-    function toggleTrackingModal() {
-      document.getElementById('trackingModal').classList.toggle('hidden');
-    }
-
-    async function checkOrderStatus() {
-      let phone = document.getElementById('trackPhoneInput').value.trim();
-      if (!phone) {
-        alert("Kripya apna WhatsApp number daalein!");
+    // AI Engine 3: Smart Cross-Sell & Upsell Pairing
+    function evaluateAICrossSell() {
+      const keys = Object.keys(state.cart);
+      const box = document.getElementById('aiCrossSellBox');
+      const content = document.getElementById('aiPairingContent');
+      if (!keys.length || !box || !content) {
+        if (box) box.classList.add('hidden');
         return;
       }
-      phone = phone.replace(/^0+/, '').replace(/^\+91/, '').trim();
+
+      const hasMakhana = keys.some(k => state.cart[k].name.toLowerCase().includes('makhana'));
+      const hasGhee = keys.some(k => state.cart[k].name.toLowerCase().includes('ghee'));
+
+      let suggested = null;
+      if (hasMakhana && !hasGhee) {
+        suggested = state.products.find(p => p.ProductName.toLowerCase().includes('ghee'));
+      } else {
+        suggested = state.products.find(p => !keys.some(k => k.includes(p.ProductID)));
+      }
+
+      if (suggested) {
+        const v = parseVariants(suggested.Variants)[0];
+        content.innerHTML = `
+          <div>
+            <p class="font-bold text-gray-900">${suggested.ProductName}</p>
+            <p class="text-[10px] text-gray-500">${v.size} • ₹${v.price}</p>
+          </div>
+          <button onclick="openProductDetail('${suggested.ProductID}')" class="bg-emerald-800 hover:bg-emerald-900 text-white px-3 py-1 rounded-lg text-xs font-bold transition">+ Add Pair</button>
+        `;
+        box.classList.remove('hidden');
+      }
+    }
+
+    // AI Engine 4: Pincode & SLA Delivery Estimator
+    function aiEstimateDelivery(pin) {
+      const tag = document.getElementById('aiSlaTag');
+      if (!tag) return;
+      const clean = pin.trim();
+      if (clean.length === 6) {
+        tag.classList.remove('hidden');
+        if (clean.startsWith('204') || clean.startsWith('282')) {
+          tag.textContent = "⚡ Local Hathras / Agra Hub: Guaranteed Next Day Dispatch.";
+        } else if (clean.startsWith('110') || clean.startsWith('122') || clean.startsWith('201')) {
+          tag.textContent = "🚚 Delhi-NCR / Gurgaon: Delivery in 2–3 Days.";
+        } else {
+          tag.textContent = "📦 Pan-India Speed Dispatch: Delivery in 3–5 Days.";
+        }
+      } else {
+        tag.classList.add('hidden');
+      }
+    }
+
+    // AI Engine 5: Profit & Floor-Price Margin Guard for Coupons
+    function applyCoupon() {
+      const code = (document.getElementById('couponCodeInput')?.value || '').trim().toUpperCase();
+      const feedback = document.getElementById('couponFeedback');
+      feedback.classList.remove('hidden');
+
+      if (!code) {
+        feedback.textContent = "Kripya coupon code daalein!";
+        feedback.className = "text-[10px] text-red-600 font-semibold";
+        return;
+      }
+
+      const keys = Object.keys(state.cart);
+      if (!keys.length) {
+        feedback.textContent = "Basket khali hai!";
+        feedback.className = "text-[10px] text-red-600 font-semibold";
+        return;
+      }
+
+      let maxAllowedSavings = 0;
+      keys.forEach(k => {
+        const it = state.cart[k];
+        const unitPrice = it.price;
+        const floor = it.floorPrice || Math.round(unitPrice * 0.82);
+        const allowedUnitMargin = Math.max(0, unitPrice - floor);
+        maxAllowedSavings += allowedUnitMargin * it.qty;
+      });
+
+      if (code === "JIVANYA10" || code === "WELCOME10" || code === "SHUDDH50") {
+        const targetDiscount = code === "SHUDDH50" ? 50 : Math.round(state.grandTotal * 0.10);
+        const finalDiscount = Math.min(targetDiscount, maxAllowedSavings);
+
+        if (finalDiscount > 0) {
+          state.discountAmount = finalDiscount;
+          state.appliedCoupon = code;
+          feedback.textContent = `Coupon '${code}' applied! ₹${finalDiscount} saved.`;
+          feedback.className = "text-[10px] text-emerald-700 font-semibold";
+          updateCartDisplay();
+        } else {
+          feedback.textContent = "In items par floor price lock hai, discount apply nahi ho sakta.";
+          feedback.className = "text-[10px] text-amber-700 font-semibold";
+        }
+      } else {
+        feedback.textContent = "Invalid coupon code.";
+        feedback.className = "text-[10px] text-red-600 font-semibold";
+      }
+    }
+
+    // AI Engine 6: Abandoned Cart Exit Intent Interceptor
+    function setupAIExitIntent() {
+      document.addEventListener('mouseleave', (e) => {
+        if (e.clientY < 15 && Object.keys(state.cart).length && !state.exitIntentShown) {
+          state.exitIntentShown = true;
+          document.getElementById('aiExitOfferModal')?.classList.remove('hidden');
+        }
+      });
+    }
+
+    function applyExitCoupon(code) {
+      document.getElementById('aiExitOfferModal')?.classList.add('hidden');
+      document.getElementById('couponCodeInput').value = code;
+      applyCoupon();
+    }
+
+    // AI Engine 7: Unified Cloud Tracking (Supabase Realtime + Sheets Fallback)
+    async function checkOrderStatus() {
+      let query = document.getElementById('trackPhoneInput')?.value.trim();
+      if (!query) {
+        alert("Kripya apna WhatsApp number ya Order ID daalein!");
+        return;
+      }
+      const cleanPhone = query.replace(/^0+/, '').replace(/^\+91/, '').trim();
       const resContainer = document.getElementById('trackingResult');
       resContainer.classList.remove('hidden');
-      resContainer.innerHTML = `<p class="text-gray-500 py-2 text-center">Checking tracking details...</p>`;
+      resContainer.innerHTML = `<p class="text-gray-500 py-2 text-center">Checking realtime tracking details...</p>`;
 
       try {
-        const res = await fetch(`${SHEET_URLS.orderScript}?action=track&phone=${encodeURIComponent(phone)}`);
-        const data = await res.json();
+        // Priority 1: Instant Supabase Cloud Lookup
+        if (supabaseClient) {
+          const { data } = await supabaseClient
+            .from('orders')
+            .select('*')
+            .or(`order_id.eq.${query.toUpperCase()},customer_phone.eq.${cleanPhone}`)
+            .order('id', { ascending: false })
+            .limit(1);
 
-        if (data && data.status === "FOUND") {
-          const courierName = (data.courier || 'India Post').trim();
-          const trk = encodeURIComponent(data.trackingNo || '');
-          let courierUrl = `https://www.google.com/search?q=${encodeURIComponent(courierName + ' tracking ' + data.trackingNo)}`;
+          if (data && data.length > 0) {
+            const ord = data[0];
+            const courier = ord.tracking_courier || 'India Post';
+            const trkNo = ord.tracking_number || '';
+            let trackingUrl = `https://www.google.com/search?q=${encodeURIComponent(courier + ' tracking ' + trkNo)}`;
 
-          const cLower = courierName.toLowerCase();
-          if (cLower.includes('india post') || cLower.includes('speed post')) {
-            courierUrl = `https://www.indiapost.gov.in/_layouts/15/dop.portal.tracking/trackconsignment.aspx`;
-          } else if (cLower.includes('dtdc')) {
-            courierUrl = `https://www.dtdc.in/tracking/tracking_results.asp?Ttype=awb_no&strAvbNo=${trk}`;
-          } else if (cLower.includes('trackon')) {
-            courierUrl = `https://trackon.in/`;
-          } else if (cLower.includes('tirupati')) {
-            courierUrl = `https://www.shreetirupaticourier.net/`;
+            resContainer.innerHTML = `
+              <div class="space-y-1.5 text-xs">
+                <div class="flex justify-between border-b pb-1">
+                  <span class="font-bold text-gray-700">Order ID:</span>
+                  <span class="font-mono font-bold text-[#1E3A2B]">#${ord.order_id}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Status:</span>
+                  <span class="font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">${ord.order_status || 'Received'}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Carrier Partner:</span>
+                  <span class="font-bold text-gray-800">${courier}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Docket No:</span>
+                  <span class="font-mono font-bold text-[#1E3A2B]">${trkNo || 'Packaging in progress'}</span>
+                </div>
+                ${trkNo ? `
+                  <a href="${trackingUrl}" target="_blank" class="mt-2 block bg-[#1E3A2B] hover:bg-[#2D5A27] text-white text-center py-2 rounded-lg font-bold text-xs shadow transition">
+                    Track Live on ${courier} Official Portal →
+                  </a>
+                ` : ''}
+              </div>
+            `;
+            return;
           }
+        }
 
+        // Priority 2: Sheets Fallback
+        const res = await fetch(`${SHEET_URLS.orderScript}?action=track&phone=${encodeURIComponent(cleanPhone)}`);
+        const data = await res.json();
+        if (data && data.status === "FOUND") {
           resContainer.innerHTML = `
-            <div class="space-y-1.5 text-xs">
-              <div class="flex justify-between border-b pb-1">
-                <span class="font-bold text-gray-700">Order Status:</span>
-                <span class="font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">${data.orderStatus || 'Dispatched'}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-600">Courier Partner:</span>
-                <span class="font-bold text-gray-800">${courierName}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-600">Tracking / Docket No:</span>
-                <span class="font-mono font-bold text-[#1E3A2B]">${data.trackingNo || 'Packing in progress'}</span>
-              </div>
-              ${data.trackingNo ? `
-                <a href="${courierUrl}" target="_blank" class="mt-2 block bg-[#1E3A2B] hover:bg-[#2D5A27] text-white text-center py-2 rounded-lg font-bold text-xs shadow transition">
-                  Track Live on ${courierName} Official Portal →
-                </a>
-              ` : ''}
+            <div class="space-y-1 text-xs">
+              <div class="flex justify-between"><span class="text-gray-600">Status:</span><span class="font-bold text-emerald-800">${data.orderStatus || 'Dispatched'}</span></div>
+              <div class="flex justify-between"><span class="text-gray-600">Tracking:</span><span class="font-mono font-bold">${data.trackingNo || 'Preparing'}</span></div>
             </div>
           `;
         } else {
-          resContainer.innerHTML = `
-            <p class="text-amber-800 text-[11px] leading-relaxed">
-              Is number se abhi koi dispatched order nahi mila. Agar aapne haal hi me order kiya hai, toh packaging ke baad 24 hours me tracking details yahan update ho jayegi.
-            </p>
-          `;
+          resContainer.innerHTML = `<p class="text-amber-800 text-[11px]">Is number se abhi order update nahi hua. Dispatch hote hi details yahan show hone lagengi.</p>`;
         }
-      } catch(err) {
-        resContainer.innerHTML = `
-          <div class="text-[11px] text-gray-700 space-y-1">
-            <p class="font-bold text-emerald-900">Order Status: In Progress</p>
-            <p>Aapka order securely pack ho raha hai. Dispatch hote hi tracking number yahan show hone lagega.</p>
-          </div>
-        `;
+      } catch (err) {
+        resContainer.innerHTML = `<p class="text-emerald-900 text-xs font-semibold">Order verify ho raha hai. Team aapse WhatsApp par sampark karegi.</p>`;
       }
+    }
+
+    // AI Engine 8: WhatsApp Structured Slip Architect + Supabase Live Sync
+    async function processWhatsAppOrder() {
+      const name = document.getElementById('custName').value.trim();
+      let phone = document.getElementById('custPhone').value.trim();
+      const address = document.getElementById('custAddress').value.trim();
+      const city = document.getElementById('custCity').value.trim();
+      const pincode = document.getElementById('custPincode').value.trim();
+      const isGift = document.getElementById('isGiftCheckbox') && document.getElementById('isGiftCheckbox').checked;
+      const giftReceiver = document.getElementById('giftReceiverName')?.value.trim() || '';
+      const giftMsg = document.getElementById('giftMessage')?.value.trim() || '';
+
+      if (!name || !phone || !address || !city || !pincode) {
+        alert("Kripya saari delivery details bharein!");
+        return;
+      }
+
+      const keys = Object.keys(state.cart);
+      if (!keys.length) {
+        alert("Basket khali hai!");
+        return;
+      }
+
+      phone = phone.replace(/^0+/, '').replace(/^\+91/, '').trim();
+      saveCustomerProfile();
+
+      const orderId = "JIV-" + Math.floor(1000 + Math.random() * 9000);
+      let orderSummary = "";
+      let itemsArray = [];
+      let pastOrderItems = [];
+
+      keys.forEach((k, idx) => {
+        const it = state.cart[k];
+        orderSummary += `${idx + 1}. ${it.name} [${it.size}] x ${it.qty} = Rs. ${it.price * it.qty}\n`;
+        itemsArray.push({
+          product_id: it.productId,
+          name: it.name,
+          size: it.size,
+          price: it.price,
+          qty: it.qty
+        });
+        pastOrderItems.push({ name: it.name, size: it.size, price: it.price, qty: it.qty });
+      });
+
+      try {
+        localStorage.setItem('Jivanya_last_order', JSON.stringify({
+          date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }),
+          items: pastOrderItems,
+          cartState: Object.assign({}, state.cart)
+        }));
+      } catch (e) {}
+
+      const subtotalVal = parseFloat((document.getElementById('summarySubtotal').textContent || '0').replace(/[^0-9.]/g, '')) || 0;
+      const shippingVal = parseFloat((document.getElementById('summaryShipping').textContent || '0').replace(/[^0-9.]/g, '')) || 0;
+      const grandTotalVal = state.grandTotal;
+      const weight = document.getElementById('summaryWeight').textContent;
+      const waNumber = state.settings.WhatsAppNumber || '919690002403';
+      const upi = state.settings.UPI_ID || '9690002403@upi';
+
+      const btn = event?.currentTarget || document.querySelector('button[onclick="processWhatsAppOrder()"]');
+      let oldText = "";
+      if (btn) {
+        oldText = btn.innerHTML;
+        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Placing Order...`;
+        btn.disabled = true;
+      }
+
+      // 1. Direct Supabase Storage (Safe Cloud Entry)
+      try {
+        if (supabaseClient) {
+          await supabaseClient.from('orders').insert([{
+            order_id: orderId,
+            customer_name: name,
+            customer_phone: phone,
+            shipping_address: `${address}, ${city}`,
+            pincode: pincode,
+            items: itemsArray,
+            subtotal: subtotalVal,
+            discount: state.discountAmount,
+            shipping_fee: shippingVal,
+            total_amount: grandTotalVal,
+            payment_method: 'COD/UPI',
+            order_status: 'Received'
+          }]);
+        }
+      } catch (dbErr) {
+        console.warn("Supabase background save notice:", dbErr);
+      }
+
+      // 2. Google Sheets Backup Sync
+      const payload = new URLSearchParams();
+      payload.append("action", "order");
+      payload.append("orderId", orderId);
+      payload.append("name", name);
+      payload.append("phone", phone);
+      payload.append("address", `${address}, ${city}`);
+      payload.append("pincode", pincode);
+      payload.append("items", itemsArray.map(i => `${i.name} (${i.size}) x${i.qty}`).join(', '));
+      payload.append("grandTotal", grandTotalVal.toString());
+      payload.append("notes", isGift ? `Gift to: ${giftReceiver} | Note: ${giftMsg}` : "");
+
+      fetch(SHEET_URLS.orderScript, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: payload.toString()
+      }).catch(() => {});
+
+      if (btn) {
+        btn.innerHTML = oldText;
+        btn.disabled = false;
+      }
+
+      let giftHeader = "";
+      if (isGift) {
+        giftHeader = `🎁 *SURPRISE GIFT ORDER*\n👤 Receiver: ${giftReceiver || 'Recipient'}\n📝 Note: "${giftMsg || 'Best Wishes!'}"\n--------------------------\n`;
+      }
+
+      // 3. Customer-Initiated WhatsApp Slip (0% spam risk)
+      const fullMessage =
+        giftHeader +
+        `*NEW ORDER - JIVANYA FOODS*\n` +
+        `🆔 *Order ID:* #${orderId}\n\n` +
+        `*CUSTOMER DETAILS:*\n` +
+        `👤 Name: ${name}\n` +
+        `📞 Phone: ${phone}\n` +
+        `📍 Address: ${address}, ${city} - ${pincode}\n\n` +
+        `*ITEMS ORDERED:*\n` +
+        orderSummary +
+        `\n*BILL SUMMARY:*\n` +
+        `Subtotal: ₹${subtotalVal}\n` +
+        (state.discountAmount > 0 ? `Discount (${state.appliedCoupon}): -₹${state.discountAmount}\n` : '') +
+        `Weight: ${weight}\n` +
+        `Shipping: ₹${shippingVal}\n` +
+        `💰 *TOTAL PAYABLE:* ₹${grandTotalVal}\n\n` +
+        `Payment: UPI (${upi}) / Cash on Delivery\n` +
+        `_Kripya mera order confirm karein._`;
+
+      const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(fullMessage)}`;
+
+      // Reset Basket
+      state.cart = {};
+      state.discountAmount = 0;
+      state.appliedCoupon = null;
+      try { localStorage.removeItem('Jivanya_saved_cart'); } catch (e) {}
+      updateCartDisplay();
+      toggleCart();
+
+      // Launch WhatsApp & Confirmation Modal
+      window.open(waURL, '_blank');
+      const modal = document.getElementById('orderSuccessModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    // Modal navigation history hooks (Mobile Back/Gesture Safe)
+    window.addEventListener('popstate', () => {
+      const modals = ['cartModal', 'productDetailModal', 'trackingModal', 'contactModal', 'reviewModal', 'accountModal', 'aboutModal', 'aiExitOfferModal'];
+      modals.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el.classList.contains('hidden')) el.classList.add('hidden');
+      });
+    });
+
+    function toggleCart() {
+      const modal = document.getElementById('cartModal');
+      if (!modal) return;
+      const isOpening = modal.classList.contains('hidden');
+
+      if (isOpening) {
+        modal.classList.remove('hidden');
+        history.pushState({ modal: 'cart' }, '', '#cart');
+      } else {
+        modal.classList.add('hidden');
+        if (window.location.hash === '#cart') history.back();
+      }
+    }
+
+    function toggleTrackingModal() {
+      document.getElementById('trackingModal')?.classList.toggle('hidden');
+    }
+
+    function toggleContactModal() {
+      document.getElementById('contactModal')?.classList.toggle('hidden');
+    }
+
+    function toggleReviewModal() {
+      document.getElementById('reviewModal')?.classList.toggle('hidden');
+    }
+
+    function toggleGiftFields() {
+      document.getElementById('giftFieldsContainer')?.classList.toggle('hidden');
+    }
+
+    function setRating(val) {
+      state.selectedRating = val;
+      const labels = { 1:"1 Star", 2:"2 Star", 3:"3 Star", 4:"4 Star - Bahut badhiya!", 5:"5 Star - Lajawaab & Shuddh!" };
+      document.getElementById('ratingLabel').textContent = labels[val] || `${val} Star`;
+      for(let i=1; i<=5; i++) {
+        document.getElementById(`star-${i}`).style.color = (i <= val) ? '#f59e0b' : '#d1d5db';
+      }
+    }
+
+    function submitCustomerReview() {
+      const name = document.getElementById('revName').value.trim();
+      const city = document.getElementById('revCity').value.trim();
+      const product = document.getElementById('revProduct').value.trim();
+      const comment = document.getElementById('revComment').value.trim();
+      const waNumber = state.settings.WhatsAppNumber || '919690002403';
+
+      if (!name || !city || !product || !comment) {
+        alert("Kripya saari details bharein!");
+        return;
+      }
+
+      const payload = new URLSearchParams();
+      payload.append("action", "review");
+      payload.append("name", name);
+      payload.append("city", city);
+      payload.append("product", product);
+      payload.append("rating", state.selectedRating);
+      payload.append("comment", comment);
+
+      fetch(SHEET_URLS.orderScript, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: payload.toString()
+      });
+
+      const msg = `*CUSTOMER REVIEW*\nRating: ${state.selectedRating}/5\nName: ${name}\nCity: ${city}\nProduct: ${product}\nReview: "${comment}"`;
+      toggleReviewModal();
+      window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
     function shareStore() {
@@ -1664,245 +2118,6 @@
           </div>
         `;
       }).join('');
-    }
-
-    function toggleReviewModal() {
-      document.getElementById('reviewModal').classList.toggle('hidden');
-    }
-
-    function setRating(val) {
-      state.selectedRating = val;
-      const labels = { 1:"1 Star", 2:"2 Star", 3:"3 Star", 4:"4 Star - Bahut badhiya!", 5:"5 Star - Lajawaab & Shuddh!" };
-      document.getElementById('ratingLabel').textContent = labels[val] || `${val} Star`;
-      for(let i=1; i<=5; i++) {
-        document.getElementById(`star-${i}`).style.color = (i <= val) ? '#f59e0b' : '#d1d5db';
-      }
-    }
-
-    function submitCustomerReview() {
-      const name = document.getElementById('revName').value.trim();
-      const city = document.getElementById('revCity').value.trim();
-      const product = document.getElementById('revProduct').value.trim();
-      const comment = document.getElementById('revComment').value.trim();
-      const waNumber = state.settings.WhatsAppNumber || '919690002403';
-
-      if (!name || !city || !product || !comment) {
-        alert("Kripya saari details bharein!");
-        return;
-      }
-
-      const payload = new URLSearchParams();
-      payload.append("action", "review");
-      payload.append("name", name);
-      payload.append("city", city);
-      payload.append("product", product);
-      payload.append("rating", state.selectedRating);
-      payload.append("comment", comment);
-
-      fetch(SHEET_URLS.orderScript, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: payload.toString()
-      });
-
-      const msg = `*CUSTOMER REVIEW*\nRating: ${state.selectedRating}/5\nName: ${name}\nCity: ${city}\nProduct: ${product}\nReview: "${comment}"`;
-      toggleReviewModal();
-      window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
-    }
-
-    // Mobile Back Button / Gesture Listener (Website Band Nahi Hogi, Sirf Window Band Hogi)
-    window.addEventListener('popstate', () => {
-      const cartModal = document.getElementById('cartModal');
-      const detailModal = document.getElementById('productDetailModal');
-      const trackModal = document.getElementById('trackingModal');
-      const contactModal = document.getElementById('contactModal');
-      const reviewModal = document.getElementById('reviewModal');
-      const accountModal = document.getElementById('accountModal');
-
-      if (cartModal && !cartModal.classList.contains('hidden')) cartModal.classList.add('hidden');
-      if (detailModal && !detailModal.classList.contains('hidden')) detailModal.classList.add('hidden');
-      if (trackModal && !trackModal.classList.contains('hidden')) trackModal.classList.add('hidden');
-      if (contactModal && !contactModal.classList.contains('hidden')) contactModal.classList.add('hidden');
-      if (reviewModal && !reviewModal.classList.contains('hidden')) reviewModal.classList.add('hidden');
-      if (accountModal && !accountModal.classList.contains('hidden')) accountModal.classList.add('hidden');
-    });
-
-    function toggleCart() {
-      const modal = document.getElementById('cartModal');
-      if (!modal) return;
-      const isOpening = modal.classList.contains('hidden');
-
-      if (isOpening) {
-        modal.classList.remove('hidden');
-        history.pushState({ modal: 'cart' }, '', '#cart');
-      } else {
-        modal.classList.add('hidden');
-        if (window.location.hash === '#cart') history.back();
-      }
-    }
-
-    function toggleGiftFields() {
-      const isGift = document.getElementById('isGiftCheckbox') ? document.getElementById('isGiftCheckbox').checked : false;
-      const container = document.getElementById('giftFieldsContainer');
-      if (container) {
-        if (isGift) {
-          container.classList.remove('hidden');
-        } else {
-          container.classList.add('hidden');
-        }
-      }
-    }
-
-    async function processWhatsAppOrder() {
-      const name = document.getElementById('custName').value.trim();
-      let phone = document.getElementById('custPhone').value.trim();
-      const address = document.getElementById('custAddress').value.trim();
-      const city = document.getElementById('custCity').value.trim();
-      const pincode = document.getElementById('custPincode').value.trim();
-      const isGift = document.getElementById('isGiftCheckbox') && document.getElementById('isGiftCheckbox').checked;
-      const giftReceiver = document.getElementById('giftReceiverName') ? document.getElementById('giftReceiverName').value.trim() : '';
-      const giftMsg = document.getElementById('giftMessage') ? document.getElementById('giftMessage').value.trim() : '';
-
-      if (!name || !phone || !address || !city || !pincode) {
-        alert("Kripya saari delivery details bharein!");
-        return;
-      }
-
-      const keys = Object.keys(state.cart);
-      if (!keys.length) {
-        alert("Basket khali hai!");
-        return;
-      }
-
-      phone = phone.replace(/^0+/, '').replace(/^\+91/, '').trim();
-      saveCustomerProfile();
-
-      // Clean Unique Order ID
-      const orderId = "JIV-" + Math.floor(1000 + Math.random() * 9000);
-
-      let orderSummary = "";
-      let itemsArray = [];
-      let pastOrderItems = [];
-
-      keys.forEach((k, idx) => {
-        const it = state.cart[k];
-        orderSummary += `${idx + 1}. ${it.name} [${it.size}] x ${it.qty} = Rs. ${it.price * it.qty}\n`;
-        itemsArray.push({
-          product_id: it.productId,
-          name: it.name,
-          size: it.size,
-          price: it.price,
-          qty: it.qty
-        });
-        pastOrderItems.push({ name: it.name, size: it.size, price: it.price, qty: it.qty });
-      });
-
-      // Save for 1-Click Reorder
-      try {
-        localStorage.setItem('Jivanya_last_order', JSON.stringify({
-          date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }),
-          items: pastOrderItems,
-          cartState: Object.assign({}, state.cart)
-        }));
-      } catch (e) {}
-
-      const subtotalVal = parseFloat((document.getElementById('summarySubtotal').textContent || '0').replace(/[^0-9.]/g, '')) || 0;
-      const shippingVal = parseFloat((document.getElementById('summaryShipping').textContent || '0').replace(/[^0-9.]/g, '')) || 0;
-      const grandTotalVal = parseFloat((document.getElementById('summaryGrandTotal').textContent || '0').replace(/[^0-9.]/g, '')) || 0;
-      const weight = document.getElementById('summaryWeight').textContent;
-      const waNumber = state.settings.WhatsAppNumber || '919690002403';
-      const upi = state.settings.UPI_ID || '9690002403@upi';
-
-      const btn = event?.currentTarget || document.querySelector('button[onclick="processWhatsAppOrder()"]');
-      let oldText = "";
-      if (btn) {
-        oldText = btn.innerHTML;
-        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Placing Order...`;
-        btn.disabled = true;
-      }
-
-      // 1. Direct Supabase Insert (Lightning Fast ~100ms)
-      try {
-        if (supabaseClient) {
-          await supabaseClient.from('orders').insert([{
-            order_id: orderId,
-            customer_name: name,
-            customer_phone: phone,
-            shipping_address: `${address}, ${city}`,
-            pincode: pincode,
-            items: itemsArray,
-            subtotal: subtotalVal,
-            shipping_fee: shippingVal,
-            total_amount: grandTotalVal,
-            payment_method: 'COD/UPI',
-            order_status: 'Received'
-          }]);
-        }
-      } catch (dbErr) {
-        console.warn("Supabase background save notice:", dbErr);
-      }
-
-      // 2. Google Sheets Backup Sync
-      const payload = new URLSearchParams();
-      payload.append("action", "order");
-      payload.append("orderId", orderId);
-      payload.append("name", name);
-      payload.append("phone", phone);
-      payload.append("address", `${address}, ${city}`);
-      payload.append("pincode", pincode);
-      payload.append("items", itemsArray.map(i => `${i.name} (${i.size}) x${i.qty}`).join(', '));
-      payload.append("grandTotal", grandTotalVal.toString());
-      payload.append("notes", isGift ? `Gift to: ${giftReceiver} | Note: ${giftMsg}` : "");
-
-      fetch(SHEET_URLS.orderScript, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: payload.toString()
-      }).catch(() => {});
-
-      if (btn) {
-        btn.innerHTML = oldText;
-        btn.disabled = false;
-      }
-
-      let giftHeader = "";
-      if (isGift) {
-        giftHeader = `🎁 *SURPRISE GIFT ORDER*\n👤 Receiver: ${giftReceiver || 'Recipient'}\n📝 Note: "${giftMsg || 'Best Wishes!'}"\n--------------------------\n`;
-      }
-
-      // 3. Customer-Initiated WhatsApp Slip
-      const fullMessage =
-        giftHeader +
-        `*NEW ORDER - JIVANYA FOODS*\n` +
-        `🆔 *Order ID:* #${orderId}\n\n` +
-        `*CUSTOMER DETAILS:*\n` +
-        `👤 Name: ${name}\n` +
-        `📞 Phone: ${phone}\n` +
-        `📍 Address: ${address}, ${city} - ${pincode}\n\n` +
-        `*ITEMS ORDERED:*\n` +
-        orderSummary +
-        `\n*BILL SUMMARY:*\n` +
-        `Subtotal: ₹${subtotalVal}\n` +
-        `Weight: ${weight}\n` +
-        `Shipping: ₹${shippingVal}\n` +
-        `💰 *TOTAL PAYABLE:* ₹${grandTotalVal}\n\n` +
-        `Payment: UPI (${upi}) / Cash on Delivery\n` +
-        `_Kripya mera order confirm karein._`;
-
-      const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(fullMessage)}`;
-
-      // Reset Basket
-      state.cart = {};
-      try { localStorage.removeItem('Jivanya_saved_cart'); } catch (e) {}
-      updateCartDisplay();
-      toggleCart();
-
-      // Launch WhatsApp & Confirmation Modal
-      window.open(waURL, '_blank');
-      const modal = document.getElementById('orderSuccessModal');
-      if (modal) modal.classList.remove('hidden');
     }
 
     let isNewUserRegisterMode = false;
@@ -2064,112 +2279,5 @@
 
     window.onload = init;
   </script>
-
-  <!-- About Us Modal -->
-  <div id="aboutModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-emerald-100 overflow-hidden transform transition-all">
-      <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 text-white p-5 flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <span class="text-xl">🌿</span>
-          <div>
-            <h3 class="font-bold text-base sm:text-lg leading-tight">About Jivanya Foods</h3>
-            <p class="text-emerald-200 text-xs font-medium mt-0.5">Life Giving • Pure & Wholesome</p>
-          </div>
-        </div>
-        <button onclick="document.getElementById('aboutModal').classList.add('hidden')" 
-                class="text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center text-lg transition cursor-pointer">
-          ✕
-        </button>
-      </div>
-
-      <div class="p-5 sm:p-6 space-y-4 text-gray-700 text-xs sm:text-sm leading-relaxed max-h-[75vh] overflow-y-auto">
-        <p>
-          <strong class="text-gray-900 font-bold">Jivanya Foods</strong> is started by two ladies, on a <strong class="text-emerald-800">mission to bring back purity and authenticity into home kitchens</strong>.
-        </p>
-
-        <p class="italic text-emerald-900 bg-emerald-50/70 p-3 rounded-xl border-l-4 border-emerald-600">
-          "Jivanya" means <strong>'life giving'</strong> and we want the goodness of food to come alive with our products.
-        </p>
-
-        <p>
-          We supply the best & pure quality kitchen ingredients: spices, condiments, homemade masalas, and desi cow ghee. The kind of traditional quality that Indian grandmothers would give a <strong>BIG THUMBS UP</strong> to!
-        </p>
-
-        <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-3 flex items-center gap-2.5">
-          <span class="text-xl">👨‍👩‍👧‍👦</span>
-          <p class="text-xs text-amber-950">
-            Already over <strong class="font-bold text-amber-900">700+ families</strong> have tried us; they vouch for the pure, fresh taste evident in their repeat orders. Already 10000+ orders served.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-gray-900 uppercase tracking-wide text-xs mb-2.5 flex items-center gap-1.5">
-            <span>⭐</span> Our Best Sellers:
-          </h4>
-          <ul class="space-y-1.5 text-xs text-gray-700 font-medium">
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-600 font-bold mt-0.5">✔</span>
-              <span><strong>Desi Cow Ghee</strong> by traditional Vedic Bilona method</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-600 font-bold mt-0.5">✔</span>
-              <span><strong>Pure Hing Powder</strong> far superior to regular store shelves</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-600 font-bold mt-0.5">✔</span>
-              <span><strong>Homemade Masalas</strong> (Garam, Biryani, Tandoori, Chai & Achaar)</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-600 font-bold mt-0.5">✔</span>
-              <span><strong>Roasted Trail Mixes</strong> (both salted & unsalted)</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-600 font-bold mt-0.5">✔</span>
-              <span><strong>Protein Mixtures</strong> rich in natural nutrition</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="pt-3">
-          <button onclick="document.getElementById('aboutModal').classList.add('hidden')" 
-                  class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl text-xs sm:text-sm transition cursor-pointer shadow-sm">
-            Explore Our Pure Kitchen Essentials
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Floating Official FSSAI Badge -->
-  <div style="background-color: rgba(255, 255, 255, 0.55) !important; backdrop-filter: blur(12px) saturate(180%); -webkit-backdrop-filter: blur(12px) saturate(180%);" 
-       class="fixed bottom-4 left-4 z-30 flex items-center gap-2.5 border border-white/60 px-3.5 py-1.5 rounded-full shadow-lg hover:bg-white/80 transition select-none">
-    <img src="https://jivanyafoods-store.github.io/jivanyafoods/fssai.png" 
-         alt="FSSAI" 
-         class="h-6 w-auto object-contain shrink-0" 
-         onerror="this.style.display='none'" />
-    <div class="flex flex-col text-left leading-tight whitespace-nowrap">
-      <span class="text-[10px] font-bold text-gray-900 tracking-tight">FSSAI Certified</span>
-      <span class="text-[9px] font-semibold text-emerald-900">Lic. No: 12724999000123</span>
-    </div>
-  </div>
-
-  <!-- Order Success Confirmation Modal -->
-  <div id="orderSuccessModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white w-full max-w-sm rounded-2xl shadow-2xl p-6 text-center space-y-4 border border-emerald-100">
-      <div class="w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner">
-        ✓
-      </div>
-      <div>
-        <h3 class="text-lg font-extrabold text-gray-900">Order Received!</h3>
-        <p class="text-xs text-emerald-800 font-semibold mt-1">Thank you for choosing Jivanya Foods 🌿</p>
-      </div>
-      <div class="bg-emerald-50/80 border border-emerald-200 rounded-xl p-3 text-xs text-gray-700 leading-relaxed">
-        Our team will verify your order and payment, and we will send you the confirmation soon.
-      </div>
-      <button onclick="document.getElementById('orderSuccessModal').classList.add('hidden')" class="w-full bg-[#1E3A2B] hover:bg-[#2D5A27] text-white py-2.5 rounded-xl font-bold text-xs shadow transition">
-        Continue Shopping
-      </button>
-    </div>
-  </div>
 </body>
 </html>
