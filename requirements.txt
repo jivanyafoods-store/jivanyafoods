@@ -3,3 +3,5 @@ uvicorn==0.22.0
 pydantic==2.6.3
 requests==2.31.0
 supabase==2.4.0
+httpx==0.24.1
+idna==3.4
