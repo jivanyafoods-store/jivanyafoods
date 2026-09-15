@@ -61,6 +61,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style> 
@@ -770,6 +771,10 @@
 
   <!-- Core Store Logic Script -->
   <script>
+    // Supabase Credentials
+const SUPABASE_URL = "https://kslgapyssopepcieujgq.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_-_Lcmap3PWsl9XPjMq1Otg_XdjrOucW";
+const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
     const SHEET_URLS = {
       products: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmad8UlXjp8aWv_PwLLn7YeoInoQGlo5X3E75bkgyij9yFVbR1DsB7Qy5BVHSrsHyFFSafMnyQSo00/pub?gid=355319400&single=true&output=csv",
       settings: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmad8UlXjp8aWv_PwLLn7YeoInoQGlo5X3E75bkgyij9yFVbR1DsB7Qy5BVHSrsHyFFSafMnyQSo00/pub?gid=374168800&single=true&output=csv",
@@ -1726,128 +1731,146 @@ function applySettings() {
       const giftReceiver = document.getElementById('giftReceiverName') ? document.getElementById('giftReceiverName').value.trim() : '';
       const giftMsg = document.getElementById('giftMessage') ? document.getElementById('giftMessage').value.trim() : '';
 
-      let giftHeader = "";
-      if (isGift) {
-        giftHeader = `🎁 *SURPRISE GIFT ORDER*\n👤 Receiver Name: ${giftReceiver || 'Gift Recipient'}\n📝 Gift Note: "${giftMsg || 'Best Wishes!'}"\n--------------------------\n`;
-      }
-
       if (!name || !phone || !address || !city || !pincode) {
         alert("Kripya saari delivery details bharein!");
         return;
       }
 
       const keys = Object.keys(state.cart);
-      if(!keys.length) {
+      if (!keys.length) {
         alert("Basket khali hai!");
         return;
       }
 
-      saveCustomerProfile();
-      
-      const pastOrderItems = [];
       phone = phone.replace(/^0+/, '').replace(/^\+91/, '').trim();
+      saveCustomerProfile();
+
+      // Clean Unique Order ID (Jaise: JIV-8392)
+      const orderId = "JIV-" + Math.floor(1000 + Math.random() * 9000);
+
       let orderSummary = "";
       let itemsArray = [];
+      let pastOrderItems = [];
+
       keys.forEach((k, idx) => {
         const it = state.cart[k];
         orderSummary += `${idx + 1}. ${it.name} [${it.size}] x ${it.qty} = Rs. ${it.price * it.qty}\n`;
-        itemsArray.push(`${it.name} (${it.size}) x${it.qty}`);
+        itemsArray.push({
+          product_id: it.productId,
+          name: it.name,
+          size: it.size,
+          price: it.price,
+          qty: it.qty
+        });
         pastOrderItems.push({ name: it.name, size: it.size, price: it.price, qty: it.qty });
       });
 
+      // Save for 1-Click Reorder
       try {
-        const orderHistory = {
+        localStorage.setItem('Jivanya_last_order', JSON.stringify({
           date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }),
           items: pastOrderItems,
           cartState: Object.assign({}, state.cart)
-        };
-        localStorage.setItem('Jivanya_last_order', JSON.stringify(orderHistory));
-      } catch(e) {}
+        }));
+      } catch (e) {}
 
-      const subtotal = document.getElementById('summarySubtotal').textContent;
+      const subtotalVal = parseFloat((document.getElementById('summarySubtotal').textContent || '0').replace(/[^0-9.]/g, '')) || 0;
+      const shippingVal = parseFloat((document.getElementById('summaryShipping').textContent || '0').replace(/[^0-9.]/g, '')) || 0;
+      const grandTotalVal = parseFloat((document.getElementById('summaryGrandTotal').textContent || '0').replace(/[^0-9.]/g, '')) || 0;
       const weight = document.getElementById('summaryWeight').textContent;
-      const shipping = document.getElementById('summaryShipping').textContent;
-      const grandTotal = document.getElementById('summaryGrandTotal').textContent;
-      const cleanTotal = grandTotal.replace(/[^0-9]/g, '');
-      const cleanWeight = weight.replace(/[^0-9]/g, '');
-      const upi = state.settings.UPI_ID || '9690002403@upi';
       const waNumber = state.settings.WhatsAppNumber || '919690002403';
+      const upi = state.settings.UPI_ID || '9690002403@upi';
 
-      const payload = new URLSearchParams();
-      payload.append("action", "order");
-      payload.append("name", name);
-      payload.append("phone", phone);
-      payload.append("address", address);
-      payload.append("city", city);
-      payload.append("pincode", pincode);
-      payload.append("items", itemsArray.join(", "));
-      payload.append("weight", cleanWeight);
-      payload.append("grandTotal", cleanTotal);
-      payload.append("notes", isGift ? `Gift to: ${giftReceiver} | Note: ${giftMsg}` : "");
-
-      // Button par spinner taaki order Sheet me lock ho sake
       const btn = event?.currentTarget || document.querySelector('button[onclick="processWhatsAppOrder()"]');
       let oldText = "";
       if (btn) {
         oldText = btn.innerHTML;
-        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Saving Order...`;
+        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Placing Order...`;
         btn.disabled = true;
       }
 
-      // Sheet me save hone tak rukega
+      // 1. Direct Supabase Insert (Lightning Fast ~100ms)
       try {
-        await fetch(SHEET_URLS.orderScript, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: payload.toString()
-        });
-      } catch (err) {
-        console.error("Sheet sync error:", err);
+        if (supabaseClient) {
+          await supabaseClient.from('orders').insert([{
+            order_id: orderId,
+            customer_name: name,
+            customer_phone: phone,
+            shipping_address: `${address}, ${city}`,
+            pincode: pincode,
+            items: itemsArray,
+            subtotal: subtotalVal,
+            shipping_fee: shippingVal,
+            total_amount: grandTotalVal,
+            payment_method: 'COD/UPI',
+            order_status: 'Received'
+          }]);
+        }
+      } catch (dbErr) {
+        console.warn("Supabase background save notice:", dbErr);
       }
+
+      // 2. Google Sheets Backup (Non-blocking async)
+      const payload = new URLSearchParams();
+      payload.append("action", "order");
+      payload.append("orderId", orderId);
+      payload.append("name", name);
+      payload.append("phone", phone);
+      payload.append("address", `${address}, ${city}`);
+      payload.append("pincode", pincode);
+      payload.append("items", itemsArray.map(i => `${i.name} (${i.size}) x${i.qty}`).join(', '));
+      payload.append("grandTotal", grandTotalVal.toString());
+      payload.append("notes", isGift ? `Gift to: ${giftReceiver} | Note: ${giftMsg}` : "");
+
+      fetch(SHEET_URLS.orderScript, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: payload.toString()
+      }).catch(() => {});
 
       if (btn) {
         btn.innerHTML = oldText;
         btn.disabled = false;
       }
 
-      const fullMessage = 
+      let giftHeader = "";
+      if (isGift) {
+        giftHeader = `🎁 *SURPRISE GIFT ORDER*\n👤 Receiver: ${giftReceiver || 'Recipient'}\n📝 Note: "${giftMsg || 'Best Wishes!'}"\n--------------------------\n`;
+      }
+
+      // 3. Crisp Customer-Initiated WhatsApp Slip (No spam risk)
+      const fullMessage =
         giftHeader +
-        `*NEW ORDER - JIVANYA FOODS*\n\n` +
+        `*NEW ORDER - JIVANYA FOODS*\n` +
+        `🆔 *Order ID:* #${orderId}\n\n` +
         `*CUSTOMER DETAILS:*\n` +
-        `Name: ${name}\n` +
-        `Phone: ${phone}\n` +
-        `Address: ${address}\n` +
-        `City: ${city}\n` +
-        `Pincode: ${pincode}\n\n` +
+        `👤 Name: ${name}\n` +
+        `📞 Phone: ${phone}\n` +
+        `📍 Address: ${address}, ${city} - ${pincode}\n\n` +
         `*ITEMS ORDERED:*\n` +
         orderSummary +
         `\n*BILL SUMMARY:*\n` +
-        `Subtotal: ${subtotal}\n` +
+        `Subtotal: ₹${subtotalVal}\n` +
         `Weight: ${weight}\n` +
-        `Shipping: ${shipping}\n` +
-        `*TOTAL PAYABLE:* ${grandTotal}\n\n` +
-        `Payment: Store UPI (${upi}) / Available upon order confirmation`;
+        `Shipping: ₹${shippingVal}\n` +
+        `💰 *TOTAL PAYABLE:* ₹${grandTotalVal}\n\n` +
+        `Payment: UPI (${upi}) / Cash on Delivery\n` +
+        `_Kripya mera order confirm karein._`;
 
-       const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(fullMessage)}`;
-      
-      // Order WhatsApp par bhejne ke baad basket khali karein
+      const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(fullMessage)}`;
+
+      // Reset Cart
       state.cart = {};
-      try {
-        localStorage.removeItem('Jivanya_saved_cart');
-      } catch(e) {}
+      try { localStorage.removeItem('Jivanya_saved_cart'); } catch (e) {}
       updateCartDisplay();
       toggleCart();
 
-      // WhatsApp open karein
+      // Launch WhatsApp & Confirmation Modal
       window.open(waURL, '_blank');
-
-      // Success Pop-up dikhayein
       const modal = document.getElementById('orderSuccessModal');
       if (modal) modal.classList.remove('hidden');
-    }
-
-    let isNewUserRegisterMode = false;
+    }    let isNewUserRegisterMode = false;
     function openAccountModal() {
       const saved = localStorage.getItem('Jivanya_user');
       if (saved) {
