@@ -54,9 +54,8 @@
   
   <!-- Instant Engine -->
   <script src="//instant.page/5.2.0" type="module"></script>
+  
   <!-- Fonts & Stylesheets -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -413,10 +412,8 @@
             <div id="detailImgThumbs" class="flex items-center justify-center gap-2 mt-2 overflow-x-auto py-0.5"></div>
           </div>
 
-          <!-- Right Column: Product Content (Enhanced Typography & Spacing) -->
+          <!-- Right Column: Product Content -->
           <div class="space-y-4 text-sm flex flex-col justify-between">
-            
-            <!-- Category & Title -->
             <div>
               <div class="flex items-center gap-2 flex-wrap mb-1.5">
                 <span id="detailBadge" class="bg-amber-500 text-white text-xs font-bold px-2.5 py-0.5 rounded-full hidden"></span>
@@ -435,7 +432,7 @@
               <span id="detailDiscount" class="bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold px-2.5 py-1 rounded-md hidden"></span>
             </div>
 
-            <!-- Pack Size Selector (In 1 Single Horizontal Line) -->
+            <!-- Pack Size Selector -->
             <div class="bg-gray-50 px-3.5 py-2.5 rounded-xl border border-gray-200/80 flex items-center gap-3 flex-wrap">
               <label class="text-gray-800 font-bold text-xs uppercase tracking-wide whitespace-nowrap shrink-0">
                 Select Pack Size:
@@ -443,7 +440,7 @@
               <div id="detailVariantsList" class="flex flex-wrap items-center gap-2"></div>
             </div>
 
-            <!-- Purity Details Accordion (Bigger & Clear Reading Font) -->
+            <!-- Purity Details Accordion -->
             <details class="bg-emerald-50/60 rounded-xl p-3.5 border border-emerald-200/80 text-sm" open>
               <summary class="font-bold text-emerald-950 text-sm cursor-pointer select-none flex items-center justify-between">
                 <span class="flex items-center gap-1.5 font-bold">🌿 Read Purity, Benefits & Process</span>
@@ -502,7 +499,7 @@
         </div>
         <div class="border rounded-xl p-3 bg-gray-50">
           <p class="font-bold text-gray-900 mb-0.5">✉️ Email Support:</p>
-          <a id="modalEmailLink" href="mailto:care.Jivanyafoods@gmail.com" class="text-green-700 font-semibold hover:underline block text-[11px]">Jivanyafoods@gmail.com</a>
+          <a id="modalEmailLink" href="mailto:care.Jivanyafoods@gmail.com" class="text-green-700 font-semibold hover:underline block text-[11px]">care.Jivanyafoods@gmail.com</a>
         </div>
       </div>
     </div>
@@ -772,9 +769,10 @@
   <!-- Core Store Logic Script -->
   <script>
     // Supabase Credentials
-const SUPABASE_URL = "https://kslgapyssopepcieujgq.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_-_Lcmap3PWsl9XPjMq1Otg_XdjrOucW";
-const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+    const SUPABASE_URL = "https://kslgapyssopepcieujgq.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_-_Lcmap3PWsl9XPjMq1Otg_XdjrOucW";
+    const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
     const SHEET_URLS = {
       products: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmad8UlXjp8aWv_PwLLn7YeoInoQGlo5X3E75bkgyij9yFVbR1DsB7Qy5BVHSrsHyFFSafMnyQSo00/pub?gid=355319400&single=true&output=csv",
       settings: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmad8UlXjp8aWv_PwLLn7YeoInoQGlo5X3E75bkgyij9yFVbR1DsB7Qy5BVHSrsHyFFSafMnyQSo00/pub?gid=374168800&single=true&output=csv",
@@ -838,12 +836,14 @@ const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_U
       return images.length ? images : [resolveProductImage(prod)];
     }
 
-   function init() {
-      state.cart = {}; // Always start fresh
-
-      loadCustomerProfile();
-      loadPastOrderInfo();
-      updateCartDisplay();
+    function init() {
+      // Saved basket recover karein (taaki back aane par item gayab na ho)
+      try {
+        const saved = localStorage.getItem('Jivanya_saved_cart');
+        state.cart = saved ? JSON.parse(saved) : {};
+      } catch (e) {
+        state.cart = {};
+      }
 
       loadCustomerProfile();
       loadPastOrderInfo();
@@ -940,7 +940,7 @@ const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_U
       } catch(e) {}
     }
 
-function applySettings() {
+    function applySettings() {
       const s = state.settings || {};
 
       const setTxt = (id, val) => {
@@ -1334,6 +1334,7 @@ function applySettings() {
       };
 
       document.getElementById('productDetailModal').classList.remove('hidden');
+      history.pushState({ modal: 'product' }, '', '#product');
     }
 
     function setDetailVariant(index, price, mrp, size) {
@@ -1349,7 +1350,11 @@ function applySettings() {
     }
 
     function closeProductDetailModal() {
-      document.getElementById('productDetailModal').classList.add('hidden');
+      const modal = document.getElementById('productDetailModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        if (window.location.hash === '#product') history.back();
+      }
     }
 
     function updateDetailDiscountAndWeight(price, mrp, size) {
@@ -1410,6 +1415,7 @@ function applySettings() {
       }
       updateCartDisplay();
       document.getElementById('cartModal').classList.remove('hidden');
+      history.pushState({ modal: 'cart' }, '', '#cart');
     }
 
     function updateCartDisplay() {
@@ -1490,7 +1496,7 @@ function applySettings() {
       document.getElementById('summaryShipping').textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
       document.getElementById('summaryGrandTotal').textContent = `₹${state.grandTotal}`;
 
-     if (state.grandTotal > 0) {
+      if (state.grandTotal > 0) {
         const upiId = state.settings.UPI_ID || '9690002403@upi';
         const upiUrl = `upi://pay?pa=${upiId}&pn=JivanyaFoods&am=${state.grandTotal}&cu=INR`;
         const qrEl = document.getElementById('upiQrImg');
@@ -1705,8 +1711,35 @@ function applySettings() {
       window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
+    // Mobile Back Button / Gesture Listener (Website Band Nahi Hogi, Sirf Window Band Hogi)
+    window.addEventListener('popstate', () => {
+      const cartModal = document.getElementById('cartModal');
+      const detailModal = document.getElementById('productDetailModal');
+      const trackModal = document.getElementById('trackingModal');
+      const contactModal = document.getElementById('contactModal');
+      const reviewModal = document.getElementById('reviewModal');
+      const accountModal = document.getElementById('accountModal');
+
+      if (cartModal && !cartModal.classList.contains('hidden')) cartModal.classList.add('hidden');
+      if (detailModal && !detailModal.classList.contains('hidden')) detailModal.classList.add('hidden');
+      if (trackModal && !trackModal.classList.contains('hidden')) trackModal.classList.add('hidden');
+      if (contactModal && !contactModal.classList.contains('hidden')) contactModal.classList.add('hidden');
+      if (reviewModal && !reviewModal.classList.contains('hidden')) reviewModal.classList.add('hidden');
+      if (accountModal && !accountModal.classList.contains('hidden')) accountModal.classList.add('hidden');
+    });
+
     function toggleCart() {
-      document.getElementById('cartModal').classList.toggle('hidden');
+      const modal = document.getElementById('cartModal');
+      if (!modal) return;
+      const isOpening = modal.classList.contains('hidden');
+
+      if (isOpening) {
+        modal.classList.remove('hidden');
+        history.pushState({ modal: 'cart' }, '', '#cart');
+      } else {
+        modal.classList.add('hidden');
+        if (window.location.hash === '#cart') history.back();
+      }
     }
 
     function toggleGiftFields() {
@@ -1745,7 +1778,7 @@ function applySettings() {
       phone = phone.replace(/^0+/, '').replace(/^\+91/, '').trim();
       saveCustomerProfile();
 
-      // Clean Unique Order ID (Jaise: JIV-8392)
+      // Clean Unique Order ID
       const orderId = "JIV-" + Math.floor(1000 + Math.random() * 9000);
 
       let orderSummary = "";
@@ -1810,7 +1843,7 @@ function applySettings() {
         console.warn("Supabase background save notice:", dbErr);
       }
 
-      // 2. Google Sheets Backup (Non-blocking async)
+      // 2. Google Sheets Backup Sync
       const payload = new URLSearchParams();
       payload.append("action", "order");
       payload.append("orderId", orderId);
@@ -1839,7 +1872,7 @@ function applySettings() {
         giftHeader = `🎁 *SURPRISE GIFT ORDER*\n👤 Receiver: ${giftReceiver || 'Recipient'}\n📝 Note: "${giftMsg || 'Best Wishes!'}"\n--------------------------\n`;
       }
 
-      // 3. Crisp Customer-Initiated WhatsApp Slip (No spam risk)
+      // 3. Customer-Initiated WhatsApp Slip
       const fullMessage =
         giftHeader +
         `*NEW ORDER - JIVANYA FOODS*\n` +
@@ -1860,7 +1893,7 @@ function applySettings() {
 
       const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(fullMessage)}`;
 
-      // Reset Cart
+      // Reset Basket
       state.cart = {};
       try { localStorage.removeItem('Jivanya_saved_cart'); } catch (e) {}
       updateCartDisplay();
@@ -1870,7 +1903,9 @@ function applySettings() {
       window.open(waURL, '_blank');
       const modal = document.getElementById('orderSuccessModal');
       if (modal) modal.classList.remove('hidden');
-    }    let isNewUserRegisterMode = false;
+    }
+
+    let isNewUserRegisterMode = false;
     function openAccountModal() {
       const saved = localStorage.getItem('Jivanya_user');
       if (saved) {
@@ -2117,6 +2152,7 @@ function applySettings() {
       <span class="text-[9px] font-semibold text-emerald-900">Lic. No: 12724999000123</span>
     </div>
   </div>
+
   <!-- Order Success Confirmation Modal -->
   <div id="orderSuccessModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white w-full max-w-sm rounded-2xl shadow-2xl p-6 text-center space-y-4 border border-emerald-100">
