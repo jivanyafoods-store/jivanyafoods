@@ -54,14 +54,13 @@
   
   <!-- Instant Engine -->
   <script src="//instant.page/5.2.0" type="module"></script>
-  
   <!-- Fonts & Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style> 
@@ -75,7 +74,6 @@
       font-family: 'Playfair Display', Georgia, serif;
       letter-spacing: -0.015em;
     }
-    /* Google Translate Compact Styling */
     #google_translate_element {
       display: inline-block;
       vertical-align: middle;
@@ -111,15 +109,16 @@
     <span class="inline-flex items-center flex-wrap justify-center gap-2">
       <span>Keeping the purity of yesterday alive, for the generations of tomorrow.</span>
       <span class="opacity-40 hidden sm:inline">|</span>
-      <span class="inline-flex items-center gap-1.5 bg-black/30 px-2.5 py-0.5 rounded-full border border-white/20 font-semibold text-white shadow-xs">
-        <img src="https://flagcdn.com/w40/in.png" alt="Indian Flag" class="w-5 h-auto rounded-xs shadow-xs shrink-0" />
+      <span class="inline-flex items-center gap-1.5 bg-black/30 px-2.5 py-0.5 rounded-full border border-white/20 font-semibold text-white shadow-sm">
+        <img src="https://flagcdn.com/w40/in.png" alt="Indian Flag" class="w-5 h-auto rounded shrink-0" />
         <span>Pan India Delivery</span>
       </span>
       <span class="opacity-40 hidden sm:inline">|</span>
       <span class="text-amber-300 font-semibold">Free Shipping above ₹1299!</span>
     </span>
   </div>  
-<!-- Navratri Makhana Gurgaon Special Bar -->
+
+  <!-- Navratri Makhana Gurgaon Special Bar -->
   <div onclick="const s=document.getElementById('searchInput'); if(s){ s.value='Makhana'; typeof handleSearch==='function'&&handleSearch(); window.scrollTo({top: 180, behavior: 'smooth'}); }" 
        class="bg-[#B45309] hover:bg-[#92400E] text-white text-center py-2 px-3 text-xs sm:text-sm font-semibold tracking-wide shadow-inner cursor-pointer select-none transition">
     <span class="inline-flex items-center justify-center gap-2 flex-wrap">
@@ -131,8 +130,9 @@
       <span class="text-amber-200 underline">Book Slot &rarr;</span>
     </span>
   </div> 
+
   <!-- Header -->
-  <header class="bg-white border-b sticky top-0 z-40 shadow-xs">
+  <header class="bg-white border-b sticky top-0 z-40 shadow-sm">
     <div class="max-w-6xl mx-auto px-2.5 sm:px-4 py-2 flex items-center justify-between gap-2 sm:gap-3">
       
       <!-- Store Logo -->
@@ -162,7 +162,7 @@
 
         <!-- Categories / Quick Explore Dropdown -->
         <div class="relative inline-block text-left group">
-          <button type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-800 text-white hover:bg-emerald-900 transition shadow-xs">
+          <button type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-800 text-white hover:bg-emerald-900 transition shadow-sm">
             <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
               <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
             </svg>
@@ -210,19 +210,19 @@
         </div>
 
         <!-- Our Story -->
-        <button onclick="document.getElementById('aboutModal').classList.remove('hidden')" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-xs whitespace-nowrap cursor-pointer">
+        <button onclick="document.getElementById('aboutModal').classList.remove('hidden')" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-sm whitespace-nowrap cursor-pointer">
           <i class="fa-solid fa-book-open text-emerald-700"></i>
           <span>Our Story</span>
         </button>
 
         <!-- Track Order -->
-        <button onclick="toggleTrackingModal()" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-xs whitespace-nowrap cursor-pointer">
+        <button onclick="toggleTrackingModal()" class="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-[#1E3A2B] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-bold transition shadow-sm whitespace-nowrap cursor-pointer">
           <i class="fa-solid fa-truck-fast text-emerald-700"></i>
           <span>Track</span>
         </button>
 
         <!-- Recommend -->
-        <button onclick="shareStore()" class="border border-green-700 text-green-800 hover:bg-green-50 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-semibold transition shadow-xs whitespace-nowrap cursor-pointer">
+        <button onclick="shareStore()" class="border border-green-700 text-green-800 hover:bg-green-50 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg flex items-center gap-1 text-[11px] font-semibold transition shadow-sm whitespace-nowrap cursor-pointer">
           <i class="fa-solid fa-share-nodes text-green-700"></i>
           <span>Recommend</span>
         </button>
@@ -231,12 +231,12 @@
         <div id="google_translate_element" class="inline-flex items-center"></div>
 
         <!-- Account / Profile -->
-        <button id="userAccountBtn" onclick="openAccountModal()" class="flex items-center gap-1 bg-emerald-800/90 hover:bg-emerald-800 text-white px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-[11px] font-semibold shadow-xs transition whitespace-nowrap cursor-pointer">
+        <button id="userAccountBtn" onclick="openAccountModal()" class="flex items-center gap-1 bg-emerald-800/90 hover:bg-emerald-800 text-white px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-[11px] font-semibold shadow-sm transition whitespace-nowrap cursor-pointer">
           <span id="userAccountLabel">Account 👤</span>
         </button>
         
         <!-- Basket -->
-        <button onclick="toggleCart()" class="relative bg-[#2D5A27] text-white px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 text-xs font-semibold hover:bg-[#1E3A2B] transition shadow-xs whitespace-nowrap cursor-pointer">
+        <button onclick="toggleCart()" class="relative bg-[#2D5A27] text-white px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 text-xs font-semibold hover:bg-[#1E3A2B] transition shadow-sm whitespace-nowrap cursor-pointer">
           <i class="fa-solid fa-bag-shopping"></i>
           <span>Basket</span>
           <span id="cartCount" class="bg-amber-400 text-gray-900 text-[10px] font-bold rounded-full h-4 min-w-[16px] px-1 flex items-center justify-center">0</span>
