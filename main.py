@@ -16,14 +16,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Supabase Credentials
-SUPABASE_URL = os.getenv("SUPABASE_URL", "https://kslgapyssopepcieujgq.supabase.co")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY", "sb_publishable_-_Lcmap3PWsl9XPjMq1Otg_XdjrOucW")
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
-
+# Hardcoded & Environment Fallback Credentials for Zero-Error Booting
 SUPABASE_URL = "https://kslgapyssopepcieujgq.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtzbGdhcHlzc29wZXBjaWV1amdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk0Njk4MjcsImV4cCI6MjEwNTA0NTgyN30.SVGmVioBHSeq-u5Q47xnzG3mypOMsON-ylmXI5hZpcA"
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
@@ -72,10 +69,8 @@ def send_telegram_alert(message: str):
 
 # ----------------- 8 PRODUCTION ERP MODULES -----------------
 
-# Module 1: Master Packaging & ₹45 Courier Slab Gatekeeper
 @app.post("/api/v1/packaging/validate-slab")
 def validate_shipping_slab(spec: PouchSpec):
-    # Volumetric Weight = (L x W x H) / 5000 * 1000 with 15% safety buffer
     volumetric = ((spec.length_cm * spec.width_cm * spec.height_cm) / 5000.0) * 1000.0
     buffered_weight = max(spec.dead_weight_g, volumetric) * 1.15
     is_safe = buffered_weight <= 500.0
@@ -89,7 +84,6 @@ def validate_shipping_slab(spec: PouchSpec):
         "status": "APPROVED: ₹45 Slab Locked" if is_safe else "REJECTED: Exceeds 500g slab. Trim pouch height."
     }
 
-# Module 2 & 5: Thermal OCR Scraper & Customer Vault CRM Sync
 @app.post("/api/v1/ocr/ingest-label")
 def ingest_thermal_label(label: ThermalLabelOCR, background_tasks: BackgroundTasks):
     weight_gap = label.charged_weight_g - label.actual_weight_g
@@ -142,7 +136,6 @@ def ingest_thermal_label(label: ThermalLabelOCR, background_tasks: BackgroundTas
 
     return {"status": "SUCCESS", "dispute_flag": is_dispute, "excess_grams": weight_gap}
 
-# Module 4: 3-Way P&L & Settlement Reconciliation
 @app.post("/api/v1/finance/reconcile-payout")
 def reconcile_payout(data: ReconciliationEntry, background_tasks: BackgroundTasks):
     diff = round(data.expected_payout - data.settled_payout, 2)
@@ -171,7 +164,6 @@ def reconcile_payout(data: ReconciliationEntry, background_tasks: BackgroundTask
 
     return {"status": "RECONCILED", "leakage": has_leakage, "underpaid_amount": diff}
 
-# Module 6: Competitor & Price Hijacker Sentinel
 @app.post("/api/v1/sentinel/price-check")
 def check_competitor_price(item: CompetitorItem, background_tasks: BackgroundTasks):
     is_undercut = item.competitor_price < item.jivanya_price
@@ -189,7 +181,6 @@ def check_competitor_price(item: CompetitorItem, background_tasks: BackgroundTas
 
     return {"status": "CHECKED", "undercut": is_undercut, "gap": price_gap}
 
-# Module 7: Daily Google SEO & IndexNow Ping Hook
 @app.get("/api/v1/seo/ping-indexnow")
 def ping_search_engines():
     search_engines = [
@@ -216,7 +207,6 @@ def ping_search_engines():
 
     return {"status": "PING_COMPLETED", "engines": responses}
 
-# Module 8: Telegram Founder Cockpit & Daily GMV Dispatcher
 @app.get("/api/v1/founder/daily-briefing")
 def founder_daily_briefing():
     try:
