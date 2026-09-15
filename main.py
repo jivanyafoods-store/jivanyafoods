@@ -22,6 +22,9 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY", "sb_publishable_-_Lcmap3PWsl9XPjMq1Otg_
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
 
+SUPABASE_URL = "https://kslgapyssopepcieujgq.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtzbGdhcHlzc29wZXBjaWV1amdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk0Njk4MjcsImV4cCI6MjEwNTA0NTgyN30.SVGmVioBHSeq-u5Q47xnzG3mypOMsON-ylmXI5hZpcA"
+
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # ----------------- DATA SCHEMAS -----------------
