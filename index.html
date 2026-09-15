@@ -933,36 +933,48 @@ body {
       } catch(e) {}
     }
 
-    function applySettings() {
-      const s = state.settings;
-      if (s.StoreName) document.getElementById('storeName').textContent = s.StoreName;
-      if (s.StoreTagline) document.getElementById('storeTagline').textContent = s.StoreTagline;
-      if (s.StoreLogo) document.getElementById('storeLogo').src = s.StoreLogo;
+function applySettings() {
+      const s = state.settings || {};
+
+      const setTxt = (id, val) => {
+        const el = document.getElementById(id);
+        if (el && val !== undefined && val !== null) el.textContent = val;
+      };
+
+      const setAttr = (id, attr, val) => {
+        const el = document.getElementById(id);
+        if (el && val) el[attr] = val;
+      };
+
+      if (s.StoreName) setTxt('storeName', s.StoreName);
+      if (s.StoreTagline) setTxt('storeTagline', s.StoreTagline);
+      if (s.StoreLogo) setAttr('storeLogo', 'src', s.StoreLogo);
 
       const addr = s.StoreAddress || "1306 Agra Road, Hathras, Uttar Pradesh - 204101";
-      const phone = s.WhatsAppNumber || "919690002403";
+      const phone = (s.WhatsAppNumber || "919690002403").toString();
       const email = s.ContactEmail || "care.Jivanyafoods@gmail.com";
+      const displayPhone = "+91 " + phone.replace(/^91/, '');
 
-      document.getElementById('footerAddress').textContent = addr;
-      document.getElementById('modalAddress').textContent = addr;
+      setTxt('footerAddress', addr);
+      setTxt('modalAddress', addr);
 
-      document.getElementById('footerPhoneLink').textContent = "+91 " + phone.replace(/^91/, '');
-      document.getElementById('footerPhoneLink').href = `tel:+${phone}`;
-      document.getElementById('modalPhoneLink').textContent = "+91 " + phone.replace(/^91/, '');
-      document.getElementById('modalPhoneLink').href = `https://wa.me/${phone}`;
+      setTxt('footerPhoneLink', displayPhone);
+      setAttr('footerPhoneLink', 'href', `tel:+${phone}`);
+      setTxt('modalPhoneLink', displayPhone);
+      setAttr('modalPhoneLink', 'href', `https://wa.me/${phone}`);
 
-      document.getElementById('footerEmailLink').textContent = email;
-      document.getElementById('footerEmailLink').href = `mailto:${email}`;
-      document.getElementById('modalEmailLink').textContent = email;
-      document.getElementById('modalEmailLink').href = `mailto:${email}`;
+      setTxt('footerEmailLink', email);
+      setAttr('footerEmailLink', 'href', `mailto:${email}`);
+      setTxt('modalEmailLink', email);
+      setAttr('modalEmailLink', 'href', `mailto:${email}`);
 
-      if(s.FSSAI_No) {
-        document.getElementById('badgeFssaiNo').textContent = "Lic: " + s.FSSAI_No;
-        document.getElementById('footerFssai').textContent = s.FSSAI_No;
+      if (s.FSSAI_No) {
+        setTxt('badgeFssaiNo', "Lic: " + s.FSSAI_No);
+        setTxt('footerFssai', s.FSSAI_No);
       }
-      if(s.GST_No) {
-        document.getElementById('badgeGstNo').textContent = "GSTIN: " + s.GST_No;
-        document.getElementById('footerGst').textContent = s.GST_No;
+      if (s.GST_No) {
+        setTxt('badgeGstNo', "GSTIN: " + s.GST_No);
+        setTxt('footerGst', s.GST_No);
       }
     }
 
